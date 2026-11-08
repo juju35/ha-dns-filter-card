@@ -65,6 +65,8 @@ const STRINGS = {
     unknown: "Unknown",
     no_device: "No AdGuard Home or Pi-hole entities found. Is one of these integrations installed?",
     unknown_device: "DNS filter not found",
+    protection_on: "Turn protection on",
+    protection_off: "Turn protection off",
     protection: "Protection",
     filtering: "Filtering",
     parental: "Parental control",
@@ -124,6 +126,8 @@ const STRINGS = {
     unknown: "Inconnu",
     no_device: "Aucune entité AdGuard Home ou Pi-hole trouvée. L'une de ces intégrations est-elle installée ?",
     unknown_device: "Filtre DNS introuvable",
+    protection_on: "Activer la protection",
+    protection_off: "Désactiver la protection",
     protection: "Protection",
     filtering: "Filtrage",
     parental: "Contrôle parental",
@@ -182,6 +186,8 @@ const STRINGS = {
     unknown: "Unbekannt",
     no_device: "Keine AdGuard-Home- oder Pi-hole-Entitäten gefunden. Ist eine dieser Integrationen installiert?",
     unknown_device: "DNS-Filter nicht gefunden",
+    protection_on: "Schutz einschalten",
+    protection_off: "Schutz ausschalten",
     protection: "Schutz",
     filtering: "Filterung",
     parental: "Kindersicherung",
@@ -240,6 +246,8 @@ const STRINGS = {
     unknown: "Desconocido",
     no_device: "No se han encontrado entidades de AdGuard Home ni de Pi-hole. ¿Está instalada una de estas integraciones?",
     unknown_device: "Filtro DNS no encontrado",
+    protection_on: "Activar la protección",
+    protection_off: "Desactivar la protección",
     protection: "Protección",
     filtering: "Filtrado",
     parental: "Control parental",
@@ -298,6 +306,8 @@ const STRINGS = {
     unknown: "Непознато",
     no_device: "Нису пронађени AdGuard Home или Pi-hole ентитети. Да ли је инсталирана нека од ових интеграција?",
     unknown_device: "DNS филтер није пронађен",
+    protection_on: "Укључи заштиту",
+    protection_off: "Искључи заштиту",
     protection: "Заштита",
     filtering: "Филтрирање",
     parental: "Родитељска контрола",
@@ -356,6 +366,8 @@ const STRINGS = {
     unknown: "Nepoznato",
     no_device: "Nisu pronađeni AdGuard Home ili Pi-hole entiteti. Da li je instalirana neka od ovih integracija?",
     unknown_device: "DNS filter nije pronađen",
+    protection_on: "Uključi zaštitu",
+    protection_off: "Isključi zaštitu",
     protection: "Zaštita",
     filtering: "Filtriranje",
     parental: "Roditeljska kontrola",
@@ -414,6 +426,8 @@ const STRINGS = {
     unknown: "Sconosciuto",
     no_device: "Nessuna entità AdGuard Home o Pi-hole trovata. È installata una di queste integrazioni?",
     unknown_device: "Filtro DNS non trovato",
+    protection_on: "Attiva la protezione",
+    protection_off: "Disattiva la protezione",
     protection: "Protezione",
     filtering: "Filtraggio",
     parental: "Controllo genitori",
@@ -472,6 +486,8 @@ const STRINGS = {
     unknown: "Onbekend",
     no_device: "Geen AdGuard Home- of Pi-hole-entiteiten gevonden. Is een van deze integraties geïnstalleerd?",
     unknown_device: "DNS-filter niet gevonden",
+    protection_on: "Bescherming inschakelen",
+    protection_off: "Bescherming uitschakelen",
     protection: "Bescherming",
     filtering: "Filtering",
     parental: "Ouderlijk toezicht",
@@ -530,6 +546,8 @@ const STRINGS = {
     unknown: "Desconhecido",
     no_device: "Não foram encontradas entidades AdGuard Home ou Pi-hole. Está instalada uma destas integrações?",
     unknown_device: "Filtro DNS não encontrado",
+    protection_on: "Ativar a proteção",
+    protection_off: "Desativar a proteção",
     protection: "Proteção",
     filtering: "Filtragem",
     parental: "Controlo parental",
@@ -588,6 +606,8 @@ const STRINGS = {
     unknown: "Nieznane",
     no_device: "Nie znaleziono encji AdGuard Home ani Pi-hole. Czy jedna z tych integracji jest zainstalowana?",
     unknown_device: "Nie znaleziono filtra DNS",
+    protection_on: "Włącz ochronę",
+    protection_off: "Wyłącz ochronę",
     protection: "Ochrona",
     filtering: "Filtrowanie",
     parental: "Kontrola rodzicielska",
@@ -646,6 +666,8 @@ const STRINGS = {
     unknown: "Necunoscut",
     no_device: "Nu s-au găsit entități AdGuard Home sau Pi-hole. Este instalată una dintre aceste integrări?",
     unknown_device: "Filtrul DNS nu a fost găsit",
+    protection_on: "Activează protecția",
+    protection_off: "Dezactivează protecția",
     protection: "Protecție",
     filtering: "Filtrare",
     parental: "Control parental",
@@ -704,6 +726,8 @@ const STRINGS = {
     unknown: "Ukendt",
     no_device: "Ingen AdGuard Home- eller Pi-hole-enheder fundet. Er en af disse integrationer installeret?",
     unknown_device: "DNS-filter ikke fundet",
+    protection_on: "Slå beskyttelse til",
+    protection_off: "Slå beskyttelse fra",
     protection: "Beskyttelse",
     filtering: "Filtrering",
     parental: "Forældrekontrol",
@@ -762,6 +786,8 @@ const STRINGS = {
     unknown: "Okänd",
     no_device: "Inga AdGuard Home- eller Pi-hole-entiteter hittades. Är någon av dessa integrationer installerad?",
     unknown_device: "DNS-filter hittades inte",
+    protection_on: "Slå på skyddet",
+    protection_off: "Stäng av skyddet",
     protection: "Skydd",
     filtering: "Filtrering",
     parental: "Föräldrakontroll",
@@ -820,6 +846,8 @@ const STRINGS = {
     unknown: "Неизвестно",
     no_device: "Не са намерени обекти на AdGuard Home или Pi-hole. Инсталирана ли е някоя от тези интеграции?",
     unknown_device: "DNS филтърът не е намерен",
+    protection_on: "Включи защитата",
+    protection_off: "Изключи защитата",
     protection: "Защита",
     filtering: "Филтриране",
     parental: "Родителски контрол",
@@ -878,6 +906,8 @@ const STRINGS = {
     unknown: "Неизвестно",
     no_device: "Объекты AdGuard Home или Pi-hole не найдены. Установлена ли одна из этих интеграций?",
     unknown_device: "DNS-фильтр не найден",
+    protection_on: "Включить защиту",
+    protection_off: "Выключить защиту",
     protection: "Защита",
     filtering: "Фильтрация",
     parental: "Родительский контроль",
@@ -936,6 +966,8 @@ const STRINGS = {
     unknown: "Невідомо",
     no_device: "Сутності AdGuard Home або Pi-hole не знайдено. Чи встановлено одну з цих інтеграцій?",
     unknown_device: "DNS-фільтр не знайдено",
+    protection_on: "Увімкнути захист",
+    protection_off: "Вимкнути захист",
     protection: "Захист",
     filtering: "Фільтрація",
     parental: "Батьківський контроль",
@@ -994,6 +1026,8 @@ const STRINGS = {
     unknown: "Ismeretlen",
     no_device: "Nem található AdGuard Home vagy Pi-hole entitás. Telepítve van valamelyik integráció?",
     unknown_device: "A DNS-szűrő nem található",
+    protection_on: "Védelem bekapcsolása",
+    protection_off: "Védelem kikapcsolása",
     protection: "Védelem",
     filtering: "Szűrés",
     parental: "Szülői felügyelet",
@@ -1052,6 +1086,8 @@ const STRINGS = {
     unknown: "Neznáme",
     no_device: "Nenašli sa žiadne entity AdGuard Home ani Pi-hole. Je nainštalovaná niektorá z týchto integrácií?",
     unknown_device: "DNS filter sa nenašiel",
+    protection_on: "Zapnúť ochranu",
+    protection_off: "Vypnúť ochranu",
     protection: "Ochrana",
     filtering: "Filtrovanie",
     parental: "Rodičovská kontrola",
@@ -1110,6 +1146,8 @@ const STRINGS = {
     unknown: "Neznámé",
     no_device: "Nebyly nalezeny žádné entity AdGuard Home ani Pi-hole. Je nainstalována některá z těchto integrací?",
     unknown_device: "DNS filtr nenalezen",
+    protection_on: "Zapnout ochranu",
+    protection_off: "Vypnout ochranu",
     protection: "Ochrana",
     filtering: "Filtrování",
     parental: "Rodičovská kontrola",
@@ -1168,6 +1206,8 @@ const STRINGS = {
     unknown: "Neznano",
     no_device: "Ni najdenih entitet AdGuard Home ali Pi-hole. Je nameščena katera od teh integracij?",
     unknown_device: "Filter DNS ni najden",
+    protection_on: "Vklopi zaščito",
+    protection_off: "Izklopi zaščito",
     protection: "Zaščita",
     filtering: "Filtriranje",
     parental: "Starševski nadzor",
@@ -1226,6 +1266,8 @@ const STRINGS = {
     unknown: "Nezināms",
     no_device: "Nav atrastas AdGuard Home vai Pi-hole entītijas. Vai ir instalēta kāda no šīm integrācijām?",
     unknown_device: "DNS filtrs nav atrasts",
+    protection_on: "Ieslēgt aizsardzību",
+    protection_off: "Izslēgt aizsardzību",
     protection: "Aizsardzība",
     filtering: "Filtrēšana",
     parental: "Vecāku kontrole",
@@ -1284,6 +1326,8 @@ const STRINGS = {
     unknown: "Άγνωστο",
     no_device: "Δεν βρέθηκαν οντότητες AdGuard Home ή Pi-hole. Είναι εγκατεστημένη μία από αυτές τις ενσωματώσεις;",
     unknown_device: "Το φίλτρο DNS δεν βρέθηκε",
+    protection_on: "Ενεργοποίηση προστασίας",
+    protection_off: "Απενεργοποίηση προστασίας",
     protection: "Προστασία",
     filtering: "Φιλτράρισμα",
     parental: "Γονικός έλεγχος",
@@ -1754,6 +1798,7 @@ class DnsFilterBase extends HTMLElement {
       }
       const a = action?.dataset.action;
       if (a === "toggle") return this._toggle(action.dataset.entity);
+      if (a === "protection") return this._protectionClick();
       if (a === "pause") return this._openPause();
       if (a === "resume") return this._resume();
       if (a === "refresh") return this._refresh();
@@ -1829,6 +1874,17 @@ class DnsFilterBase extends HTMLElement {
   _resume() {
     const sw = this._dev().e.protection;
     if (sw) this._call("switch", "turn_on", { entity_id: sw });
+  }
+
+  // A click on the status pill acts like the blocking controls: AdGuard Home toggles its protection switch,
+  // Pi-hole opens the pause durations popup (blocking on) or resumes blocking (paused).
+  _protectionClick() {
+    const dev = this._dev();
+    const s = this._s(dev.e.protection);
+    if (!s || s.state === "unavailable") return;
+    if (dev.brand === "adguard") return this._toggle(dev.e.protection);
+    if (s.state === "on") this._openPause();
+    else this._resume();
   }
 
   // AdGuard Home: refresh the filter lists (adguard.refresh).
@@ -1943,6 +1999,13 @@ class DnsFilterBase extends HTMLElement {
     return { ...p, cls: "warn", text: this._t(dev.brand === "pihole" ? "status_paused" : "status_off") };
   }
 
+  // Tooltip of the status pill: what a click does (the state itself is the pill's text).
+  _statusAction(dev, status) {
+    if (NO_VALUE.has(status.state)) return status.text;
+    if (dev.brand === "adguard") return `${status.text} · ${this._t(status.state === "on" ? "protection_off" : "protection_on")}`;
+    return `${status.text} · ${this._t(status.state === "on" ? "pause" : "resume")}`;
+  }
+
   _header(dev) {
     const c = this._config;
     const status = this._status(dev);
@@ -1959,7 +2022,7 @@ class DnsFilterBase extends HTMLElement {
           <div class="sub">${esc(sub)}</div>
           ${
             status
-              ? `<span class="chip clickable ${status.cls}" role="button" tabindex="0" data-entity="${status.id}" title="${esc(status.text)}" aria-label="${esc(
+              ? `<span class="chip clickable ${status.cls}" role="button" tabindex="0" data-action="protection" title="${esc(this._statusAction(dev, status))}" aria-label="${esc(
                   status.text
                 )}"><span class="dot"></span><span class="txt">${esc(status.text)}</span></span>`
               : ""
@@ -2337,7 +2400,7 @@ class DnsFilterMiniCard extends DnsFilterCard {
     const status = this._status(dev);
     if (status)
       foot.push(
-        `<span class="clickable ${status.cls}" role="button" tabindex="0" data-key="status" data-entity="${status.id}" title="${esc(status.text)}" aria-label="${esc(
+        `<span class="clickable ${status.cls}" role="button" tabindex="0" data-key="status" data-action="protection" title="${esc(this._statusAction(dev, status))}" aria-label="${esc(
           status.text
         )}"><span class="dot"></span>&nbsp;<span class="txt">${esc(status.text)}</span></span>`
       );

@@ -205,3 +205,24 @@ test("every language carries every English string", () => {
   }
   assert.equal(Object.keys(STRINGS).length, 22);
 });
+
+test("the status pill is a blocking control, not a more-info", () => {
+  const calls = [];
+  const el = new DnsFilterCard();
+  el._config = {};
+  el._hass = { ...hassOf(adguard), callService: (d, s, data) => calls.push([d, s, data]) };
+  const html = el._render();
+  assert.match(html, /class="chip clickable ok" role="button" tabindex="0" data-action="protection"/);
+  assert.doesNotMatch(html, /data-action="protection"[^>]*data-entity=/);
+  el._protectionClick();
+  // Pi-hole, blocking on: the pause popup opens instead of a service call.
+  const pi = new DnsFilterCard();
+  pi._config = {};
+  pi._hass = { ...hassOf(pihole), callService: (d, s, data) => calls.push([d, s, data]) };
+  pi._update = () => {};
+  pi._protectionClick();
+  assert.equal(pi._dialog, true);
+  return new Promise((r) => setTimeout(r, 0)).then(() =>
+    eq(calls, [["switch", "toggle", { entity_id: "switch.adguard_home_protection" }]])
+  );
+});

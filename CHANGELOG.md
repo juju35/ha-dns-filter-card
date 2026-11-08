@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 - 2026-11-08
+
+### Changes
+- The status pill no longer opens a more-info dialog: a click turns the AdGuard Home protection on or off, or pauses / resumes Pi-hole blocking (the tooltip says what the click does).
+
 ## 1.0.2 - 2026-11-08
 
 ### Fixes

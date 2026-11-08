@@ -30,7 +30,7 @@ The cards are built on top of the [AdGuard Home](https://www.home-assistant.io/i
 - Two integrations: **AdGuard Home** and **Pi-hole** — automatic discovery, several instances supported, both can be mixed
 - Four statistics tiles, one tint each: DNS queries, blocked queries, blocked ratio, and the average processing time (AdGuard Home) or the domains on the block lists (Pi-hole); each tile draws its last 24 hours behind it (recorder statistics, where the sensor keeps them)
 - Detail counters: parental control, safe browsing and safe search blocks and the rules count (AdGuard Home); clients, unique domains, cached and forwarded queries, seen clients (Pi-hole)
-- Status pill: protection on, protection off (AdGuard Home) or paused (Pi-hole), grey when unavailable
+- Status pill: protection on, protection off (AdGuard Home) or paused (Pi-hole), grey when unavailable; a click turns the AdGuard Home protection on or off, or pauses / resumes Pi-hole blocking
 - AdGuard Home: the six setting switches as glass chips (protection, filtering, parental control, safe browsing, safe search, query log), a click toggles them; a refresh button updates the filter lists
 - Pi-hole: a **pause** button opens a durations popup at the top of the card (5 min, 15 min, 30 min, 1 h, 2 h, or until resumed), a **resume** button while blocking is paused
 - Versions in the footer (Core, FTL and web interface for Pi-hole) and an « Update available » chip for each pending update (click for its more-info dialog, where it can be installed)
