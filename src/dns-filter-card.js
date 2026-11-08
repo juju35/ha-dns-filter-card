@@ -2440,9 +2440,11 @@ class DnsFilterEditorBase extends HTMLElement {
     for (const name of this.constructor.toggles) if (data[name] === undefined) data[name] = true;
     // Without device (hand-written YAML), show the instance the card shows: saving the form then keeps it.
     if (!data.device && this._hass) data.device = discover(this._hass, "").deviceId || undefined;
+    // Schema before data: the device combo box resolves its label from the options, so they must be
+    // there when the value lands (else it shows the raw device id).
     this._form.hass = this._hass;
-    this._form.data = data;
     this._form.schema = this._schema();
+    this._form.data = data;
   }
 }
 

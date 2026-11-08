@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 - 2026-11-08
+
+### Fixes
+- Visual editor: the instance selector shows the instance name (« AdGuard Home · AdGuard Home ») instead of its device id.
+
 ## 1.0.0 - 2026-11-08
 
 ### Features
