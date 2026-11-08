@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2 - 2026-11-08
+
+### Fixes
+- No focus ring left around the status pill or a tile after a mouse click opened its more-info dialog (keyboard use keeps it).
+
 ## 1.0.1 - 2026-11-08
 
 ### Fixes

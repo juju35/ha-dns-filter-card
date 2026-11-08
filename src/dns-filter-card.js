@@ -1758,7 +1758,11 @@ class DnsFilterBase extends HTMLElement {
       if (a === "resume") return this._resume();
       if (a === "refresh") return this._refresh();
       const el = path.find((n) => n.dataset?.entity);
-      if (el) fireMoreInfo(this, el.dataset.entity);
+      if (!el) return;
+      // A mouse or touch click (detail > 0) drops the focus first: the more-info dialog gives it back on close,
+      // and the browser would then draw the keyboard focus ring around the pill or tile.
+      if (ev.detail > 0) el.blur?.();
+      fireMoreInfo(this, el.dataset.entity);
     });
     // Keyboard access: Enter or Space on a focusable non-button element acts as a click.
     this.shadowRoot.addEventListener("keydown", (ev) => {
