@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0 - 2026-11-11
+
+### Features
+- **Technitium DNS** ([#11](https://github.com/juju35/ha-dns-filter-card/issues/11)): the [technitiumdns](https://github.com/Atlas-Commons/home-assistant-technitiumdns) integration of the Marketplace is found like AdGuard Home and Pi-hole: total and blocked queries, the blocked ratio worked out from both, blocked zones, clients, cached and recursive queries, the ad blocking switch, and the pause through its "Disable Ad Blocking for …" buttons (the durations it offers, or until resumed).
+- **Sensors of your choice**: `entities` replaces the sensors found for a tile or a counter (`queries`, `blocked`, `ratio`, `domains`, `clients`…) and the blocking switch (`protection`).
+
 ## 1.1.1 - 2026-11-09
 
 ### Fixes

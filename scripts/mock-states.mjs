@@ -64,4 +64,27 @@ export const pihole = registryMock(
 );
 pihole.states["switch.pi_hole"].attributes.friendly_name = "Pi-hole";
 
-export const mocks = { adguard, pihole };
+// Technitium DNS (technitiumdns of the Marketplace): no translation keys, fixed English names; the ad blocking
+// switch and the "Disable Ad Blocking for …" buttons; a DHCP client is a device of its own.
+export const technitium = registryMock(
+  "technitiumdns",
+  { id: "technitium_1", name: "Technitium", manufacturer: "Technitium", model: "DNS Server", configuration_url: "http://192.168.1.4:5380" },
+  [
+    ["sensor.technitium_total_queries", undefined, 84210, { name: "Total Queries" }],
+    ["sensor.technitium_blocked_queries", undefined, 16842, { name: "Blocked Queries" }],
+    ["sensor.technitium_clients", undefined, 18, { name: "Clients" }],
+    ["sensor.technitium_top_clients", undefined, 10, { name: "Top Clients" }],
+    ["sensor.technitium_total_cached", undefined, 40211, { name: "Total Cached" }],
+    ["sensor.technitium_total_recursive", undefined, 21033, { name: "Total Recursive" }],
+    ["sensor.technitium_blocked_zones", undefined, 412873, { name: "Blocked Zones" }],
+    ["switch.technitium_enable_ad_blocking", undefined, "on", { name: "Enable Ad Blocking" }],
+    ["button.technitium_disable_ad_blocking_for_5_minutes", undefined, "unknown", { name: "Disable Ad Blocking for 5 Minutes" }],
+    ["button.technitium_disable_ad_blocking_for_30_minutes", undefined, "unknown", { name: "Disable Ad Blocking for 30 Minutes" }],
+    ["button.technitium_disable_ad_blocking_for_1_day", undefined, "unknown", { name: "Disable Ad Blocking for 1 Day" }],
+  ]
+);
+technitium.devices.dhcp_laptop = { id: "dhcp_laptop", name: "laptop", manufacturer: "Technitium", model: "DHCP Device" };
+technitium.entities["sensor.laptop_ip_address"] = { entity_id: "sensor.laptop_ip_address", platform: "technitiumdns", device_id: "dhcp_laptop" };
+technitium.states["sensor.laptop_ip_address"] = { entity_id: "sensor.laptop_ip_address", state: "192.168.1.50", attributes: { friendly_name: "laptop IP Address" } };
+
+export const mocks = { adguard, pihole, technitium };

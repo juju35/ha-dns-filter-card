@@ -4,7 +4,7 @@ import { test } from "node:test";
 // Objects built inside the card's vm context are not reference-equal to ours: compare their JSON.
 const eq = (a, b, msg) => assert.deepEqual(JSON.parse(JSON.stringify(a)), b, msg);
 import { load } from "./load.mjs";
-import { adguard, pihole } from "../scripts/mock-states.mjs";
+import { adguard, pihole, technitium } from "../scripts/mock-states.mjs";
 
 const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, STRINGS, spark, histPoints } = load(
   "dns-filter-card.js",
@@ -144,7 +144,7 @@ test("without any instance the card shows a setup warning, a wrong device its id
   const el = new DnsFilterCard();
   el._hass = { states: {}, entities: {}, devices: {}, language: "en" };
   el._config = {};
-  assert.match(el._render(), /No AdGuard Home or Pi-hole entities found/);
+  assert.match(el._render(), /No AdGuard Home, Pi-hole or Technitium DNS entities found/);
   el._config = { device: "abc" };
   assert.match(el._render(), /DNS filter not found: abc/);
 });
@@ -225,4 +225,53 @@ test("the status pill is a blocking control, not a more-info", () => {
   return new Promise((r) => setTimeout(r, 0)).then(() =>
     eq(calls, [["switch", "toggle", { entity_id: "switch.adguard_home_protection" }]])
   );
+});
+
+test("Technitium DNS: its server's entities by their fixed names, the ratio worked out, its pause buttons; DHCP clients left out", () => {
+  const hass = hassOf(technitium);
+  const dev = discover(hass);
+  assert.equal(dev.brand, "technitium");
+  assert.equal(dev.deviceId, "technitium_1");
+  eq(dev.e, {
+    queries: "sensor.technitium_total_queries",
+    blocked: "sensor.technitium_blocked_queries",
+    clients: "sensor.technitium_clients",
+    cached: "sensor.technitium_total_cached",
+    forwarded: "sensor.technitium_total_recursive",
+    domains: "sensor.technitium_blocked_zones",
+    protection: "switch.technitium_enable_ad_blocking",
+  });
+  eq(listDevices(hass), [{ value: "technitium_1", label: "Technitium DNS · Technitium" }]);
+  const calls = [];
+  const el = new DnsFilterCard();
+  el._config = {};
+  el._hass = { ...hass, callService: (d, s, data) => calls.push([d, s, data]) };
+  const html = el._render();
+  assert.match(html, /data-key="ratio" data-entity="sensor\.technitium_blocked_queries"[\s\S]*?>20%</);
+  assert.match(html, /data-action="pause"/);
+  el._dialog = true;
+  const minutes = [...el._dialogHtml().matchAll(/data-minutes="(\d+)"/g)].map((m) => Number(m[1]));
+  eq(minutes, [5, 30, 1440, 0]);
+  el._dialog = null;
+  el._pause(30);
+  el._pause(0);
+  return new Promise((r) => setTimeout(r, 0)).then(() =>
+    eq(calls, [
+      ["button", "press", { entity_id: "button.technitium_disable_ad_blocking_for_30_minutes" }],
+      ["switch", "turn_off", { entity_id: "switch.technitium_enable_ad_blocking" }],
+    ])
+  );
+});
+
+test("entities: sensors of the user's choice replace the slots found", () => {
+  const hass = hassOf(pihole);
+  hass.states["sensor.my_ratio"] = { entity_id: "sensor.my_ratio", state: "50", attributes: {} };
+  const el = new DnsFilterCard();
+  el._config = { entities: { ratio: "sensor.my_ratio", queries: "not an id" } };
+  el._hass = hass;
+  const dev = el._dev();
+  assert.equal(dev.e.ratio, "sensor.my_ratio");
+  assert.equal(dev.e.queries, "sensor.pi_hole_dns_queries");
+  assert.equal(el._dev(), dev);
+  assert.match(el._render(), /data-entity="sensor\.my_ratio"/);
 });

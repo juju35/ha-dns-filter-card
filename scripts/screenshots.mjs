@@ -75,13 +75,13 @@ async function openCard(browser, s) {
         el.shadowRoot.activeElement?.blur(); // a mouse user sees no focus ring on the first duration
       }
     },
-    { type: s.type, config: s.config, mock: mocks[s.mock], dark: s.theme === "dark", zoom: !!s.zoom, pause: !!s.pause, pihole: s.mock === "pihole" }
+    { type: s.type, config: s.config, mock: mocks[s.mock], dark: s.theme === "dark", zoom: !!s.zoom, pause: !!s.pause, pihole: s.mock !== "adguard" }
   );
   return page;
 }
 
 const shots = [];
-for (const mock of ["adguard", "pihole"]) {
+for (const mock of ["adguard", "pihole", "technitium"]) {
   for (const theme of ["light", "dark"]) {
     const sfx = theme === "dark" ? "-dark" : "";
     shots.push({ file: `card-${mock}${sfx}`, type: "dns-filter-card", theme, width: 460, config: {}, mock });
