@@ -10,24 +10,26 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/adguard.svg" alt="AdGuard Home" width="64">&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/pihole.svg" alt="Pi-hole" width="64">
+  <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/pihole.svg" alt="Pi-hole" width="64">&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/technitium.svg" alt="Technitium DNS" width="64">
 </p>
 
-Lovelace cards for Home Assistant to monitor and control your DNS filter — [AdGuard Home](https://adguard.com/adguard-home/overview.html) or [Pi-hole](https://pi-hole.net): DNS queries, blocked queries, blocked ratio, protection status, settings switches and pause at a glance.
+Lovelace cards for Home Assistant to monitor and control your DNS filter — [AdGuard Home](https://adguard.com/adguard-home/overview.html), [Pi-hole](https://pi-hole.net) or [Technitium DNS](https://technitium.com/dns/): DNS queries, blocked queries, blocked ratio, protection status, settings switches and pause at a glance.
 
-The cards are built on top of the [AdGuard Home](https://www.home-assistant.io/integrations/adguard/) and [Pi-hole](https://www.home-assistant.io/integrations/pi_hole/) integrations included in Home Assistant: entities are **discovered automatically**, you don't have to pick them one by one, and it works whatever your Home Assistant language.
+The cards are built on top of the [AdGuard Home](https://www.home-assistant.io/integrations/adguard/) and [Pi-hole](https://www.home-assistant.io/integrations/pi_hole/) integrations included in Home Assistant, and of the [Technitium DNS](https://github.com/Atlas-Commons/home-assistant-technitiumdns) integration of the Marketplace: entities are **discovered automatically**, you don't have to pick them one by one, and it works whatever your Home Assistant language.
 
 [![Open your Home Assistant instance and open a repository inside the Marketplace.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=juju35&repository=ha-dns-filter-card&category=plugin)
 
-| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/adguard.svg" alt="" width="20"> AdGuard Home | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/pihole.svg" alt="" width="20"> Pi-hole |
-|---|---|
-| <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-adguard-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-adguard.png" alt="adguard card" width="400"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-pihole-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-pihole.png" alt="pi-hole card" width="400"></picture> |
-| <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-adguard-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-adguard.png" alt="adguard mini card" width="400"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-pihole-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-pihole.png" alt="pi-hole mini card" width="400"></picture> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/adguard.svg" alt="" width="20"> AdGuard Home | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/pihole.svg" alt="" width="20"> Pi-hole | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/technitium.svg" alt="" width="20"> Technitium DNS |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-adguard-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-adguard.png" alt="adguard card" width="400"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-pihole-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-pihole.png" alt="pi-hole card" width="400"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-technitium-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-technitium.png" alt="technitium card" width="400"></picture> |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-adguard-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-adguard.png" alt="adguard mini card" width="400"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-pihole-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-pihole.png" alt="pi-hole mini card" width="400"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-technitium-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-technitium.png" alt="technitium card" width="400"></picture> | <picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-technitium-dark.png"><img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-technitium.png" alt="technitium mini card" width="400"></picture> |
 
 ## Features
 
 - Two cards: a full **DNS Filter Card** and a compact **DNS Filter Mini Card**, of type `custom:dns-filter-card` and `custom:dns-filter-mini-card`
-- Two integrations: **AdGuard Home** and **Pi-hole** — automatic discovery, several instances supported, both can be mixed
+- Three integrations: **AdGuard Home**, **Pi-hole** and **Technitium DNS** — automatic discovery, several instances supported, all can be mixed
+- Sensors of your choice for any tile or counter (`entities`), for another DNS filter or a sensor of your own
 - Four statistics tiles, one tint each: DNS queries, blocked queries, blocked ratio, and the average processing time (AdGuard Home) or the domains on the block lists (Pi-hole); each tile draws its last 24 hours behind it (recorder statistics, where the sensor keeps them)
 - Detail counters: parental control, safe browsing and safe search blocks and the rules count (AdGuard Home); clients, unique domains, cached and forwarded queries, seen clients (Pi-hole)
 - Status pill: protection on, protection off (AdGuard Home) or paused (Pi-hole), grey when unavailable; a click turns the AdGuard Home protection on or off, or pauses / resumes Pi-hole blocking
@@ -47,8 +49,9 @@ The cards are built on top of the [AdGuard Home](https://www.home-assistant.io/i
 |---|---|
 | [AdGuard Home](https://www.home-assistant.io/integrations/adguard/) (built in) | DNS queries, blocked, blocked ratio, average processing time, parental control / safe browsing / safe search counters, rules count (sensor disabled by default), protection status, the six setting switches, filter lists refresh, AdGuard Home version and update |
 | [Pi-hole](https://www.home-assistant.io/integrations/pi_hole/) (built in, v5 and v6) | DNS queries, blocked, blocked ratio, domains on lists, clients, unique domains, cached and forwarded queries, seen clients, blocking status, pause / resume, Core / FTL / Web versions and updates |
+| [Technitium DNS](https://github.com/Atlas-Commons/home-assistant-technitiumdns) (Marketplace, `technitiumdns`) | Total and blocked queries, blocked ratio (worked out from both), blocked zones, clients, cached and recursive queries, ad blocking switch, pause with its "Disable Ad Blocking for …" buttons (5 min to 1 day) / resume |
 
-Several instances are supported, and the two integrations can be mixed: pick the instance in the visual editor.
+Several instances are supported, and the integrations can be mixed: pick the instance in the visual editor.
 
 ## Prerequisites
 
@@ -56,6 +59,7 @@ Home Assistant 2024.8 or later, and at least one of:
 
 - the [AdGuard Home integration](https://www.home-assistant.io/integrations/adguard/) (included in Home Assistant)
 - the [Pi-hole integration](https://www.home-assistant.io/integrations/pi_hole/) (included in Home Assistant)
+- the [Technitium DNS integration](https://github.com/Atlas-Commons/home-assistant-technitiumdns) (Marketplace)
 
 ## Installation
 
@@ -136,6 +140,7 @@ language: fr
 | `show_history` | both | `true` | 24 h curves behind the tiles, from the recorder's 5-minute statistics, fetched in one query (needs sensors with a `state_class`: AdGuard Home's counters have one, Pi-hole's don't, so Pi-hole tiles get no curve). Points sit at their time over the last 24 hours, and the curve breaks where data is missing |
 | `show_versions` | full | `true` | Versions in the footer (Pi-hole: Core, FTL, Web; the single AdGuard Home version sits in the subtitle) |
 | `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it) |
+| `entities` | both | — | Sensors (and the blocking switch) of your choice, replacing the ones found: `queries`, `blocked`, `ratio`, `speed`, `domains`, `clients`, `unique_domains`, `cached`, `forwarded`, `protection`, `status`. For example `entities: { ratio: sensor.my_blocked_ratio }` |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 
 ## Screenshots
@@ -160,7 +165,14 @@ Mini card zoomed in with its detail button (top right, click it again or anywher
 | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-pihole.png" alt="pi-hole card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-pihole-dark.png" alt="pi-hole card dark" width="400"> |
 | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-pihole.png" alt="pi-hole mini card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-pihole-dark.png" alt="pi-hole mini card dark" width="400"> |
 
-The pause popup, at the top of the card:
+### <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/technitium.svg" alt="" width="24"> Technitium DNS
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-technitium.png" alt="technitium card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/card-technitium-dark.png" alt="technitium card dark" width="400"> |
+| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-technitium.png" alt="technitium mini card" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/mini-card-technitium-dark.png" alt="technitium mini card dark" width="400"> |
+
+The pause popup (Pi-hole), at the top of the card:
 
 | Light | Dark |
 |---|---|
@@ -171,6 +183,7 @@ The pause popup, at the top of the card:
 The cards read the Home Assistant entity and device registries instead of entity ids: every entity of the `adguard` and `pi_hole` integrations is matched by its `translation_key` (`dns_queries`, `dns_queries_blocked_ratio`, `average_processing_speed`, `ads_blocked`, `domains_being_blocked`, `core_update_available`…) and grouped by the device it belongs to. Entity ids can therefore be in any language or renamed without breaking the cards.
 
 - **AdGuard Home**: the status pill follows the **Protection** switch. The six switches of the integration become chips: a click calls `switch.toggle`. The refresh button at the bottom right calls the `adguard.refresh` action (filter lists, without `force`). The **Rules count** sensor is disabled by default by the integration: enable it in **Settings → Devices & services → Entities** to see it among the detail counters. The update entity of the integration shows an « Update available » chip while it is on.
+- **Technitium DNS**: the integration gives no `translation_key`; its entities have fixed English names, hence entity ids ending the same whatever the language (`_total_queries`, `_blocked_queries`, `_blocked_zones`…). Only the server (device model "DNS Server") is an instance, not its DHCP clients. The ad blocking switch is the one switch of the server; the pause durations are its "Disable Ad Blocking for …" buttons, and « until resumed » turns the switch off. The blocked ratio is worked out from the blocked and total queries.
 - **Pi-hole**: the status pill follows the **Status** binary sensor (on = blocking). The blocking switch carries no `translation_key`: it is the one switch of the device. The pause button calls the `pi_hole.disable` action with the chosen duration (`00:30:00`…), or turns the switch off for « until resumed »; the resume button turns it on again. Pi-hole v6 renamed its counters (`dns_queries`, `ads_blocked`, `percent_ads_blocked`): the former v5 keys (`dns_queries_today`, `ads_blocked_today`, `ads_percentage_today`) are read too. The three update entities carry the installed versions of Core, FTL and the web interface, shown in the footer.
 
 ### Narrow cards

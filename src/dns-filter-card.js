@@ -1,5 +1,5 @@
 /*
- * DNS Filter Card for Home Assistant (AdGuard Home, Pi-hole)
+ * DNS Filter Card for Home Assistant (AdGuard Home, Pi-hole, Technitium DNS)
  * https://github.com/juju35/ha-dns-filter-card
  *
  * Lovelace cards for the AdGuard Home and Pi-hole integrations included in Home Assistant: the
@@ -63,7 +63,7 @@ const STRINGS = {
     status_paused: "Paused",
     unavailable: "Unavailable",
     unknown: "Unknown",
-    no_device: "No AdGuard Home or Pi-hole entities found. Is one of these integrations installed?",
+    no_device: "No AdGuard Home, Pi-hole or Technitium DNS entities found. Is one of these integrations installed?",
     unknown_device: "DNS filter not found",
     protection_on: "Turn protection on",
     protection_off: "Turn protection off",
@@ -90,7 +90,7 @@ const STRINGS = {
     open_ui: "Open the web interface",
     open_brand: "Open the {brand} website",
     // Editor
-    device: "DNS filter (AdGuard Home or Pi-hole instance)",
+    device: "DNS filter (AdGuard Home, Pi-hole or Technitium DNS instance)",
     title: "Title (optional, defaults to the instance name)",
     url: "Web interface URL (click on the header icon)",
     url_helper: "Automatic from Home Assistant when empty (the device's « Visit » link)",
@@ -124,7 +124,7 @@ const STRINGS = {
     status_paused: "En pause",
     unavailable: "Indisponible",
     unknown: "Inconnu",
-    no_device: "Aucune entité AdGuard Home ou Pi-hole trouvée. L'une de ces intégrations est-elle installée ?",
+    no_device: "Aucune entité AdGuard Home, Pi-hole ou Technitium DNS trouvée. L'une de ces intégrations est-elle installée ?",
     unknown_device: "Filtre DNS introuvable",
     protection_on: "Activer la protection",
     protection_off: "Désactiver la protection",
@@ -150,7 +150,7 @@ const STRINGS = {
     zoom_out: "Revenir à la vue compacte",
     open_ui: "Ouvrir l'interface web",
     open_brand: "Ouvrir le site {brand}",
-    device: "Filtre DNS (instance AdGuard Home ou Pi-hole)",
+    device: "Filtre DNS (instance AdGuard Home, Pi-hole ou Technitium DNS)",
     title: "Titre (facultatif, nom de l'instance par défaut)",
     url: "URL de l'interface web (clic sur l'icône d'en-tête)",
     url_helper: "Automatique depuis Home Assistant si vide (lien « Visiter » de l'appareil)",
@@ -184,7 +184,7 @@ const STRINGS = {
     status_paused: "Pausiert",
     unavailable: "Nicht verfügbar",
     unknown: "Unbekannt",
-    no_device: "Keine AdGuard-Home- oder Pi-hole-Entitäten gefunden. Ist eine dieser Integrationen installiert?",
+    no_device: "Keine AdGuard-Home-, Pi-hole- oder Technitium-DNS-Entitäten gefunden. Ist eine dieser Integrationen installiert?",
     unknown_device: "DNS-Filter nicht gefunden",
     protection_on: "Schutz einschalten",
     protection_off: "Schutz ausschalten",
@@ -210,7 +210,7 @@ const STRINGS = {
     zoom_out: "Zurück zur kompakten Ansicht",
     open_ui: "Weboberfläche öffnen",
     open_brand: "Website von {brand} öffnen",
-    device: "DNS-Filter (AdGuard-Home- oder Pi-hole-Instanz)",
+    device: "DNS-Filter (AdGuard-Home-, Pi-hole- oder Technitium-DNS-Instanz)",
     title: "Titel (optional, standardmäßig der Instanzname)",
     url: "URL der Weboberfläche (Klick auf das Kopfzeilensymbol)",
     url_helper: "Wenn leer, automatisch aus Home Assistant (Link „Besuchen“ des Geräts)",
@@ -244,7 +244,7 @@ const STRINGS = {
     status_paused: "En pausa",
     unavailable: "No disponible",
     unknown: "Desconocido",
-    no_device: "No se han encontrado entidades de AdGuard Home ni de Pi-hole. ¿Está instalada una de estas integraciones?",
+    no_device: "No se han encontrado entidades de AdGuard Home, Pi-hole ni de Technitium DNS. ¿Está instalada una de estas integraciones?",
     unknown_device: "Filtro DNS no encontrado",
     protection_on: "Activar la protección",
     protection_off: "Desactivar la protección",
@@ -270,7 +270,7 @@ const STRINGS = {
     zoom_out: "Volver a la vista compacta",
     open_ui: "Abrir la interfaz web",
     open_brand: "Abrir el sitio web de {brand}",
-    device: "Filtro DNS (instancia de AdGuard Home o Pi-hole)",
+    device: "Filtro DNS (instancia de AdGuard Home, Pi-hole o Technitium DNS)",
     title: "Título (opcional, por defecto el nombre de la instancia)",
     url: "URL de la interfaz web (clic en el icono de la cabecera)",
     url_helper: "Automática desde Home Assistant si está vacía (enlace « Visitar » del dispositivo)",
@@ -304,7 +304,7 @@ const STRINGS = {
     status_paused: "Паузирано",
     unavailable: "Недоступно",
     unknown: "Непознато",
-    no_device: "Нису пронађени AdGuard Home или Pi-hole ентитети. Да ли је инсталирана нека од ових интеграција?",
+    no_device: "Нису пронађени AdGuard Home, Pi-hole или Technitium DNS ентитети. Да ли је инсталирана нека од ових интеграција?",
     unknown_device: "DNS филтер није пронађен",
     protection_on: "Укључи заштиту",
     protection_off: "Искључи заштиту",
@@ -330,7 +330,7 @@ const STRINGS = {
     zoom_out: "Назад на компактни приказ",
     open_ui: "Отвори веб интерфејс",
     open_brand: "Отвори веб-сајт {brand}",
-    device: "DNS филтер (AdGuard Home или Pi-hole инстанца)",
+    device: "DNS филтер (AdGuard Home, Pi-hole или Technitium DNS инстанца)",
     title: "Наслов (опционо, подразумевано је назив инстанце)",
     url: "URL веб интерфејса (клик на икону заглавља)",
     url_helper: "Ако је празно, аутоматски из Home Assistant-а (веза „Посети“ уређаја)",
@@ -364,7 +364,7 @@ const STRINGS = {
     status_paused: "Pauzirano",
     unavailable: "Nedostupno",
     unknown: "Nepoznato",
-    no_device: "Nisu pronađeni AdGuard Home ili Pi-hole entiteti. Da li je instalirana neka od ovih integracija?",
+    no_device: "Nisu pronađeni AdGuard Home, Pi-hole ili Technitium DNS entiteti. Da li je instalirana neka od ovih integracija?",
     unknown_device: "DNS filter nije pronađen",
     protection_on: "Uključi zaštitu",
     protection_off: "Isključi zaštitu",
@@ -390,7 +390,7 @@ const STRINGS = {
     zoom_out: "Nazad na kompaktni prikaz",
     open_ui: "Otvori veb interfejs",
     open_brand: "Otvori veb-sajt {brand}",
-    device: "DNS filter (AdGuard Home ili Pi-hole instanca)",
+    device: "DNS filter (AdGuard Home, Pi-hole ili Technitium DNS instanca)",
     title: "Naslov (opciono, podrazumevano je naziv instance)",
     url: "URL veb interfejsa (klik na ikonu zaglavlja)",
     url_helper: "Ako je prazno, automatski iz Home Assistant-a (veza „Poseti“ uređaja)",
@@ -424,7 +424,7 @@ const STRINGS = {
     status_paused: "In pausa",
     unavailable: "Non disponibile",
     unknown: "Sconosciuto",
-    no_device: "Nessuna entità AdGuard Home o Pi-hole trovata. È installata una di queste integrazioni?",
+    no_device: "Nessuna entità AdGuard Home, Pi-hole o Technitium DNS trovata. È installata una di queste integrazioni?",
     unknown_device: "Filtro DNS non trovato",
     protection_on: "Attiva la protezione",
     protection_off: "Disattiva la protezione",
@@ -450,7 +450,7 @@ const STRINGS = {
     zoom_out: "Torna alla vista compatta",
     open_ui: "Apri l'interfaccia web",
     open_brand: "Apri il sito di {brand}",
-    device: "Filtro DNS (istanza AdGuard Home o Pi-hole)",
+    device: "Filtro DNS (istanza AdGuard Home, Pi-hole o Technitium DNS)",
     title: "Titolo (facoltativo, per impostazione predefinita il nome dell'istanza)",
     url: "URL dell'interfaccia web (clic sull'icona dell'intestazione)",
     url_helper: "Automatico da Home Assistant se vuoto (link « Visita » del dispositivo)",
@@ -484,7 +484,7 @@ const STRINGS = {
     status_paused: "Gepauzeerd",
     unavailable: "Niet beschikbaar",
     unknown: "Onbekend",
-    no_device: "Geen AdGuard Home- of Pi-hole-entiteiten gevonden. Is een van deze integraties geïnstalleerd?",
+    no_device: "Geen AdGuard Home-, Pi-hole- of Technitium-DNS-entiteiten gevonden. Is een van deze integraties geïnstalleerd?",
     unknown_device: "DNS-filter niet gevonden",
     protection_on: "Bescherming inschakelen",
     protection_off: "Bescherming uitschakelen",
@@ -510,7 +510,7 @@ const STRINGS = {
     zoom_out: "Terug naar de compacte weergave",
     open_ui: "Webinterface openen",
     open_brand: "Website van {brand} openen",
-    device: "DNS-filter (AdGuard Home- of Pi-hole-instantie)",
+    device: "DNS-filter (AdGuard Home-, Pi-hole- of Technitium-DNS-instantie)",
     title: "Titel (optioneel, standaard de naam van de instantie)",
     url: "URL van de webinterface (klik op het koppictogram)",
     url_helper: "Automatisch uit Home Assistant indien leeg (link « Bezoeken » van het apparaat)",
@@ -544,7 +544,7 @@ const STRINGS = {
     status_paused: "Em pausa",
     unavailable: "Indisponível",
     unknown: "Desconhecido",
-    no_device: "Não foram encontradas entidades AdGuard Home ou Pi-hole. Está instalada uma destas integrações?",
+    no_device: "Não foram encontradas entidades AdGuard Home, Pi-hole ou Technitium DNS. Está instalada uma destas integrações?",
     unknown_device: "Filtro DNS não encontrado",
     protection_on: "Ativar a proteção",
     protection_off: "Desativar a proteção",
@@ -570,7 +570,7 @@ const STRINGS = {
     zoom_out: "Voltar à vista compacta",
     open_ui: "Abrir a interface web",
     open_brand: "Abrir o site da {brand}",
-    device: "Filtro DNS (instância AdGuard Home ou Pi-hole)",
+    device: "Filtro DNS (instância AdGuard Home, Pi-hole ou Technitium DNS)",
     title: "Título (opcional, por omissão o nome da instância)",
     url: "URL da interface web (clique no ícone do cabeçalho)",
     url_helper: "Automático a partir do Home Assistant se vazio (ligação « Visitar » do dispositivo)",
@@ -604,7 +604,7 @@ const STRINGS = {
     status_paused: "Wstrzymano",
     unavailable: "Niedostępne",
     unknown: "Nieznane",
-    no_device: "Nie znaleziono encji AdGuard Home ani Pi-hole. Czy jedna z tych integracji jest zainstalowana?",
+    no_device: "Nie znaleziono encji AdGuard Home, Pi-hole ani Technitium DNS. Czy jedna z tych integracji jest zainstalowana?",
     unknown_device: "Nie znaleziono filtra DNS",
     protection_on: "Włącz ochronę",
     protection_off: "Wyłącz ochronę",
@@ -630,7 +630,7 @@ const STRINGS = {
     zoom_out: "Wróć do widoku kompaktowego",
     open_ui: "Otwórz interfejs webowy",
     open_brand: "Otwórz stronę {brand}",
-    device: "Filtr DNS (instancja AdGuard Home lub Pi-hole)",
+    device: "Filtr DNS (instancja AdGuard Home, Pi-hole lub Technitium DNS)",
     title: "Tytuł (opcjonalny, domyślnie nazwa instancji)",
     url: "URL interfejsu webowego (kliknięcie ikony nagłówka)",
     url_helper: "Automatycznie z Home Assistant, gdy puste (link „Odwiedź” urządzenia)",
@@ -664,7 +664,7 @@ const STRINGS = {
     status_paused: "În pauză",
     unavailable: "Indisponibil",
     unknown: "Necunoscut",
-    no_device: "Nu s-au găsit entități AdGuard Home sau Pi-hole. Este instalată una dintre aceste integrări?",
+    no_device: "Nu s-au găsit entități AdGuard Home, Pi-hole sau Technitium DNS. Este instalată una dintre aceste integrări?",
     unknown_device: "Filtrul DNS nu a fost găsit",
     protection_on: "Activează protecția",
     protection_off: "Dezactivează protecția",
@@ -690,7 +690,7 @@ const STRINGS = {
     zoom_out: "Înapoi la vizualizarea compactă",
     open_ui: "Deschide interfața web",
     open_brand: "Deschide site-ul {brand}",
-    device: "Filtru DNS (instanță AdGuard Home sau Pi-hole)",
+    device: "Filtru DNS (instanță AdGuard Home, Pi-hole sau Technitium DNS)",
     title: "Titlu (opțional, implicit numele instanței)",
     url: "URL-ul interfeței web (clic pe pictograma antetului)",
     url_helper: "Automat din Home Assistant dacă este gol (linkul „Vizitează” al dispozitivului)",
@@ -724,7 +724,7 @@ const STRINGS = {
     status_paused: "Sat på pause",
     unavailable: "Ikke tilgængelig",
     unknown: "Ukendt",
-    no_device: "Ingen AdGuard Home- eller Pi-hole-enheder fundet. Er en af disse integrationer installeret?",
+    no_device: "Ingen AdGuard Home-, Pi-hole- eller Technitium-DNS-enheder fundet. Er en af disse integrationer installeret?",
     unknown_device: "DNS-filter ikke fundet",
     protection_on: "Slå beskyttelse til",
     protection_off: "Slå beskyttelse fra",
@@ -750,7 +750,7 @@ const STRINGS = {
     zoom_out: "Tilbage til den kompakte visning",
     open_ui: "Åbn webgrænsefladen",
     open_brand: "Åbn {brand}s websted",
-    device: "DNS-filter (AdGuard Home- eller Pi-hole-instans)",
+    device: "DNS-filter (AdGuard Home-, Pi-hole- eller Technitium-DNS-instans)",
     title: "Titel (valgfri, som standard instansens navn)",
     url: "URL til webgrænsefladen (klik på ikonet i overskriften)",
     url_helper: "Automatisk fra Home Assistant når tom (enhedens « Besøg »-link)",
@@ -784,7 +784,7 @@ const STRINGS = {
     status_paused: "Pausat",
     unavailable: "Otillgänglig",
     unknown: "Okänd",
-    no_device: "Inga AdGuard Home- eller Pi-hole-entiteter hittades. Är någon av dessa integrationer installerad?",
+    no_device: "Inga AdGuard Home-, Pi-hole- eller Technitium-DNS-entiteter hittades. Är någon av dessa integrationer installerad?",
     unknown_device: "DNS-filter hittades inte",
     protection_on: "Slå på skyddet",
     protection_off: "Stäng av skyddet",
@@ -810,7 +810,7 @@ const STRINGS = {
     zoom_out: "Tillbaka till den kompakta vyn",
     open_ui: "Öppna webbgränssnittet",
     open_brand: "Öppna {brand}s webbplats",
-    device: "DNS-filter (AdGuard Home- eller Pi-hole-instans)",
+    device: "DNS-filter (AdGuard Home-, Pi-hole- eller Technitium-DNS-instans)",
     title: "Titel (valfri, som standard instansens namn)",
     url: "URL till webbgränssnittet (klick på rubrikikonen)",
     url_helper: "Automatiskt från Home Assistant om tomt (enhetens « Besök »-länk)",
@@ -844,7 +844,7 @@ const STRINGS = {
     status_paused: "На пауза",
     unavailable: "Недостъпно",
     unknown: "Неизвестно",
-    no_device: "Не са намерени обекти на AdGuard Home или Pi-hole. Инсталирана ли е някоя от тези интеграции?",
+    no_device: "Не са намерени обекти на AdGuard Home, Pi-hole или Technitium DNS. Инсталирана ли е някоя от тези интеграции?",
     unknown_device: "DNS филтърът не е намерен",
     protection_on: "Включи защитата",
     protection_off: "Изключи защитата",
@@ -870,7 +870,7 @@ const STRINGS = {
     zoom_out: "Обратно към компактния изглед",
     open_ui: "Отвори уеб интерфейса",
     open_brand: "Отвори сайта на {brand}",
-    device: "DNS филтър (инстанция AdGuard Home или Pi-hole)",
+    device: "DNS филтър (инстанция AdGuard Home, Pi-hole или Technitium DNS)",
     title: "Заглавие (по избор, по подразбиране името на инстанцията)",
     url: "URL на уеб интерфейса (клик върху иконата в заглавието)",
     url_helper: "Автоматично от Home Assistant, ако е празно (връзката „Посети“ на устройството)",
@@ -904,7 +904,7 @@ const STRINGS = {
     status_paused: "Приостановлено",
     unavailable: "Недоступно",
     unknown: "Неизвестно",
-    no_device: "Объекты AdGuard Home или Pi-hole не найдены. Установлена ли одна из этих интеграций?",
+    no_device: "Объекты AdGuard Home, Pi-hole или Technitium DNS не найдены. Установлена ли одна из этих интеграций?",
     unknown_device: "DNS-фильтр не найден",
     protection_on: "Включить защиту",
     protection_off: "Выключить защиту",
@@ -930,7 +930,7 @@ const STRINGS = {
     zoom_out: "Вернуться к компактному виду",
     open_ui: "Открыть веб-интерфейс",
     open_brand: "Открыть сайт {brand}",
-    device: "DNS-фильтр (экземпляр AdGuard Home или Pi-hole)",
+    device: "DNS-фильтр (экземпляр AdGuard Home, Pi-hole или Technitium DNS)",
     title: "Заголовок (необязательно, по умолчанию имя экземпляра)",
     url: "URL веб-интерфейса (клик по значку в заголовке)",
     url_helper: "Автоматически из Home Assistant, если пусто (ссылка «Посетить» устройства)",
@@ -964,7 +964,7 @@ const STRINGS = {
     status_paused: "Призупинено",
     unavailable: "Недоступно",
     unknown: "Невідомо",
-    no_device: "Сутності AdGuard Home або Pi-hole не знайдено. Чи встановлено одну з цих інтеграцій?",
+    no_device: "Сутності AdGuard Home, Pi-hole або Technitium DNS не знайдено. Чи встановлено одну з цих інтеграцій?",
     unknown_device: "DNS-фільтр не знайдено",
     protection_on: "Увімкнути захист",
     protection_off: "Вимкнути захист",
@@ -990,7 +990,7 @@ const STRINGS = {
     zoom_out: "Повернутися до компактного вигляду",
     open_ui: "Відкрити вебінтерфейс",
     open_brand: "Відкрити сайт {brand}",
-    device: "DNS-фільтр (екземпляр AdGuard Home або Pi-hole)",
+    device: "DNS-фільтр (екземпляр AdGuard Home, Pi-hole або Technitium DNS)",
     title: "Заголовок (необов'язково, типово ім'я екземпляра)",
     url: "URL вебінтерфейсу (клік на значок у заголовку)",
     url_helper: "Автоматично з Home Assistant, якщо порожньо (посилання «Відвідати» пристрою)",
@@ -1024,7 +1024,7 @@ const STRINGS = {
     status_paused: "Szüneteltetve",
     unavailable: "Nem elérhető",
     unknown: "Ismeretlen",
-    no_device: "Nem található AdGuard Home vagy Pi-hole entitás. Telepítve van valamelyik integráció?",
+    no_device: "Nem található AdGuard Home, Pi-hole vagy Technitium DNS entitás. Telepítve van valamelyik integráció?",
     unknown_device: "A DNS-szűrő nem található",
     protection_on: "Védelem bekapcsolása",
     protection_off: "Védelem kikapcsolása",
@@ -1050,7 +1050,7 @@ const STRINGS = {
     zoom_out: "Vissza a kompakt nézethez",
     open_ui: "Webes felület megnyitása",
     open_brand: "A(z) {brand} webhelyének megnyitása",
-    device: "DNS-szűrő (AdGuard Home vagy Pi-hole példány)",
+    device: "DNS-szűrő (AdGuard Home, Pi-hole vagy Technitium DNS példány)",
     title: "Cím (nem kötelező, alapértelmezés szerint a példány neve)",
     url: "A webes felület URL-je (kattintás a fejléc ikonjára)",
     url_helper: "Ha üres, automatikusan a Home Assistantból (az eszköz „Megtekintés” hivatkozása)",
@@ -1084,7 +1084,7 @@ const STRINGS = {
     status_paused: "Pozastavené",
     unavailable: "Nedostupné",
     unknown: "Neznáme",
-    no_device: "Nenašli sa žiadne entity AdGuard Home ani Pi-hole. Je nainštalovaná niektorá z týchto integrácií?",
+    no_device: "Nenašli sa žiadne entity AdGuard Home, Pi-hole ani Technitium DNS. Je nainštalovaná niektorá z týchto integrácií?",
     unknown_device: "DNS filter sa nenašiel",
     protection_on: "Zapnúť ochranu",
     protection_off: "Vypnúť ochranu",
@@ -1110,7 +1110,7 @@ const STRINGS = {
     zoom_out: "Späť na kompaktné zobrazenie",
     open_ui: "Otvoriť webové rozhranie",
     open_brand: "Otvoriť web {brand}",
-    device: "DNS filter (inštancia AdGuard Home alebo Pi-hole)",
+    device: "DNS filter (inštancia AdGuard Home, Pi-hole alebo Technitium DNS)",
     title: "Názov (voliteľný, predvolene názov inštancie)",
     url: "URL webového rozhrania (kliknutie na ikonu hlavičky)",
     url_helper: "Ak je prázdne, automaticky z Home Assistanta (odkaz „Navštíviť“ zariadenia)",
@@ -1144,7 +1144,7 @@ const STRINGS = {
     status_paused: "Pozastaveno",
     unavailable: "Nedostupné",
     unknown: "Neznámé",
-    no_device: "Nebyly nalezeny žádné entity AdGuard Home ani Pi-hole. Je nainstalována některá z těchto integrací?",
+    no_device: "Nebyly nalezeny žádné entity AdGuard Home, Pi-hole ani Technitium DNS. Je nainstalována některá z těchto integrací?",
     unknown_device: "DNS filtr nenalezen",
     protection_on: "Zapnout ochranu",
     protection_off: "Vypnout ochranu",
@@ -1170,7 +1170,7 @@ const STRINGS = {
     zoom_out: "Zpět na kompaktní zobrazení",
     open_ui: "Otevřít webové rozhraní",
     open_brand: "Otevřít web {brand}",
-    device: "DNS filtr (instance AdGuard Home nebo Pi-hole)",
+    device: "DNS filtr (instance AdGuard Home, Pi-hole nebo Technitium DNS)",
     title: "Název (volitelný, výchozí je název instance)",
     url: "URL webového rozhraní (kliknutí na ikonu záhlaví)",
     url_helper: "Je-li prázdné, automaticky z Home Assistanta (odkaz „Navštívit“ zařízení)",
@@ -1204,7 +1204,7 @@ const STRINGS = {
     status_paused: "Začasno ustavljeno",
     unavailable: "Ni na voljo",
     unknown: "Neznano",
-    no_device: "Ni najdenih entitet AdGuard Home ali Pi-hole. Je nameščena katera od teh integracij?",
+    no_device: "Ni najdenih entitet AdGuard Home, Pi-hole ali Technitium DNS. Je nameščena katera od teh integracij?",
     unknown_device: "Filter DNS ni najden",
     protection_on: "Vklopi zaščito",
     protection_off: "Izklopi zaščito",
@@ -1230,7 +1230,7 @@ const STRINGS = {
     zoom_out: "Nazaj na strnjen pogled",
     open_ui: "Odpri spletni vmesnik",
     open_brand: "Odpri spletno mesto {brand}",
-    device: "Filter DNS (primerek AdGuard Home ali Pi-hole)",
+    device: "Filter DNS (primerek AdGuard Home, Pi-hole ali Technitium DNS)",
     title: "Naslov (neobvezno, privzeto ime primerka)",
     url: "URL spletnega vmesnika (klik na ikono v glavi)",
     url_helper: "Če je prazno, samodejno iz Home Assistanta (povezava »Obišči« naprave)",
@@ -1264,7 +1264,7 @@ const STRINGS = {
     status_paused: "Apturēts",
     unavailable: "Nav pieejams",
     unknown: "Nezināms",
-    no_device: "Nav atrastas AdGuard Home vai Pi-hole entītijas. Vai ir instalēta kāda no šīm integrācijām?",
+    no_device: "Nav atrastas AdGuard Home, Pi-hole vai Technitium DNS entītijas. Vai ir instalēta kāda no šīm integrācijām?",
     unknown_device: "DNS filtrs nav atrasts",
     protection_on: "Ieslēgt aizsardzību",
     protection_off: "Izslēgt aizsardzību",
@@ -1290,7 +1290,7 @@ const STRINGS = {
     zoom_out: "Atpakaļ uz kompakto skatu",
     open_ui: "Atvērt tīmekļa saskarni",
     open_brand: "Atvērt {brand} vietni",
-    device: "DNS filtrs (AdGuard Home vai Pi-hole instance)",
+    device: "DNS filtrs (AdGuard Home, Pi-hole vai Technitium DNS instance)",
     title: "Nosaukums (neobligāts, pēc noklusējuma instances nosaukums)",
     url: "Tīmekļa saskarnes URL (klikšķis uz galvenes ikonas)",
     url_helper: "Ja tukšs, automātiski no Home Assistant (ierīces saite „Apmeklēt”)",
@@ -1324,7 +1324,7 @@ const STRINGS = {
     status_paused: "Σε παύση",
     unavailable: "Μη διαθέσιμο",
     unknown: "Άγνωστο",
-    no_device: "Δεν βρέθηκαν οντότητες AdGuard Home ή Pi-hole. Είναι εγκατεστημένη μία από αυτές τις ενσωματώσεις;",
+    no_device: "Δεν βρέθηκαν οντότητες AdGuard Home, Pi-hole ή Technitium DNS. Είναι εγκατεστημένη μία από αυτές τις ενσωματώσεις;",
     unknown_device: "Το φίλτρο DNS δεν βρέθηκε",
     protection_on: "Ενεργοποίηση προστασίας",
     protection_off: "Απενεργοποίηση προστασίας",
@@ -1350,7 +1350,7 @@ const STRINGS = {
     zoom_out: "Επιστροφή στη συμπαγή προβολή",
     open_ui: "Άνοιγμα της διεπαφής ιστού",
     open_brand: "Άνοιγμα του ιστότοπου {brand}",
-    device: "Φίλτρο DNS (εγκατάσταση AdGuard Home ή Pi-hole)",
+    device: "Φίλτρο DNS (εγκατάσταση AdGuard Home, Pi-hole ή Technitium DNS)",
     title: "Τίτλος (προαιρετικός, από προεπιλογή το όνομα της εγκατάστασης)",
     url: "URL της διεπαφής ιστού (κλικ στο εικονίδιο της κεφαλίδας)",
     url_helper: "Αν είναι κενό, αυτόματα από το Home Assistant (σύνδεσμος «Επίσκεψη» της συσκευής)",
@@ -1420,12 +1420,14 @@ const svgIcon = (path, cls = "") => `<svg class="icon ${cls}" viewBox="0 0 24 24
 // Only web addresses become links (a configuration_url can also be a homeassistant:// path).
 const webUrl = (u) => (/^https?:\/\//i.test(String(u || "").trim()) ? String(u).trim() : null);
 
-const BRAND_NAMES = { adguard: "AdGuard Home", pihole: "Pi-hole" };
-const BRAND_SITES = { adguard: "https://adguard.com/adguard-home/overview.html", pihole: "https://pi-hole.net" };
+const BRAND_NAMES = { adguard: "AdGuard Home", pihole: "Pi-hole", technitium: "Technitium DNS" };
+const BRAND_SITES = { adguard: "https://adguard.com/adguard-home/overview.html", pihole: "https://pi-hole.net", technitium: "https://technitium.com/dns/" };
 // Brand badge on the header icon: the AdGuard shield in its green, the Pi-hole mark in its red.
 const BRAND_BADGES = {
   adguard: `<svg viewBox="0 0 24 24"><path fill="#68bc71" d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/><path fill="#fff" d="M10.2,16.4L6.6,12.8L7.9,11.5L10.2,13.8L16.1,7.9L17.4,9.2L10.2,16.4Z"/></svg>`,
   pihole: `<svg viewBox="0 0 24 24"><path fill="#96060c" d="${ICONS.pihole}"/></svg>`,
+  // Technitium DNS Server's mark (images/technitium.svg).
+  technitium: `<svg viewBox="0 0 512 512"><path fill="#6698fe" d="M512 512H0V0h512zM118.1 85.8v211.7H182V85.7h211.6V22.3H22.3v63.5zm96 96.3h212.1v211.6h63.4V22.2h-63.8v96H214.2c-.1 21.3-.1 42.1-.1 63.9m-191.8-64v371.6H86v-95.8h211.6v-64.1H85.7V118.1zm95.8 371.5h371.5v-63.7h-95.8V214.2h-64.1v212H118.1z"/><path fill="#fefefe" d="M118.1 85.8H22.3V22.3h371.3v63.4H182v211.8h-63.9zm96 96.3v-63.9h211.6v-96h63.8v371.5h-63.4V182.1zm-191.8-64h63.3v211.7h211.9v64.1H85.9v95.8H22.2c.1-123.7.1-247.4.1-371.6m95.8 371.5v-63.4h211.6v-212h64.1v211.7h95.8v63.7z"/></svg>`,
 };
 // Header icon: the round DNS filter icon of the project page on the showcase site, in the status colour, with the
 // brand mark as a badge.
@@ -1443,7 +1445,7 @@ const headerIcon = (cls, brand) =>
 // through the device registry. The Pi-hole blocking switch carries no translation_key: it is the one switch of
 // the device.
 
-const PLATFORMS = { adguard: "adguard", pihole: "pi_hole" };
+const PLATFORMS = { adguard: "adguard", pihole: "pi_hole", technitium: "technitiumdns" };
 
 // translation_key → slot. The slots are shared by both brands so the cards render one structure.
 const ADGUARD_KEYS = {
@@ -1482,6 +1484,26 @@ const PIHOLE_KEYS = {
   ftl_update_available: "update_ftl",
 };
 
+// Technitium DNS (the technitiumdns integration of the Marketplace) gives no translation keys: its entities have fixed
+// English names, hence entity ids ending the same in every language; the blocking switch is the one switch of the
+// server, its "Disable Ad Blocking for …" buttons pause it. Its DHCP clients are devices of their own: only the server
+// (model "DNS Server") is an instance.
+const TECHNITIUM_SUFFIXES = [
+  [/_total_queries$/, "queries"],
+  [/_blocked_queries$/, "blocked"],
+  [/(?<!_top)_clients$/, "clients"],
+  [/_total_cached$/, "cached"],
+  [/_total_recursive$/, "forwarded"],
+  [/_blocked_zones$/, "domains"],
+];
+const TECHNITIUM_PAUSES = [
+  [/_5_minutes$/, 5],
+  [/_10_minutes$/, 10],
+  [/_30_minutes$/, 30],
+  [/_60_minutes$/, 60],
+  [/_1_day$/, 1440],
+];
+
 // Registry lookups are cached on the registry objects, which Home Assistant replaces whenever an entity or a
 // device changes (the states are read again on every render through the mapped ids).
 let _registries = { entities: null, devices: null, cache: new Map() };
@@ -1502,6 +1524,7 @@ const registryRoots = (hass, brand) => {
   if (hass.entities && hass.devices) {
     for (const [id, e] of Object.entries(hass.entities)) {
       if (e?.platform !== PLATFORMS[brand] || !e.device_id || !hass.devices[e.device_id]) continue;
+      if (brand === "technitium" && hass.devices[e.device_id].model !== "DNS Server") continue;
       if (!byRoot.has(e.device_id)) byRoot.set(e.device_id, []);
       byRoot.get(e.device_id).push(id);
     }
@@ -1527,6 +1550,22 @@ const discoverBrand = (hass, brand, deviceId) => {
     const d = hass.devices[rootId];
     dev.info = { name: d.name_by_user || d.name, version: d.sw_version, url: d.configuration_url };
     const KEYS = brand === "adguard" ? ADGUARD_KEYS : PIHOLE_KEYS;
+    if (brand === "technitium") {
+      dev.pauses = {};
+      for (const id of byRoot.get(rootId)) {
+        const domain = id.split(".")[0];
+        if (domain === "switch") set(dev.e, "protection", id);
+        else if (domain === "button") {
+          const pause = TECHNITIUM_PAUSES.find(([re]) => re.test(id));
+          if (pause) dev.pauses[pause[1]] ??= id;
+        } else if (domain === "sensor") {
+          const slot = TECHNITIUM_SUFFIXES.find(([re]) => re.test(id));
+          if (slot) set(dev.e, slot[1], id);
+        }
+      }
+      cache.set(key, dev);
+      return dev;
+    }
     for (const id of byRoot.get(rootId)) {
       const tk = hass.entities[id].translation_key;
       const domain = id.split(".")[0];
@@ -1552,6 +1591,23 @@ const discover = (hass, deviceId) => {
     first ??= dev;
   }
   return first;
+};
+
+// The `entities` option: sensors and switches of the user's choice for the card's slots (queries, blocked, ratio,
+// protection…), replacing the ones found. One result per instance and option, a stable object while neither changes.
+const ENTITY_SLOTS = ["queries", "blocked", "ratio", "speed", "domains", "clients", "unique_domains", "cached", "forwarded", "protection", "status"];
+const isEntityId = (v) => typeof v === "string" && /^[a-z_]+\.[a-z0-9_]+$/.test(v);
+const withEntitiesCache = new WeakMap();
+const withEntities = (dev, entities) => {
+  if (!dev || !entities || typeof entities !== "object") return dev;
+  const own = ENTITY_SLOTS.filter((k) => isEntityId(entities[k]));
+  if (!own.length) return dev;
+  const key = own.map((k) => `${k}=${entities[k]}`).join(",");
+  const hit = withEntitiesCache.get(dev);
+  if (hit?.key === key) return hit.result;
+  const result = { ...dev, e: { ...dev.e, ...Object.fromEntries(own.map((k) => [k, entities[k]])) } };
+  withEntitiesCache.set(dev, { key, result });
+  return result;
 };
 
 /** All instances, for the editor: { value: device id, label: "Brand · name" }. */
@@ -1862,13 +1918,23 @@ class DnsFilterBase extends HTMLElement {
     this._call("switch", "toggle", { entity_id: entityId });
   }
 
-  // Pi-hole: pause blocking for a while (pi_hole.disable with a duration), or until resumed (switch off).
+  // Pi-hole: pause blocking for a while (pi_hole.disable with a duration), or until resumed (switch off). Technitium
+  // DNS: its button for that duration.
   _pause(minutes) {
     const dev = this._dev();
     const sw = dev.e.protection;
     if (!sw) return;
-    if (minutes > 0) this._call("pi_hole", "disable", { entity_id: sw, duration: hms(minutes) });
+    if (minutes > 0 && dev.brand === "technitium") {
+      if (dev.pauses?.[minutes]) this._call("button", "press", { entity_id: dev.pauses[minutes] });
+    } else if (minutes > 0) this._call("pi_hole", "disable", { entity_id: sw, duration: hms(minutes) });
     else this._call("switch", "turn_off", { entity_id: sw });
+  }
+
+  // The pause durations offered: Pi-hole's, or the buttons Technitium DNS has; until resumed last.
+  _pauseMinutes() {
+    const dev = this._dev();
+    if (dev.brand !== "technitium") return PAUSE_MINUTES;
+    return [...Object.keys(dev.pauses || {}).map(Number).sort((a, b) => a - b), 0];
   }
 
   _resume() {
@@ -1923,7 +1989,7 @@ class DnsFilterBase extends HTMLElement {
       <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-body">
         <h3 id="dlg-title">${svgIcon(ICONS.pause)}${esc(this._t("pause"))}</h3>
         <div class="hint" id="dlg-body">${esc(this._t("pause_hint"))}</div>
-        <div class="durations">${PAUSE_MINUTES.map(
+        <div class="durations">${this._pauseMinutes().map(
           (m) => `<button type="button" class="act" data-action="pause-for" data-minutes="${m}">${esc(label(m))}</button>`
         ).join("")}</div>
         <div class="modal-actions"><button type="button" class="act" data-action="dialog-cancel">${esc(this._t("cancel"))}</button></div>
@@ -1951,7 +2017,7 @@ class DnsFilterBase extends HTMLElement {
   }
 
   _dev() {
-    return discover(this._hass, this._config.device);
+    return withEntities(discover(this._hass, this._config.device), this._config.entities);
   }
 
   _t(key) {
@@ -1996,7 +2062,7 @@ class DnsFilterBase extends HTMLElement {
     if (!p) return null;
     if (NO_VALUE.has(p.state)) return { ...p, cls: "na", text: this._t(p.state) };
     if (p.state === "on") return { ...p, cls: "ok", text: this._t("status_on") };
-    return { ...p, cls: "warn", text: this._t(dev.brand === "pihole" ? "status_paused" : "status_off") };
+    return { ...p, cls: "warn", text: this._t(dev.brand === "adguard" ? "status_off" : "status_paused") };
   }
 
   // Tooltip of the status pill: what a click does (the state itself is the pill's text).
@@ -2085,6 +2151,12 @@ class DnsFilterBase extends HTMLElement {
       { key: "blocked", id: e.blocked, icon: ICONS.hand, cls: "s-blocked", label: this._t("blocked"), value: v("blocked"), text: fmtInt(v("blocked"), loc), short: fmtShort(v("blocked"), loc) },
       { key: "ratio", id: e.ratio, icon: ICONS.pie, cls: "s-ratio", label: this._t("blocked_ratio"), value: v("ratio"), text: fmtPct(v("ratio"), loc), short: fmtPct(v("ratio"), loc) },
     ];
+    // No ratio sensor (Technitium DNS): worked out from the blocked and total queries, opening the blocked ones.
+    if (!e.ratio && e.blocked && e.queries) {
+      const q = v("queries");
+      const r = q > 0 && v("blocked") !== null ? (v("blocked") * 100) / q : null;
+      Object.assign(stats[2], { id: e.blocked, value: r, text: fmtPct(r, loc), short: fmtPct(r, loc) });
+    }
     if (dev.brand === "adguard")
       stats.push({ key: "speed", id: e.speed, icon: ICONS.speed, cls: "s-fourth", label: this._t("avg_speed"), value: v("speed"), text: fmtMs(v("speed"), loc), short: fmtMs(v("speed"), loc) });
     else
