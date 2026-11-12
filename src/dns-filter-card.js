@@ -95,6 +95,8 @@ const STRINGS = {
     url: "Web interface URL (click on the header icon)",
     url_helper: "Automatic from Home Assistant when empty (the device's « Visit » link)",
     show_stats: "Show statistics tiles",
+    show_title: "Show title",
+    show_subtitle: "Show subtitle",
     show_details: "Show detailed counters",
     show_switches: "Show settings switches",
     show_history: "Show 24 h history",
@@ -155,6 +157,8 @@ const STRINGS = {
     url: "URL de l'interface web (clic sur l'icône d'en-tête)",
     url_helper: "Automatique depuis Home Assistant si vide (lien « Visiter » de l'appareil)",
     show_stats: "Afficher les tuiles de statistiques",
+    show_title: "Afficher le titre",
+    show_subtitle: "Afficher le sous-titre",
     show_details: "Afficher les compteurs détaillés",
     show_switches: "Afficher les interrupteurs de réglage",
     show_history: "Afficher l’historique 24 h",
@@ -215,6 +219,8 @@ const STRINGS = {
     url: "URL der Weboberfläche (Klick auf das Kopfzeilensymbol)",
     url_helper: "Wenn leer, automatisch aus Home Assistant (Link „Besuchen“ des Geräts)",
     show_stats: "Statistikkacheln anzeigen",
+    show_title: "Titel anzeigen",
+    show_subtitle: "Untertitel anzeigen",
     show_details: "Detaillierte Zähler anzeigen",
     show_switches: "Einstellungsschalter anzeigen",
     show_history: "24-h-Verlauf anzeigen",
@@ -275,6 +281,8 @@ const STRINGS = {
     url: "URL de la interfaz web (clic en el icono de la cabecera)",
     url_helper: "Automática desde Home Assistant si está vacía (enlace « Visitar » del dispositivo)",
     show_stats: "Mostrar las tarjetas de estadísticas",
+    show_title: "Mostrar el título",
+    show_subtitle: "Mostrar el subtítulo",
     show_details: "Mostrar los contadores detallados",
     show_switches: "Mostrar los interruptores de ajustes",
     show_history: "Mostrar el historial de 24 h",
@@ -335,6 +343,8 @@ const STRINGS = {
     url: "URL веб интерфејса (клик на икону заглавља)",
     url_helper: "Ако је празно, аутоматски из Home Assistant-а (веза „Посети“ уређаја)",
     show_stats: "Прикажи плочице статистике",
+    show_title: "Прикажи наслов",
+    show_subtitle: "Прикажи поднаслов",
     show_details: "Прикажи детаљне бројаче",
     show_switches: "Прикажи прекидаче подешавања",
     show_history: "Прикажи историју за 24 ч",
@@ -395,6 +405,8 @@ const STRINGS = {
     url: "URL veb interfejsa (klik na ikonu zaglavlja)",
     url_helper: "Ako je prazno, automatski iz Home Assistant-a (veza „Poseti“ uređaja)",
     show_stats: "Prikaži pločice statistike",
+    show_title: "Prikaži naslov",
+    show_subtitle: "Prikaži podnaslov",
     show_details: "Prikaži detaljne brojače",
     show_switches: "Prikaži prekidače podešavanja",
     show_history: "Prikaži istoriju za 24 č",
@@ -455,6 +467,8 @@ const STRINGS = {
     url: "URL dell'interfaccia web (clic sull'icona dell'intestazione)",
     url_helper: "Automatico da Home Assistant se vuoto (link « Visita » del dispositivo)",
     show_stats: "Mostra i riquadri delle statistiche",
+    show_title: "Mostra il titolo",
+    show_subtitle: "Mostra il sottotitolo",
     show_details: "Mostra i contatori dettagliati",
     show_switches: "Mostra gli interruttori delle impostazioni",
     show_history: "Mostra lo storico delle 24 h",
@@ -515,6 +529,8 @@ const STRINGS = {
     url: "URL van de webinterface (klik op het koppictogram)",
     url_helper: "Automatisch uit Home Assistant indien leeg (link « Bezoeken » van het apparaat)",
     show_stats: "Statistiektegels tonen",
+    show_title: "Titel tonen",
+    show_subtitle: "Ondertitel tonen",
     show_details: "Gedetailleerde tellers tonen",
     show_switches: "Instellingsschakelaars tonen",
     show_history: "24-uursgeschiedenis tonen",
@@ -575,6 +591,8 @@ const STRINGS = {
     url: "URL da interface web (clique no ícone do cabeçalho)",
     url_helper: "Automático a partir do Home Assistant se vazio (ligação « Visitar » do dispositivo)",
     show_stats: "Mostrar os mosaicos de estatísticas",
+    show_title: "Mostrar o título",
+    show_subtitle: "Mostrar o subtítulo",
     show_details: "Mostrar os contadores detalhados",
     show_switches: "Mostrar os interruptores de definições",
     show_history: "Mostrar o histórico de 24 h",
@@ -635,6 +653,8 @@ const STRINGS = {
     url: "URL interfejsu webowego (kliknięcie ikony nagłówka)",
     url_helper: "Automatycznie z Home Assistant, gdy puste (link „Odwiedź” urządzenia)",
     show_stats: "Pokaż kafelki statystyk",
+    show_title: "Pokaż tytuł",
+    show_subtitle: "Pokaż podtytuł",
     show_details: "Pokaż szczegółowe liczniki",
     show_switches: "Pokaż przełączniki ustawień",
     show_history: "Pokaż historię 24 h",
@@ -695,6 +715,8 @@ const STRINGS = {
     url: "URL-ul interfeței web (clic pe pictograma antetului)",
     url_helper: "Automat din Home Assistant dacă este gol (linkul „Vizitează” al dispozitivului)",
     show_stats: "Afișează plăcuțele de statistici",
+    show_title: "Afișează titlul",
+    show_subtitle: "Afișează subtitlul",
     show_details: "Afișează contoarele detaliate",
     show_switches: "Afișează comutatoarele de setări",
     show_history: "Afișează istoricul de 24 h",
@@ -755,6 +777,8 @@ const STRINGS = {
     url: "URL til webgrænsefladen (klik på ikonet i overskriften)",
     url_helper: "Automatisk fra Home Assistant når tom (enhedens « Besøg »-link)",
     show_stats: "Vis statistikfelter",
+    show_title: "Vis titel",
+    show_subtitle: "Vis undertitel",
     show_details: "Vis detaljerede tællere",
     show_switches: "Vis indstillingskontakter",
     show_history: "Vis 24 timers historik",
@@ -815,6 +839,8 @@ const STRINGS = {
     url: "URL till webbgränssnittet (klick på rubrikikonen)",
     url_helper: "Automatiskt från Home Assistant om tomt (enhetens « Besök »-länk)",
     show_stats: "Visa statistikrutor",
+    show_title: "Visa rubrik",
+    show_subtitle: "Visa underrubrik",
     show_details: "Visa detaljerade räknare",
     show_switches: "Visa inställningsbrytare",
     show_history: "Visa 24-timmarshistorik",
@@ -875,6 +901,8 @@ const STRINGS = {
     url: "URL на уеб интерфейса (клик върху иконата в заглавието)",
     url_helper: "Автоматично от Home Assistant, ако е празно (връзката „Посети“ на устройството)",
     show_stats: "Покажи плочките със статистика",
+    show_title: "Показване на заглавието",
+    show_subtitle: "Показване на подзаглавието",
     show_details: "Покажи подробните броячи",
     show_switches: "Покажи превключвателите за настройки",
     show_history: "Покажи историята за 24 ч",
@@ -935,6 +963,8 @@ const STRINGS = {
     url: "URL веб-интерфейса (клик по значку в заголовке)",
     url_helper: "Автоматически из Home Assistant, если пусто (ссылка «Посетить» устройства)",
     show_stats: "Показывать плитки статистики",
+    show_title: "Показывать заголовок",
+    show_subtitle: "Показывать подзаголовок",
     show_details: "Показывать подробные счётчики",
     show_switches: "Показывать переключатели настроек",
     show_history: "Показывать историю за 24 ч",
@@ -995,6 +1025,8 @@ const STRINGS = {
     url: "URL вебінтерфейсу (клік на значок у заголовку)",
     url_helper: "Автоматично з Home Assistant, якщо порожньо (посилання «Відвідати» пристрою)",
     show_stats: "Показувати плитки статистики",
+    show_title: "Показувати заголовок",
+    show_subtitle: "Показувати підзаголовок",
     show_details: "Показувати детальні лічильники",
     show_switches: "Показувати перемикачі налаштувань",
     show_history: "Показувати історію за 24 год",
@@ -1055,6 +1087,8 @@ const STRINGS = {
     url: "A webes felület URL-je (kattintás a fejléc ikonjára)",
     url_helper: "Ha üres, automatikusan a Home Assistantból (az eszköz „Megtekintés” hivatkozása)",
     show_stats: "Statisztikai csempék megjelenítése",
+    show_title: "Cím megjelenítése",
+    show_subtitle: "Alcím megjelenítése",
     show_details: "Részletes számlálók megjelenítése",
     show_switches: "Beállítási kapcsolók megjelenítése",
     show_history: "24 órás előzmények megjelenítése",
@@ -1115,6 +1149,8 @@ const STRINGS = {
     url: "URL webového rozhrania (kliknutie na ikonu hlavičky)",
     url_helper: "Ak je prázdne, automaticky z Home Assistanta (odkaz „Navštíviť“ zariadenia)",
     show_stats: "Zobraziť dlaždice štatistík",
+    show_title: "Zobraziť názov",
+    show_subtitle: "Zobraziť podnázov",
     show_details: "Zobraziť podrobné počítadlá",
     show_switches: "Zobraziť prepínače nastavení",
     show_history: "Zobraziť 24-hodinovú históriu",
@@ -1175,6 +1211,8 @@ const STRINGS = {
     url: "URL webového rozhraní (kliknutí na ikonu záhlaví)",
     url_helper: "Je-li prázdné, automaticky z Home Assistanta (odkaz „Navštívit“ zařízení)",
     show_stats: "Zobrazit dlaždice statistik",
+    show_title: "Zobrazit název",
+    show_subtitle: "Zobrazit podnázev",
     show_details: "Zobrazit podrobná počítadla",
     show_switches: "Zobrazit přepínače nastavení",
     show_history: "Zobrazit historii za 24 h",
@@ -1235,6 +1273,8 @@ const STRINGS = {
     url: "URL spletnega vmesnika (klik na ikono v glavi)",
     url_helper: "Če je prazno, samodejno iz Home Assistanta (povezava »Obišči« naprave)",
     show_stats: "Prikaži ploščice s statistiko",
+    show_title: "Prikaži naslov",
+    show_subtitle: "Prikaži podnaslov",
     show_details: "Prikaži podrobne števce",
     show_switches: "Prikaži stikala nastavitev",
     show_history: "Prikaži 24-urno zgodovino",
@@ -1295,6 +1335,8 @@ const STRINGS = {
     url: "Tīmekļa saskarnes URL (klikšķis uz galvenes ikonas)",
     url_helper: "Ja tukšs, automātiski no Home Assistant (ierīces saite „Apmeklēt”)",
     show_stats: "Rādīt statistikas flīzes",
+    show_title: "Rādīt virsrakstu",
+    show_subtitle: "Rādīt apakšvirsrakstu",
     show_details: "Rādīt detalizētos skaitītājus",
     show_switches: "Rādīt iestatījumu slēdžus",
     show_history: "Rādīt 24 h vēsturi",
@@ -1355,6 +1397,8 @@ const STRINGS = {
     url: "URL της διεπαφής ιστού (κλικ στο εικονίδιο της κεφαλίδας)",
     url_helper: "Αν είναι κενό, αυτόματα από το Home Assistant (σύνδεσμος «Επίσκεψη» της συσκευής)",
     show_stats: "Εμφάνιση πλακιδίων στατιστικών",
+    show_title: "Εμφάνιση τίτλου",
+    show_subtitle: "Εμφάνιση υπότιτλου",
     show_details: "Εμφάνιση αναλυτικών μετρητών",
     show_switches: "Εμφάνιση διακοπτών ρυθμίσεων",
     show_history: "Εμφάνιση ιστορικού 24 ωρών",
@@ -1771,6 +1815,7 @@ const BASE_STYLE = `
   .header { display: flex; align-items: center; gap: 10px; padding: 12px 12px 8px; }
   /* The status pill sits right of the title, centred on the title line; the subtitle keeps the title's width. */
   .titles { flex: 1 1 0; min-width: 0; display: grid; grid-template-columns: minmax(48px, 1fr) auto; }
+  :host([hide-title]) .titles > .name, :host([hide-subtitle]) .titles > .sub { display: none; }
   .titles > .name, .titles > .sub { grid-column: 1; }
   .titles > .chip { grid-area: 1 / 2; align-self: center; margin-left: 10px; white-space: nowrap; min-width: 0; max-width: 100%;
                     overflow: hidden; box-sizing: border-box; }
@@ -2012,6 +2057,9 @@ class DnsFilterBase extends HTMLElement {
   setConfig(config) {
     if (!config) throw new Error("Invalid configuration");
     this._config = { ...config };
+    // show_title / show_subtitle: the header's title / subtitle, hidden by the stylesheet
+    this.toggleAttribute?.("hide-title", config.show_title === false);
+    this.toggleAttribute?.("hide-subtitle", config.show_subtitle === false);
     this._html = "";
     this._update();
   }
@@ -2589,7 +2637,7 @@ class DnsFilterEditorBase extends HTMLElement {
 
 class DnsFilterCardEditor extends DnsFilterEditorBase {
   static get toggles() {
-    return ["show_stats", "show_details", "show_switches", "show_history", "show_versions"];
+    return ["show_title", "show_subtitle", "show_stats", "show_details", "show_switches", "show_history", "show_versions"];
   }
 }
 

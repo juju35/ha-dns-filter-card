@@ -133,6 +133,8 @@ language: fr
 |---|---|---|---|
 | `device` | both | First instance found | Instance to display (only needed with several): the id of its device in Home Assistant — pick it in the visual editor |
 | `title` | both | Instance name | Card title |
+| `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
+| `show_subtitle` | both | `true` | Show the subtitle under the title |
 | `url` | both | Device configuration URL | Web interface, opened by a click on the header icon. By default the configuration URL of the device in Home Assistant (the « Visit » link of the device page), set by both integrations; without one, the project's website |
 | `show_stats` | full | `true` | The four statistics tiles |
 | `show_details` | full | `true` | The detail counters under the tiles |
