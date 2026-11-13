@@ -1865,6 +1865,42 @@ const DIALOG_STYLE = `
 `;
 const CONFIRM_GUARD_MS = 400;
 const inDialog = (ev) => ev.composedPath().some((n) => ["ha-more-info-dialog", "ha-dialog", "dialog"].includes(n.localName));
+const isOutside = (card, ev) => !ev.composedPath().includes(card) && !inDialog(ev);
+
+// "A click elsewhere" is caught on the pointer, not only on the click event: on iOS (Safari and the companion app)
+// a tap on something that is not clickable (the background, an empty spot, a card with no action) sends no click to
+// the page. It counts when the press and the release are both outside the card (a slider dragged out of the card
+// does not fold it), and a scroll does not count (the browser cancels the pointer). Keyboard clicks still go through
+// the click event. `tap(ev)` (press and release at the same spot) is for the tests.
+const watchOutside = (isOut, handler) => {
+  let downOutside = false;
+  const onDown = (ev) => {
+    downOutside = isOut(ev);
+  };
+  const onUp = (ev) => {
+    if (downOutside && isOut(ev)) handler(ev);
+    downOutside = false;
+  };
+  const onClick = (ev) => {
+    if (ev.detail === 0 && isOut(ev)) handler(ev);
+  };
+  return {
+    on() {
+      document.addEventListener("pointerdown", onDown, true);
+      document.addEventListener("pointerup", onUp, true);
+      document.addEventListener("click", onClick, true);
+    },
+    tap(ev) {
+      onDown(ev);
+      onUp(ev);
+    },
+    off() {
+      document.removeEventListener("pointerdown", onDown, true);
+      document.removeEventListener("pointerup", onUp, true);
+      document.removeEventListener("click", onClick, true);
+    },
+  };
+};
 
 // Pause durations offered for Pi-hole (minutes); 0 = until resumed by hand.
 const PAUSE_MINUTES = [5, 15, 30, 60, 120, 0];
@@ -1932,21 +1968,26 @@ class DnsFilterBase extends HTMLElement {
       }
     };
     // A click elsewhere on the page closes the popup (and only that: the mini card stays zoomed).
-    this._onDialogOutside = (ev) => {
-      if (this._dialog && !ev.composedPath().includes(this) && !inDialog(ev)) {
+    this._dialogOutside = watchOutside(
+      (ev) => isOutside(this, ev),
+      (ev) => {
+        if (!this._dialog) return;
         this._dialogClosedBy = ev;
         this._closeDialog(false);
-      }
-    };
+      },
+    );
   }
 
   connectedCallback() {
-    document.addEventListener("click", this._onDialogOutside, true);
+    this._dialogOutside.on();
+    // Back on the page after leaving it: rendered again in its default state.
+    if (this._hass && this._config) this._update();
   }
 
   disconnectedCallback() {
-    document.removeEventListener("click", this._onDialogOutside, true);
+    this._dialogOutside.off();
     window.removeEventListener("keydown", this._onKey);
+    // Left (another dashboard view, a conditional card hidden): the popup does not come back open.
     this._dialog = null;
   }
 
@@ -2453,20 +2494,25 @@ class DnsFilterMiniCard extends DnsFilterCard {
     super();
     this._zoomed = false;
     this.shadowRoot.addEventListener("click", (ev) => this._zoomClick(ev));
-    this._onOutside = (ev) => {
-      if (this._dialogClosedBy === ev) return;
-      if (this._zoomed && !ev.composedPath().includes(this) && !inDialog(ev)) this._setZoom(false);
-    };
+    this._unzoom = watchOutside(
+      (ev) => isOutside(this, ev),
+      (ev) => {
+        if (this._dialogClosedBy === ev) return;
+        if (this._zoomed) this._setZoom(false);
+      },
+    );
   }
 
   connectedCallback() {
     super.connectedCallback();
-    document.addEventListener("click", this._onOutside, true);
+    this._unzoom.on();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener("click", this._onOutside, true);
+    this._unzoom.off();
+    // Back to the compact view once off the screen (see the full card).
+    this._zoomed = false;
   }
 
   getCardSize() {
