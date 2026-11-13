@@ -275,3 +275,74 @@ test("entities: sensors of the user's choice replace the slots found", () => {
   assert.equal(el._dev(), dev);
   assert.match(el._render(), /data-entity="sensor\.my_ratio"/);
 });
+
+test("folding: a tap elsewhere (pointer), not a press inside released outside; leaving the page closes back", () => {
+  const pi = new DnsFilterCard();
+  pi._config = {};
+  pi._hass = { ...hassOf(pihole), callService() {} };
+  pi._update = () => {};
+  pi.connectedCallback();
+  pi._protectionClick();
+  assert.equal(pi._dialog, true);
+  // Pressed in the card and released outside: the popup stays.
+  pi._dialogOutside.tap({ composedPath: () => [pi] });
+  assert.equal(pi._dialog, true);
+  // A tap in a Home Assistant dialog does not close it either.
+  pi._dialogOutside.tap({ composedPath: () => [{ localName: "ha-more-info-dialog" }] });
+  assert.equal(pi._dialog, true);
+  // A tap on a spot that sends no click (iOS): the pointer alone closes it.
+  pi._dialogOutside.tap({ composedPath: () => [] });
+  assert.ok(!pi._dialog);
+  // Left with the popup open and back: closed.
+  pi._protectionClick();
+  pi.disconnectedCallback();
+  pi.connectedCallback();
+  assert.ok(!pi._dialog);
+  pi.disconnectedCallback();
+  // The mini card comes back compact; the tap that closes its popup does not unzoom it.
+  const mini = new DnsFilterMiniCard();
+  mini._config = {};
+  mini._hass = { ...hassOf(pihole), callService() {} };
+  mini._update = () => {};
+  mini.connectedCallback();
+  mini._zoomed = true;
+  mini._protectionClick();
+  const tap = { composedPath: () => [] };
+  mini._dialogOutside.tap(tap);
+  mini._unzoom.tap(tap);
+  assert.ok(!mini._dialog);
+  assert.equal(mini._zoomed, true);
+  mini._unzoom.tap({ composedPath: () => [] });
+  assert.equal(mini._zoomed, false);
+  mini._zoomed = true;
+  mini.disconnectedCallback();
+  mini.connectedCallback();
+  assert.equal(mini._zoomed, false);
+  mini.disconnectedCallback();
+});
+
+test("no update under a press: the click renders at once, a release without a click draws what was held", async () => {
+  const el = new DnsFilterCard();
+  el._config = {};
+  el.hass = { ...hassOf(pihole), callService() {} };
+  el.connectedCallback();
+  const html = () => el.shadowRoot.innerHTML;
+  const before = html();
+  el._pressing = true;
+  el.hass = { ...hassOf(pihole), language: "fr", callService() {} };
+  assert.equal(html(), before, "no update under the pointer");
+  // A click that changes the card (the pause popup of Pi-hole): drawn at once, with the update held back.
+  for (const fn of el.shadowRoot.listeners.click) fn({ composedPath: () => [{ dataset: { action: "protection" } }], stopPropagation() {}, stopImmediatePropagation() {} });
+  assert.equal(el._dialog, true);
+  assert.notEqual(html(), before, "the click renders at once");
+  el._closeDialog(false);
+  // Pressed and released elsewhere (no click): the held update is drawn after the release.
+  const held = html();
+  el._pressing = true;
+  el.hass = { ...hassOf(pihole), callService() {} };
+  assert.equal(html(), held);
+  el._onPressEnd();
+  await new Promise((r) => setTimeout(r, 0));
+  assert.notEqual(html(), held);
+  el.disconnectedCallback();
+});
