@@ -38,7 +38,13 @@ export const load = (file, names) => {
     CustomEvent: class {},
     Intl,
     Date,
+    setTimeout,
+    clearTimeout,
   };
   vm.createContext(context);
-  return vm.runInContext(`${src}\n;({ ${names.join(", ")} })`, context);
+  // The DOM morphing needs a real DOM: the tests swap it for a plain innerHTML replacement (as in ha-alarm-card), and
+  // fail loudly if a refactor moved the block out of the pattern's reach.
+  const patched = src.replace(/const morph = \(root, html\) => \{[\s\S]*?\n\};/, "const morph = (root, html) => { root.innerHTML = html; };");
+  if (patched === src) throw new Error("test/load.mjs: the morph block was not found in the card source — update the replacement pattern.");
+  return vm.runInContext(`${patched}\n;({ ${names.join(", ")} })`, context);
 };

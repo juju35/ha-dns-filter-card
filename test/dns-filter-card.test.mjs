@@ -320,3 +320,29 @@ test("folding: a tap elsewhere (pointer), not a press inside released outside; l
   assert.equal(mini._zoomed, false);
   mini.disconnectedCallback();
 });
+
+test("no update under a press: the click renders at once, a release without a click draws what was held", async () => {
+  const el = new DnsFilterCard();
+  el._config = {};
+  el.hass = { ...hassOf(pihole), callService() {} };
+  el.connectedCallback();
+  const html = () => el.shadowRoot.innerHTML;
+  const before = html();
+  el._pressing = true;
+  el.hass = { ...hassOf(pihole), language: "fr", callService() {} };
+  assert.equal(html(), before, "no update under the pointer");
+  // A click that changes the card (the pause popup of Pi-hole): drawn at once, with the update held back.
+  for (const fn of el.shadowRoot.listeners.click) fn({ composedPath: () => [{ dataset: { action: "protection" } }], stopPropagation() {}, stopImmediatePropagation() {} });
+  assert.equal(el._dialog, true);
+  assert.notEqual(html(), before, "the click renders at once");
+  el._closeDialog(false);
+  // Pressed and released elsewhere (no click): the held update is drawn after the release.
+  const held = html();
+  el._pressing = true;
+  el.hass = { ...hassOf(pihole), callService() {} };
+  assert.equal(html(), held);
+  el._onPressEnd();
+  await new Promise((r) => setTimeout(r, 0));
+  assert.notEqual(html(), held);
+  el.disconnectedCallback();
+});

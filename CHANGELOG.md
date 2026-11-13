@@ -5,6 +5,7 @@
 ### Fixes
 - Closing on a tap elsewhere now works on iOS (Safari and the companion app): a tap on something that is not clickable sent no click to the page, so the Pi-hole pause popup and the detailed view of the mini card stayed open. The press and the release are caught instead; a press in the card released outside of it and a scroll do not close anything.
 - Leaving the card (another dashboard view, a conditional card hidden) brings it back in its default state: popup closed, mini card compact.
+- **Clicks lost under an update**: Home Assistant updates the card several times a second. The card is patched in place, but an element appearing in front of the one pressed (a chip, a row) shifted its siblings between the press and the release, so that the click could land on another element or nowhere (a switch, the pause button or a duration that did not react). The card is no longer updated while a press is in progress; the pending update is drawn right after the click, or after the release when no click follows.
 
 ## 1.3.0 - 2026-11-12
 
