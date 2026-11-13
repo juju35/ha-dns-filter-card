@@ -138,13 +138,13 @@ language: fr
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle under the title |
 | `url` | both | Device configuration URL | Web interface, opened by a click on the header icon. By default the configuration URL of the device in Home Assistant (the « Visit » link of the device page), set by both integrations; without one, the project's website |
-| `show_stats` | full | `true` | The four statistics tiles |
-| `show_details` | full | `true` | The detail counters under the tiles |
-| `show_switches` | full | `true` | AdGuard Home setting switches, Pi-hole pause / resume button |
+| `show_stats` | both | `true` | The four statistics tiles |
+| `show_details` | both | `true` | The detail counters under the tiles |
+| `show_switches` | both | `true` | AdGuard Home setting switches, Pi-hole pause / resume button |
 | `show_history` | both | `true` | 24 h curves behind the tiles, from the recorder's 5-minute statistics, fetched in one query (needs sensors with a `state_class`: AdGuard Home's counters have one, Pi-hole's don't, so Pi-hole tiles get no curve). Points sit at their time over the last 24 hours, and the curve breaks where data is missing |
-| `show_versions` | full | `true` | Versions in the footer (Pi-hole: Core, FTL, Web; the single AdGuard Home version sits in the subtitle) |
-| `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it) |
-| `entities` | both | — | Sensors (and the blocking switch) of your choice, replacing the ones found: `queries`, `blocked`, `ratio`, `speed`, `domains`, `clients`, `unique_domains`, `cached`, `forwarded`, `protection`, `status`. For example `entities: { ratio: sensor.my_blocked_ratio }` |
+| `show_versions` | both | `true` | Versions in the footer (Pi-hole: Core, FTL, Web; the single AdGuard Home version sits in the subtitle) |
+| `zoom` | mini | `true` | Detail button at the top right: switches to the full card and back (`false` removes it). The full card's options (`show_stats`, `show_details`, `show_switches`, `show_versions`…) set the detailed view, and can be set on the mini card too, in YAML or in its visual editor |
+| `entities` | both | — | Sensors (and the blocking switch) of your choice, replacing the ones found: `queries`, `blocked`, `ratio`, `speed`, `domains`, `clients`, `unique_domains`, `cached`, `forwarded`, `protection`, `status`. For example `entities: { ratio: sensor.my_blocked_ratio }`. YAML only (the visual editor keeps it) |
 | `language` | both | Auto | Force language: `en`, `fr`, `de`, `es`, `sr`, `sr-Latn`, `it`, `nl`, `pt`, `pl`, `ro`, `da`, `sv`, `bg`, `ru`, `uk`, `hu`, `sk`, `cs`, `sl`, `lv` or `el` (auto-detects from HA settings) |
 
 ## Screenshots

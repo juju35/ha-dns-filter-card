@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.2 - 2026-11-14
+
+### Fixes
+- Mini card visual editor: **Show title** and **Show subtitle** are now offered, as well as the full card options shown in its detailed view (`show_stats`, `show_details`, `show_switches`, `show_versions`).
+- README: `entities` is marked YAML only (the visual editor keeps it).
+
 ## 1.3.1 - 2026-11-13
 
 ### Fixes
