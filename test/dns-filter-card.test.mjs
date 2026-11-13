@@ -6,9 +6,9 @@ const eq = (a, b, msg) => assert.deepEqual(JSON.parse(JSON.stringify(a)), b, msg
 import { load } from "./load.mjs";
 import { adguard, pihole, technitium } from "../scripts/mock-states.mjs";
 
-const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, STRINGS, spark, histPoints } = load(
+const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, DnsFilterCardEditor, DnsFilterMiniCardEditor, STRINGS, spark, histPoints } = load(
   "dns-filter-card.js",
-  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "STRINGS", "spark", "histPoints"]
+  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "DnsFilterCardEditor", "DnsFilterMiniCardEditor", "STRINGS", "spark", "histPoints"]
 );
 
 const hassOf = (...mocks) => {
@@ -345,4 +345,25 @@ test("no update under a press: the click renders at once, a release without a cl
   await new Promise((r) => setTimeout(r, 0));
   assert.notEqual(html(), held);
   el.disconnectedCallback();
+});
+
+test("editors: the mini card offers every option of the full card its detailed view uses, plus zoom", () => {
+  const schemaOf = (Editor) => {
+    const ed = new Editor();
+    ed._hass = hassOf(adguard);
+    ed._config = {};
+    return JSON.stringify(ed._schema());
+  };
+  const full = schemaOf(DnsFilterCardEditor);
+  const mini = schemaOf(DnsFilterMiniCardEditor);
+  for (const n of ["device", "title", "url", "show_title", "show_subtitle", "show_stats", "show_details", "show_switches", "show_history", "show_versions", "language"]) {
+    assert.match(full, new RegExp(`"${n}"`), `full: ${n}`);
+    assert.match(mini, new RegExp(`"${n}"`), `mini: ${n}`);
+  }
+  assert.match(mini, /"zoom"/);
+  assert.doesNotMatch(full, /"zoom"/);
+  // `entities` (an object of overrides) stays YAML only.
+  assert.doesNotMatch(full + mini, /"entities"/);
+  // Every option of the editors has a label in every language.
+  for (const [code, strings] of Object.entries(STRINGS)) for (const n of DnsFilterMiniCardEditor.toggles) assert.ok(strings[n], `${code}: ${n}`);
 });

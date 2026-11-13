@@ -2715,9 +2715,10 @@ class DnsFilterCardEditor extends DnsFilterEditorBase {
   }
 }
 
+// The detailed view of the mini card is the full card: its editor offers the full card's options too.
 class DnsFilterMiniCardEditor extends DnsFilterEditorBase {
   static get toggles() {
-    return ["show_history", "zoom"];
+    return [...DnsFilterCardEditor.toggles, "zoom"];
   }
 }
 
