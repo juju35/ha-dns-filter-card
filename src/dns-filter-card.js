@@ -107,7 +107,7 @@ const STRINGS = {
     lang_auto: "Automatic",
     illustration: "Animated illustration",
     illustration_theme: "Illustration theme",
-    theme_auto: "Automatic (sun or dark theme)",
+    theme_auto: "Automatic (follows the theme)",
     theme_day: "Day",
     theme_night: "Night",
     blocked_n: "{n} blocked",
@@ -175,7 +175,7 @@ const STRINGS = {
     lang_auto: "Automatique",
     illustration: "Illustration animée",
     illustration_theme: "Thème de l’illustration",
-    theme_auto: "Automatique (soleil ou thème sombre)",
+    theme_auto: "Automatique (suit le thème)",
     theme_day: "Jour",
     theme_night: "Nuit",
     blocked_n: "{n} bloquées",
@@ -243,7 +243,7 @@ const STRINGS = {
     lang_auto: "Automatisch",
     illustration: "Animierte Illustration",
     illustration_theme: "Thema der Illustration",
-    theme_auto: "Automatisch (Sonne oder dunkles Design)",
+    theme_auto: "Automatisch (folgt dem Thema)",
     theme_day: "Tag",
     theme_night: "Nacht",
     blocked_n: "{n} blockiert",
@@ -311,7 +311,7 @@ const STRINGS = {
     lang_auto: "Automático",
     illustration: "Ilustración animada",
     illustration_theme: "Tema de la ilustración",
-    theme_auto: "Automático (sol o tema oscuro)",
+    theme_auto: "Automático (sigue el tema)",
     theme_day: "Día",
     theme_night: "Noche",
     blocked_n: "{n} bloqueadas",
@@ -379,7 +379,7 @@ const STRINGS = {
     lang_auto: "Аутоматски",
     illustration: "Анимирана илустрација",
     illustration_theme: "Тема илустрације",
-    theme_auto: "Аутоматски (сунце или тамна тема)",
+    theme_auto: "Аутоматски (прати тему)",
     theme_day: "Дан",
     theme_night: "Ноћ",
     blocked_n: "{n} блокирано",
@@ -447,7 +447,7 @@ const STRINGS = {
     lang_auto: "Automatski",
     illustration: "Animirana ilustracija",
     illustration_theme: "Tema ilustracije",
-    theme_auto: "Automatski (sunce ili tamna tema)",
+    theme_auto: "Automatski (prati temu)",
     theme_day: "Dan",
     theme_night: "Noć",
     blocked_n: "{n} blokirano",
@@ -515,7 +515,7 @@ const STRINGS = {
     lang_auto: "Automatica",
     illustration: "Illustrazione animata",
     illustration_theme: "Tema dell’illustrazione",
-    theme_auto: "Automatico (sole o tema scuro)",
+    theme_auto: "Automatico (segue il tema)",
     theme_day: "Giorno",
     theme_night: "Notte",
     blocked_n: "{n} bloccate",
@@ -583,7 +583,7 @@ const STRINGS = {
     lang_auto: "Automatisch",
     illustration: "Geanimeerde illustratie",
     illustration_theme: "Thema van de illustratie",
-    theme_auto: "Automatisch (zon of donker thema)",
+    theme_auto: "Automatisch (volgt het thema)",
     theme_day: "Dag",
     theme_night: "Nacht",
     blocked_n: "{n} geblokkeerd",
@@ -651,7 +651,7 @@ const STRINGS = {
     lang_auto: "Automático",
     illustration: "Ilustração animada",
     illustration_theme: "Tema da ilustração",
-    theme_auto: "Automático (sol ou tema escuro)",
+    theme_auto: "Automático (segue o tema)",
     theme_day: "Dia",
     theme_night: "Noite",
     blocked_n: "{n} bloqueadas",
@@ -719,7 +719,7 @@ const STRINGS = {
     lang_auto: "Automatycznie",
     illustration: "Animowana ilustracja",
     illustration_theme: "Motyw ilustracji",
-    theme_auto: "Automatycznie (słońce lub ciemny motyw)",
+    theme_auto: "Automatycznie (według motywu)",
     theme_day: "Dzień",
     theme_night: "Noc",
     blocked_n: "{n} zablokowanych",
@@ -787,7 +787,7 @@ const STRINGS = {
     lang_auto: "Automat",
     illustration: "Ilustrație animată",
     illustration_theme: "Tema ilustrației",
-    theme_auto: "Automat (soare sau temă întunecată)",
+    theme_auto: "Automat (urmează tema)",
     theme_day: "Zi",
     theme_night: "Noapte",
     blocked_n: "{n} blocate",
@@ -855,7 +855,7 @@ const STRINGS = {
     lang_auto: "Automatisk",
     illustration: "Animeret illustration",
     illustration_theme: "Illustrationens tema",
-    theme_auto: "Automatisk (sol eller mørkt tema)",
+    theme_auto: "Automatisk (følger temaet)",
     theme_day: "Dag",
     theme_night: "Nat",
     blocked_n: "{n} blokeret",
@@ -923,7 +923,7 @@ const STRINGS = {
     lang_auto: "Automatiskt",
     illustration: "Animerad illustration",
     illustration_theme: "Illustrationens tema",
-    theme_auto: "Automatiskt (sol eller mörkt tema)",
+    theme_auto: "Automatiskt (följer temat)",
     theme_day: "Dag",
     theme_night: "Natt",
     blocked_n: "{n} blockerade",
@@ -991,7 +991,7 @@ const STRINGS = {
     lang_auto: "Автоматично",
     illustration: "Анимирана илюстрация",
     illustration_theme: "Тема на илюстрацията",
-    theme_auto: "Автоматично (слънце или тъмна тема)",
+    theme_auto: "Автоматично (следва темата)",
     theme_day: "Ден",
     theme_night: "Нощ",
     blocked_n: "{n} блокирани",
@@ -1059,7 +1059,7 @@ const STRINGS = {
     lang_auto: "Автоматически",
     illustration: "Анимированная иллюстрация",
     illustration_theme: "Тема иллюстрации",
-    theme_auto: "Автоматически (солнце или тёмная тема)",
+    theme_auto: "Автоматически (по теме)",
     theme_day: "День",
     theme_night: "Ночь",
     blocked_n: "{n} заблокировано",
@@ -1127,7 +1127,7 @@ const STRINGS = {
     lang_auto: "Автоматично",
     illustration: "Анімована ілюстрація",
     illustration_theme: "Тема ілюстрації",
-    theme_auto: "Автоматично (сонце або темна тема)",
+    theme_auto: "Автоматично (за темою)",
     theme_day: "День",
     theme_night: "Ніч",
     blocked_n: "{n} заблоковано",
@@ -1195,7 +1195,7 @@ const STRINGS = {
     lang_auto: "Automatikus",
     illustration: "Animált illusztráció",
     illustration_theme: "Az illusztráció témája",
-    theme_auto: "Automatikus (nap vagy sötét téma)",
+    theme_auto: "Automatikus (a témát követi)",
     theme_day: "Nappal",
     theme_night: "Éjszaka",
     blocked_n: "{n} blokkolva",
@@ -1263,7 +1263,7 @@ const STRINGS = {
     lang_auto: "Automaticky",
     illustration: "Animovaná ilustrácia",
     illustration_theme: "Téma ilustrácie",
-    theme_auto: "Automaticky (slnko alebo tmavá téma)",
+    theme_auto: "Automaticky (podľa témy)",
     theme_day: "Deň",
     theme_night: "Noc",
     blocked_n: "{n} zablokovaných",
@@ -1331,7 +1331,7 @@ const STRINGS = {
     lang_auto: "Automaticky",
     illustration: "Animovaná ilustrace",
     illustration_theme: "Motiv ilustrace",
-    theme_auto: "Automaticky (slunce nebo tmavý motiv)",
+    theme_auto: "Automaticky (podle motivu)",
     theme_day: "Den",
     theme_night: "Noc",
     blocked_n: "{n} zablokováno",
@@ -1399,7 +1399,7 @@ const STRINGS = {
     lang_auto: "Samodejno",
     illustration: "Animirana ilustracija",
     illustration_theme: "Tema ilustracije",
-    theme_auto: "Samodejno (sonce ali temna tema)",
+    theme_auto: "Samodejno (sledi temi)",
     theme_day: "Dan",
     theme_night: "Noč",
     blocked_n: "{n} blokiranih",
@@ -1467,7 +1467,7 @@ const STRINGS = {
     lang_auto: "Automātiski",
     illustration: "Animēta ilustrācija",
     illustration_theme: "Ilustrācijas motīvs",
-    theme_auto: "Automātiski (saule vai tumšais motīvs)",
+    theme_auto: "Automātiski (seko tēmai)",
     theme_day: "Diena",
     theme_night: "Nakts",
     blocked_n: "{n} bloķēti",
@@ -1535,7 +1535,7 @@ const STRINGS = {
     lang_auto: "Αυτόματα",
     illustration: "Κινούμενη εικονογράφηση",
     illustration_theme: "Θέμα εικονογράφησης",
-    theme_auto: "Αυτόματο (ήλιος ή σκούρο θέμα)",
+    theme_auto: "Αυτόματο (ακολουθεί το θέμα)",
     theme_day: "Ημέρα",
     theme_night: "Νύχτα",
     blocked_n: "{n} αποκλεισμένα",
@@ -1668,11 +1668,13 @@ const textWidth = (el) => {
   return range.getBoundingClientRect().width;
 };
 
+// Night picture: forced by illustration_theme, else Home Assistant's dark mode alone (a light theme keeps the day
+// picture after sunset).
 const dnsfIsNight = (hass, config) => {
   const theme = config.illustration_theme;
   if (theme === "night") return true;
   if (theme === "day") return false;
-  return hass?.states?.["sun.sun"]?.state === "below_horizon" || !!hass?.themes?.darkMode;
+  return !!hass?.themes?.darkMode;
 };
 
 // The banner: background, picture, network strip, and the icon and titles on its left. Colours and animations day
@@ -2449,7 +2451,7 @@ class DnsFilterBase extends HTMLElement {
   // What the render depends on: language, dark mode, the registries and the states of the instance's entities.
   _signature() {
     const h = this._hass;
-    const sig = [h.language, h.locale?.language, h.themes?.darkMode, h.states?.["sun.sun"]?.state, h.entities, h.devices];
+    const sig = [h.language, h.locale?.language, h.themes?.darkMode, h.entities, h.devices];
     const dev = this._dev();
     sig.push(dev);
     if (dev.deviceId) for (const id of Object.values(dev.e)) sig.push(h.states[id]);
