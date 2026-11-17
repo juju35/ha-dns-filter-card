@@ -1660,6 +1660,14 @@ const dnsfSceneSvg = (st, count) => {
 };
 
 // Night picture: forced by illustration_theme, else the sun below the horizon or Home Assistant's dark theme.
+// The width of an element's whole text in fractional pixels, even while it is cut with an ellipsis (0 when hidden).
+const textWidth = (el) => {
+  if (!el?.getClientRects?.().length || typeof document.createRange !== "function") return 0;
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  return range.getBoundingClientRect().width;
+};
+
 const dnsfIsNight = (hass, config) => {
   const theme = config.illustration_theme;
   if (theme === "night") return true;
@@ -1721,17 +1729,17 @@ const BANNER_STYLE = `
   .htext .titles > * { max-width: 100%; }
   .htext .name { font-size: 16px; font-weight: 600; }
   .htext .line { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; min-width: 0; }
-  /* The status pill sits on the title line, right after the title: the title ellipsises first (never under 4
-     characters), the pill keeps its whole label. Without room for both, the pill goes on its own line under the
-     subtitle; on a very narrow card only its dot is left (the label stays in its tooltip and aria-label). */
+  /* The status pill sits on the title line, right after the title, when the whole title and its whole label fit there;
+     otherwise it goes on its own line under the subtitle (kept to one line), and when even that is too tight only its
+     dot is left (the label stays in its tooltip and aria-label). Decided by measure (see _fitPill). */
   .htext .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
-  .htext .trow .name { flex: 0 1 auto; min-width: 4ch; }
-  .htext .trow .chip { flex: none; max-width: calc(100% - 4ch - 8px); overflow: hidden; box-sizing: border-box; line-height: 16px; }
-  @container dnsf-titles (max-width: 170px) {
-    .htext .trow { display: contents; }
-    .htext .trow .name, .htext .trow .chip { max-width: 100%; }
-    .htext .trow .chip { order: 3; }
-  }
+  .htext .trow .name { flex: 0 1 auto; min-width: 0; }
+  .htext .trow .chip { flex: none; max-width: none; overflow: hidden; box-sizing: border-box; line-height: 16px; }
+  .htext .titles.pill-below .trow { display: contents; }
+  .htext .titles.pill-below .trow .name, .htext .titles.pill-below .trow .chip { max-width: 100%; }
+  .htext .titles.pill-below .trow .chip { order: 3; }
+  .htext .titles.pill-below .line { flex-wrap: nowrap; }
+  .htext .titles.pill-below .sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .htext .chip { background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c) 45%, #0d2a45); }
   .night .htext .chip { background: color-mix(in srgb, var(--c) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c) 35%, #ffffff); }
   .htext .sub { color: #3d5670; flex: 0 1 auto; min-width: 0; }
@@ -2083,18 +2091,19 @@ const BASE_STYLE = `
           color: color-mix(in srgb, var(--c, var(--dnsf-ok)) 40%, var(--primary-text-color, #212121)); }
   .chip .txt { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .header { display: flex; align-items: center; gap: 10px; padding: 12px 12px 8px; }
-  /* The status pill sits right of the title, centred on the title line; the subtitle keeps the title's width. */
-  .titles { flex: 1 1 0; min-width: 0; display: grid; grid-template-columns: minmax(48px, 1fr) auto; }
+  /* The status pill sits right after the title, centred on the title line; the subtitle takes the whole width. */
+  .titles { flex: 1 1 0; min-width: 0; display: grid; grid-template-columns: minmax(0, max-content) minmax(0, 1fr); }
   :host([hide-title]) .titles .name, :host([hide-subtitle]) .titles > .sub { display: none; }
-  .titles > .name, .titles > .sub { grid-column: 1; }
-  .titles > .chip { grid-area: 1 / 2; align-self: center; margin-left: 10px; white-space: nowrap; min-width: 0; max-width: 100%;
+  .titles > .name { grid-column: 1; } .titles > .sub { grid-column: 1 / -1; }
+  .titles > .chip { grid-area: 1 / 2; align-self: center; justify-self: start; margin-left: 8px; white-space: nowrap; min-width: 0; max-width: 100%;
                     overflow: hidden; box-sizing: border-box; }
-  /* Not enough room beside the title: the pill goes on its own line, under the subtitle. */
-  .header .titles { container: dnsf-head / inline-size; }
-  @container dnsf-head (max-width: 170px) {
-    .titles { grid-template-columns: minmax(0, 1fr); }
-    .titles > .chip { grid-area: auto / 1; justify-self: start; margin: 3px 0 0; }
-  }
+  /* Not enough room beside the whole title (measured, see _fitPill): the pill goes on its own line, under the
+     subtitle; only its dot when even that is too tight, or at 200 px or less. */
+  .titles.pill-below { grid-template-columns: minmax(0, 1fr); }
+  .titles.pill-below > .sub { grid-column: 1; }
+  .titles.pill-below > .chip { grid-area: auto / 1; justify-self: start; margin: 3px 0 0; }
+  .titles.pill-dot .chip .txt { display: none; }
+  .htext .titles.pill-dot .chip { padding: 4px; }
   @container dnsf-card (max-width: 200px) { .chip .txt { display: none; } }
   .logo { height: 40px; width: 40px; flex: none; align-self: flex-start; border-radius: 50%; display: grid; place-items: center;
           position: relative; color: var(--c, var(--dnsf-ok)); background: color-mix(in srgb, var(--c, var(--dnsf-ok)) 16%, transparent); }
@@ -2275,12 +2284,26 @@ class DnsFilterBase extends HTMLElement {
 
   connectedCallback() {
     this._dialogOutside.on();
+    // A new width (or the web font loaded): the status pill is fitted again, in the next frame.
+    if (typeof ResizeObserver === "function") {
+      this._pillResize ??= new ResizeObserver((entries) => {
+        const w = Math.round(entries.at(-1).contentRect.width);
+        if (w === this._pillWidth) return;
+        this._pillWidth = w;
+        cancelAnimationFrame(this._pillFrame);
+        this._pillFrame = requestAnimationFrame(() => this._fitPill());
+      });
+      this._pillResize.observe(this);
+    }
+    document.fonts?.ready?.then(() => this._fitPill());
     // Back on the page after leaving it: rendered again in its default state.
     if (this._hass && this._config) this._update();
   }
 
   disconnectedCallback() {
     this._dialogOutside.off();
+    this._pillResize?.disconnect();
+    this._pillWidth = null;
     this._pressing = false;
     window.removeEventListener("pointerup", this._onPressEnd, true);
     window.removeEventListener("pointercancel", this._onPressEnd, true);
@@ -2446,6 +2469,40 @@ class DnsFilterBase extends HTMLElement {
     if (html !== this._html) {
       this._html = html;
       morph(this.shadowRoot, html);
+    }
+    this._fitPill();
+  }
+
+  // The status pill goes on the title row, right after the title, only when the whole title and the pill's whole
+  // label fit there; otherwise it takes its own line under the subtitle (.pill-below) and the title keeps its row
+  // (cut only when it does not fit alone). The subtitle then keeps one line (its whole text in its tooltip), and when
+  // the block still runs out of the banner or into its ground strip, or the label does not fit its own line, the pill
+  // keeps its dot alone (.pill-dot, the label in its tooltip and aria-label). Measured after each render and on each
+  // new width, never by a fixed width, so that every language fits.
+  _fitPill() {
+    for (const t of this.shadowRoot?.querySelectorAll?.(".titles") || []) {
+      const chips = [...t.querySelectorAll(".chip")];
+      if (!chips[0]?.getBoundingClientRect) continue;
+      t.classList.remove("pill-below", "pill-dot");
+      const sub = t.querySelector(".sub");
+      sub?.removeAttribute("title");
+      if (!chips[0].querySelector(".txt")?.getClientRects().length) continue;
+      const avail = t.getBoundingClientRect().width;
+      const gap = parseFloat(getComputedStyle(chips[0].parentElement).columnGap) || 0;
+      const widths = chips.map((c) => {
+        const cs = getComputedStyle(c);
+        return c.getBoundingClientRect().width + (parseFloat(cs.marginLeft) || 0) + (parseFloat(cs.marginRight) || 0);
+      });
+      if (textWidth(t.querySelector(".name")) + widths.reduce((w, c) => w + gap + c, 0) <= avail + 0.01) continue;
+      t.classList.add("pill-below");
+      if (sub && sub.scrollWidth > sub.clientWidth) sub.title = sub.textContent.trim();
+      const banner = t.closest(".banner");
+      const box = banner?.getBoundingClientRect();
+      const floor = banner?.querySelector(".g-net")?.getBoundingClientRect().top ?? box?.bottom;
+      const r = t.getBoundingClientRect();
+      const out = box && (r.top < box.top - 0.5 || r.bottom > floor + 0.5);
+      const room = avail;
+      if (out || widths.some((w) => w > room + 0.01)) t.classList.add("pill-dot");
     }
   }
 
