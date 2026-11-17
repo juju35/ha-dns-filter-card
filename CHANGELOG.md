@@ -1,4 +1,13 @@
 # Changelog
+- **Status pill on the title line** of every header (illustrated or classic, full and mini cards): right after the title, in the shield icon's colour, only when the whole title and its whole label fit there, otherwise on its own line under the subtitle (then kept to one line), and only its dot when even that does not fit in the banner or the card is 200 px wide or less (measured on the rendered card, so that it fits in every language); still a blocking control. The mini card shows it in its header instead of its footer. The mini card's expand/collapse button is a 24 px frosted round button in the banner's top-right corner.
+
+## 1.4.0 - 2026-11-17
+
+### Features
+- **Animated illustrated header** on both cards (90 px): the DNS requests run along a pipe through a shield, over a 10 px network strip edge to edge. Protection on: the good requests pass, the bad ones are stopped at the shield, with the blocked count; off or paused: every request goes through an open amber shield; unavailable: nothing flows and the strip turns red. The round icon keeps the status colour and the AdGuard Home / Pi-hole / Technitium badge; the status pill stays clickable.
+- Night picture when `sun.sun` is below the horizon or in dark mode; `illustration_theme: day | night` forces it, `illustration: false` brings back the classic header. Both options are in the visual editors. Animations stop under « reduce motion ».
+- README: **animated captures** (GIF, light and dark) of the banner: protection on, protection off and night.
+- Night picture with the dark theme even while the sun is up
 
 ## 1.3.2 - 2026-11-14
 

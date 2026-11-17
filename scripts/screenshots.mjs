@@ -1,7 +1,11 @@
 // Renders the cards with mock AdGuard Home and Pi-hole data and saves the README screenshots.
 // Usage: npm run build && npm run screenshots
+// Then records the banner animations into screenshots/*.gif, light and dark (needs ffmpeg).
+import { execFileSync } from "node:child_process";
 import { chromium } from "playwright";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { mocks } from "./mock-states.mjs";
 
@@ -75,7 +79,7 @@ async function openCard(browser, s) {
         el.shadowRoot.activeElement?.blur(); // a mouse user sees no focus ring on the first duration
       }
     },
-    { type: s.type, config: s.config, mock: mocks[s.mock], dark: s.theme === "dark", zoom: !!s.zoom, pause: !!s.pause, pihole: s.mock !== "adguard" }
+    { type: s.type, config: s.config, mock: s.hass || mocks[s.mock], dark: s.theme === "dark", zoom: !!s.zoom, pause: !!s.pause, pihole: s.mock !== "adguard" }
   );
   return page;
 }
@@ -130,5 +134,77 @@ for (const s of shots) {
   });
   await savePng(`${root}screenshots/${s.file}.png`, png);
   await page.close();
+}
+// Animated captures: the banner of the full card, one GIF per state, light and dark. The CSS animations are paused
+// and stepped frame by frame over one 4 s cycle (every animation of the banner divides it), so each GIF loops
+// cleanly at its real speed whatever the machine's speed.
+const FPS = 15;
+const PERIOD = 4000;
+const protectionOff = structuredClone(mocks.adguard);
+protectionOff.states["switch.adguard_home_protection"].state = "off";
+const GIFS = [
+  // Protection on: the good requests pass, the bad ones are stopped at the shield, the red cross blinks.
+  { name: "anim-protection-on", config: { illustration_theme: "day" } },
+  // Protection off (or paused): every request goes through the open amber shield.
+  { name: "anim-protection-off", config: { illustration_theme: "day" }, hass: protectionOff },
+  // Night: the same flow on the night picture.
+  { name: "anim-night", config: { illustration_theme: "night" } },
+];
+
+// Pauses every CSS animation of the page (shadow trees walked by hand) at `frac` of the cycle.
+const freeze = (page, frac) =>
+  page.evaluate(
+    ({ f, period }) => {
+      const walk = (node) =>
+        [...node.querySelectorAll("*")].flatMap((el) => [...el.getAnimations(), ...(el.shadowRoot ? walk(el.shadowRoot) : [])]);
+      for (const a of walk(document)) {
+        a.pause();
+        a.currentTime = (3 + f) * period;
+      }
+    },
+    { f: frac, period: PERIOD }
+  );
+
+// Every decoded frame (RGBA) and its timing, as ffmpeg's per-frame MD5 list: equal lists, same animation.
+const decodedFrames = (file) =>
+  execFileSync("ffmpeg", ["-loglevel", "error", "-i", file, "-pix_fmt", "rgba", "-f", "framemd5", "-"], { encoding: "utf8" })
+    .split("\n")
+    .filter((line) => line && !line.startsWith("#"))
+    .join("\n");
+
+// A deterministic GIF (palette from the frames only, ordered dithering, bit-exact muxing), replacing the file in
+// place only when its decoded frames differ.
+const encodeGif = (dir, file, width) => {
+  const gif = join(dir, "out.gif");
+  execFileSync("ffmpeg", [
+    "-y", "-loglevel", "error", "-framerate", String(FPS), "-i", join(dir, "f%03d.png"),
+    "-vf", `scale=${width + 32}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128[p];[b][p]paletteuse=dither=bayer:bayer_scale=4`,
+    "-fflags", "+bitexact", "-flags", "+bitexact", "-loop", "0", gif,
+  ]);
+  const target = `${root}screenshots/${file}.gif`;
+  const same = existsSync(target) && decodedFrames(target) === decodedFrames(gif);
+  if (!same) copyFileSync(gif, target);
+  console.log(`screenshots/${file}.gif${same ? " (unchanged)" : ""}`);
+};
+
+for (const g of GIFS) {
+  for (const theme of ["light", "dark"]) {
+    const file = `${g.name}${theme === "dark" ? "-dark" : ""}`;
+    const s = { file, type: "dns-filter-card", theme, width: 460, config: g.config, mock: "adguard", hass: g.hass };
+    const page = await openCard(browser, s);
+    await page.waitForTimeout(800);
+    // The banner with the 16 px of theme background around the card.
+    const bottom = await page.evaluate(() => document.querySelector("#root > *").shadowRoot.querySelector(".banner").getBoundingClientRect().bottom);
+    const clip = { x: 0, y: 0, width: s.width + 32, height: Math.ceil(bottom) };
+    const dir = mkdtempSync(join(tmpdir(), "dnsf-frames-"));
+    const frames = Math.round((FPS * PERIOD) / 1000);
+    for (let i = 0; i < frames; i++) {
+      await freeze(page, i / frames);
+      await page.screenshot({ path: join(dir, `f${String(i).padStart(3, "0")}.png`), clip });
+    }
+    encodeGif(dir, file, s.width);
+    rmSync(dir, { recursive: true });
+    await page.close();
+  }
 }
 await browser.close();

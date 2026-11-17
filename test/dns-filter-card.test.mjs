@@ -6,9 +6,9 @@ const eq = (a, b, msg) => assert.deepEqual(JSON.parse(JSON.stringify(a)), b, msg
 import { load } from "./load.mjs";
 import { adguard, pihole, technitium } from "../scripts/mock-states.mjs";
 
-const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, DnsFilterCardEditor, DnsFilterMiniCardEditor, STRINGS, spark, histPoints } = load(
+const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, DnsFilterCardEditor, DnsFilterMiniCardEditor, STRINGS, spark, histPoints, dnsfIsNight, dnsfSceneSvg } = load(
   "dns-filter-card.js",
-  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "DnsFilterCardEditor", "DnsFilterMiniCardEditor", "STRINGS", "spark", "histPoints"]
+  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "DnsFilterCardEditor", "DnsFilterMiniCardEditor", "STRINGS", "spark", "histPoints", "dnsfIsNight", "dnsfSceneSvg"]
 );
 
 const hassOf = (...mocks) => {
@@ -125,7 +125,7 @@ test("Pi-hole full card shows the domains tile, the pause button and the three v
   assert.match(paused, /Paused/);
 });
 
-test("mini card: three short tiles, the ratio bar and the status in the footer", () => {
+test("mini card: three short tiles, the ratio bar and the status pill after the title", () => {
   const el = new DnsFilterMiniCard();
   el._config = {};
   el._hass = hassOf(pihole);
@@ -133,7 +133,13 @@ test("mini card: three short tiles, the ratio bar and the status in the footer",
   assert.match(html, />101k</);
   assert.match(html, />24k</);
   assert.match(html, /width:23\.74%/);
-  assert.match(html, /data-key="status"[^>]*>.*Protection on/);
+  assert.match(html, /<div class="trow"><div class="name">[^<]+<\/div><span class="chip clickable ok" role="button" tabindex="0" data-action="protection"[^>]*><span class="dot"><\/span><span class="txt">Protection on<\/span>/);
+  assert.doesNotMatch(html, /data-key="status"/, "not repeated in the footer");
+  for (const illustration of [false, true]) {
+    el._config = { illustration };
+    assert.match(el._render(), /class="chip clickable ok"[^>]*data-action="protection"/, `pill in the header (illustration: ${illustration})`);
+  }
+  el._config = {};
   assert.doesNotMatch(html, /Domains on lists/);
   // Zoomed: the full card's content.
   el._zoomed = true;
@@ -356,7 +362,7 @@ test("editors: the mini card offers every option of the full card its detailed v
   };
   const full = schemaOf(DnsFilterCardEditor);
   const mini = schemaOf(DnsFilterMiniCardEditor);
-  for (const n of ["device", "title", "url", "show_title", "show_subtitle", "show_stats", "show_details", "show_switches", "show_history", "show_versions", "language"]) {
+  for (const n of ["device", "title", "url", "illustration", "illustration_theme", "show_title", "show_subtitle", "show_stats", "show_details", "show_switches", "show_history", "show_versions", "language"]) {
     assert.match(full, new RegExp(`"${n}"`), `full: ${n}`);
     assert.match(mini, new RegExp(`"${n}"`), `mini: ${n}`);
   }
@@ -366,4 +372,32 @@ test("editors: the mini card offers every option of the full card its detailed v
   assert.doesNotMatch(full + mini, /"entities"/);
   // Every option of the editors has a label in every language.
   for (const [code, strings] of Object.entries(STRINGS)) for (const n of DnsFilterMiniCardEditor.toggles) assert.ok(strings[n], `${code}: ${n}`);
+});
+
+test("the illustration follows illustration_theme, then the sun below the horizon or the dark mode", () => {
+  const sun = (state) => ({ states: { "sun.sun": { state } }, themes: { darkMode: false } });
+  assert.equal(dnsfIsNight(sun("below_horizon"), {}), true);
+  assert.equal(dnsfIsNight(sun("above_horizon"), {}), false);
+  assert.equal(dnsfIsNight(sun("below_horizon"), { illustration_theme: "day" }), false);
+  assert.equal(dnsfIsNight(sun("above_horizon"), { illustration_theme: "night" }), true);
+  assert.equal(dnsfIsNight({ states: {}, themes: { darkMode: true } }, {}), true);
+  assert.equal(dnsfIsNight(sun("unavailable"), {}), false);
+  const darkSunUp = { states: { "sun.sun": { state: "above_horizon" } }, themes: { darkMode: true } };
+  assert.equal(dnsfIsNight(darkSunUp, {}), true, "dark theme while the sun is up: night");
+  assert.equal(dnsfIsNight(darkSunUp, { illustration_theme: "day" }), false);
+  assert.equal(dnsfIsNight({ states: { "sun.sun": { state: "unavailable" } }, themes: { darkMode: true } }, {}), true);
+  for (const [code, strings] of Object.entries(STRINGS))
+    for (const k of ["illustration_theme", "theme_auto", "theme_day", "theme_night", "blocked_n"]) assert.ok(strings[k], `${code}: ${k}`);
+});
+
+test("the banner picture shows the protection state and the blocked count", () => {
+  const on = dnsfSceneSvg("on", "23.9k");
+  assert.match(on, /dnsf-x/);
+  assert.match(on, /23\.9k/);
+  assert.match(on, /g-net/);
+  const off = dnsfSceneSvg("off", "23.9k");
+  assert.doesNotMatch(off, /dnsf-x|dnsf-count/);
+  assert.doesNotMatch(dnsfSceneSvg("na", ""), /dnsf-x|dnsf-count/);
+  // No ids: several cards on one page never clash.
+  assert.doesNotMatch(on, /\sid="/);
 });
