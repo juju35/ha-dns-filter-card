@@ -105,6 +105,12 @@ const STRINGS = {
     zoom_helper: "Switches the mini card to the full card and back",
     language: "Language",
     lang_auto: "Automatic",
+    illustration: "Animated illustration",
+    illustration_theme: "Illustration theme",
+    theme_auto: "Automatic (sun)",
+    theme_day: "Day",
+    theme_night: "Night",
+    blocked_n: "{n} blocked",
   },
   fr: {
     queries: "Requêtes DNS",
@@ -167,6 +173,12 @@ const STRINGS = {
     zoom_helper: "Bascule la mini-carte en carte complète, et inversement",
     language: "Langue",
     lang_auto: "Automatique",
+    illustration: "Illustration animée",
+    illustration_theme: "Thème de l’illustration",
+    theme_auto: "Automatique (soleil)",
+    theme_day: "Jour",
+    theme_night: "Nuit",
+    blocked_n: "{n} bloquées",
   },
   de: {
     queries: "DNS-Anfragen",
@@ -229,6 +241,12 @@ const STRINGS = {
     zoom_helper: "Wechselt von der Mini-Karte zur vollständigen Karte und zurück",
     language: "Sprache",
     lang_auto: "Automatisch",
+    illustration: "Animierte Illustration",
+    illustration_theme: "Thema der Illustration",
+    theme_auto: "Automatisch (Sonne)",
+    theme_day: "Tag",
+    theme_night: "Nacht",
+    blocked_n: "{n} blockiert",
   },
   es: {
     queries: "Consultas DNS",
@@ -291,6 +309,12 @@ const STRINGS = {
     zoom_helper: "Cambia la minitarjeta a la tarjeta completa y viceversa",
     language: "Idioma",
     lang_auto: "Automático",
+    illustration: "Ilustración animada",
+    illustration_theme: "Tema de la ilustración",
+    theme_auto: "Automático (sol)",
+    theme_day: "Día",
+    theme_night: "Noche",
+    blocked_n: "{n} bloqueadas",
   },
   sr: {
     queries: "DNS упити",
@@ -353,6 +377,12 @@ const STRINGS = {
     zoom_helper: "Пребацује мини картицу на пун приказ и назад",
     language: "Језик",
     lang_auto: "Аутоматски",
+    illustration: "Анимирана илустрација",
+    illustration_theme: "Тема илустрације",
+    theme_auto: "Аутоматски (сунце)",
+    theme_day: "Дан",
+    theme_night: "Ноћ",
+    blocked_n: "{n} блокирано",
   },
   "sr-Latn": {
     queries: "DNS upiti",
@@ -415,6 +445,12 @@ const STRINGS = {
     zoom_helper: "Prebacuje mini karticu na pun prikaz i nazad",
     language: "Jezik",
     lang_auto: "Automatski",
+    illustration: "Animirana ilustracija",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Automatski (sunce)",
+    theme_day: "Dan",
+    theme_night: "Noć",
+    blocked_n: "{n} blokirano",
   },
   it: {
     queries: "Richieste DNS",
@@ -477,6 +513,12 @@ const STRINGS = {
     zoom_helper: "Passa dalla mini scheda alla scheda completa e viceversa",
     language: "Lingua",
     lang_auto: "Automatica",
+    illustration: "Illustrazione animata",
+    illustration_theme: "Tema dell’illustrazione",
+    theme_auto: "Automatico (sole)",
+    theme_day: "Giorno",
+    theme_night: "Notte",
+    blocked_n: "{n} bloccate",
   },
   nl: {
     queries: "DNS-verzoeken",
@@ -539,6 +581,12 @@ const STRINGS = {
     zoom_helper: "Schakelt de minikaart om naar de volledige kaart en terug",
     language: "Taal",
     lang_auto: "Automatisch",
+    illustration: "Geanimeerde illustratie",
+    illustration_theme: "Thema van de illustratie",
+    theme_auto: "Automatisch (zon)",
+    theme_day: "Dag",
+    theme_night: "Nacht",
+    blocked_n: "{n} geblokkeerd",
   },
   pt: {
     queries: "Pedidos DNS",
@@ -601,6 +649,12 @@ const STRINGS = {
     zoom_helper: "Alterna o minicartão para o cartão completo e vice-versa",
     language: "Idioma",
     lang_auto: "Automático",
+    illustration: "Ilustração animada",
+    illustration_theme: "Tema da ilustração",
+    theme_auto: "Automático (sol)",
+    theme_day: "Dia",
+    theme_night: "Noite",
+    blocked_n: "{n} bloqueadas",
   },
   pl: {
     queries: "Zapytania DNS",
@@ -663,6 +717,12 @@ const STRINGS = {
     zoom_helper: "Przełącza minikartę na pełną kartę i z powrotem",
     language: "Język",
     lang_auto: "Automatycznie",
+    illustration: "Animowana ilustracja",
+    illustration_theme: "Motyw ilustracji",
+    theme_auto: "Automatycznie (słońce)",
+    theme_day: "Dzień",
+    theme_night: "Noc",
+    blocked_n: "{n} zablokowanych",
   },
   ro: {
     queries: "Interogări DNS",
@@ -725,6 +785,12 @@ const STRINGS = {
     zoom_helper: "Comută mini-cardul la cardul complet și înapoi",
     language: "Limbă",
     lang_auto: "Automat",
+    illustration: "Ilustrație animată",
+    illustration_theme: "Tema ilustrației",
+    theme_auto: "Automat (soare)",
+    theme_day: "Zi",
+    theme_night: "Noapte",
+    blocked_n: "{n} blocate",
   },
   da: {
     queries: "DNS-forespørgsler",
@@ -787,6 +853,12 @@ const STRINGS = {
     zoom_helper: "Skifter minikortet til det fulde kort og tilbage",
     language: "Sprog",
     lang_auto: "Automatisk",
+    illustration: "Animeret illustration",
+    illustration_theme: "Illustrationens tema",
+    theme_auto: "Automatisk (sol)",
+    theme_day: "Dag",
+    theme_night: "Nat",
+    blocked_n: "{n} blokeret",
   },
   sv: {
     queries: "DNS-frågor",
@@ -849,6 +921,12 @@ const STRINGS = {
     zoom_helper: "Växlar minikortet till hela kortet och tillbaka",
     language: "Språk",
     lang_auto: "Automatiskt",
+    illustration: "Animerad illustration",
+    illustration_theme: "Illustrationens tema",
+    theme_auto: "Automatiskt (sol)",
+    theme_day: "Dag",
+    theme_night: "Natt",
+    blocked_n: "{n} blockerade",
   },
   bg: {
     queries: "DNS заявки",
@@ -911,6 +989,12 @@ const STRINGS = {
     zoom_helper: "Превключва мини картата към пълната карта и обратно",
     language: "Език",
     lang_auto: "Автоматично",
+    illustration: "Анимирана илюстрация",
+    illustration_theme: "Тема на илюстрацията",
+    theme_auto: "Автоматично (слънце)",
+    theme_day: "Ден",
+    theme_night: "Нощ",
+    blocked_n: "{n} блокирани",
   },
   ru: {
     queries: "DNS-запросы",
@@ -973,6 +1057,12 @@ const STRINGS = {
     zoom_helper: "Переключает мини-карточку на полную и обратно",
     language: "Язык",
     lang_auto: "Автоматически",
+    illustration: "Анимированная иллюстрация",
+    illustration_theme: "Тема иллюстрации",
+    theme_auto: "Автоматически (солнце)",
+    theme_day: "День",
+    theme_night: "Ночь",
+    blocked_n: "{n} заблокировано",
   },
   uk: {
     queries: "DNS-запити",
@@ -1035,6 +1125,12 @@ const STRINGS = {
     zoom_helper: "Перемикає міні-картку на повну та назад",
     language: "Мова",
     lang_auto: "Автоматично",
+    illustration: "Анімована ілюстрація",
+    illustration_theme: "Тема ілюстрації",
+    theme_auto: "Автоматично (сонце)",
+    theme_day: "День",
+    theme_night: "Ніч",
+    blocked_n: "{n} заблоковано",
   },
   hu: {
     queries: "DNS-lekérdezések",
@@ -1097,6 +1193,12 @@ const STRINGS = {
     zoom_helper: "A minikártyát teljes kártyára váltja és vissza",
     language: "Nyelv",
     lang_auto: "Automatikus",
+    illustration: "Animált illusztráció",
+    illustration_theme: "Az illusztráció témája",
+    theme_auto: "Automatikus (nap)",
+    theme_day: "Nappal",
+    theme_night: "Éjszaka",
+    blocked_n: "{n} blokkolva",
   },
   sk: {
     queries: "DNS dopyty",
@@ -1159,6 +1261,12 @@ const STRINGS = {
     zoom_helper: "Prepne mini kartu na celú kartu a späť",
     language: "Jazyk",
     lang_auto: "Automaticky",
+    illustration: "Animovaná ilustrácia",
+    illustration_theme: "Téma ilustrácie",
+    theme_auto: "Automaticky (slnko)",
+    theme_day: "Deň",
+    theme_night: "Noc",
+    blocked_n: "{n} zablokovaných",
   },
   cs: {
     queries: "DNS dotazy",
@@ -1221,6 +1329,12 @@ const STRINGS = {
     zoom_helper: "Přepne minikartu na celou kartu a zpět",
     language: "Jazyk",
     lang_auto: "Automaticky",
+    illustration: "Animovaná ilustrace",
+    illustration_theme: "Motiv ilustrace",
+    theme_auto: "Automaticky (slunce)",
+    theme_day: "Den",
+    theme_night: "Noc",
+    blocked_n: "{n} zablokováno",
   },
   sl: {
     queries: "Poizvedbe DNS",
@@ -1283,6 +1397,12 @@ const STRINGS = {
     zoom_helper: "Preklopi mini kartico na celotno kartico in nazaj",
     language: "Jezik",
     lang_auto: "Samodejno",
+    illustration: "Animirana ilustracija",
+    illustration_theme: "Tema ilustracije",
+    theme_auto: "Samodejno (sonce)",
+    theme_day: "Dan",
+    theme_night: "Noč",
+    blocked_n: "{n} blokiranih",
   },
   lv: {
     queries: "DNS vaicājumi",
@@ -1345,6 +1465,12 @@ const STRINGS = {
     zoom_helper: "Pārslēdz mini karti uz pilno karti un atpakaļ",
     language: "Valoda",
     lang_auto: "Automātiski",
+    illustration: "Animēta ilustrācija",
+    illustration_theme: "Ilustrācijas motīvs",
+    theme_auto: "Automātiski (saule)",
+    theme_day: "Diena",
+    theme_night: "Nakts",
+    blocked_n: "{n} bloķēti",
   },
   el: {
     queries: "Ερωτήματα DNS",
@@ -1407,6 +1533,12 @@ const STRINGS = {
     zoom_helper: "Εναλλάσσει τη μίνι κάρτα στην πλήρη κάρτα και αντίστροφα",
     language: "Γλώσσα",
     lang_auto: "Αυτόματα",
+    illustration: "Κινούμενη εικονογράφηση",
+    illustration_theme: "Θέμα εικονογράφησης",
+    theme_auto: "Αυτόματα (ήλιος)",
+    theme_day: "Ημέρα",
+    theme_night: "Νύχτα",
+    blocked_n: "{n} αποκλεισμένα",
   },
 };
 
@@ -1479,6 +1611,133 @@ const headerIcon = (cls, brand) =>
   `<span class="logo ${cls}" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="${ICONS.shield}"/></svg>${
     brand ? `<span class="badge">${BRAND_BADGES[brand]}</span>` : ""
   }</span>`;
+
+// ---------------------------------------------------------------------------
+// Illustrated header
+// ---------------------------------------------------------------------------
+//
+// A 200 × 80 picture at the right of the 90 px banner, over a 10 px network strip edge to edge: DNS requests run
+// along a pipe through the shield. Protection on: the good ones (green) pass, the bad ones (red) are stopped at the
+// shield and the counter shows how many were blocked. Off or paused: every request goes through an open shield.
+// Unavailable: nothing flows. The picture carries no ids, so several cards on a page never clash.
+const DNSF_PACKETS = [
+  [0, "good", 20],
+  [1, "bad", 50],
+  [2, "good", 80],
+  [3, "good", 110],
+  [4, "bad", 140],
+  [5, "good", 160],
+];
+const dnsfSceneSvg = (st, count) => {
+  const grid = [
+    ...Array.from({ length: 19 }, (_, i) => `M${(i + 1) * 10} 0V80`),
+    ...Array.from({ length: 7 }, (_, i) => `M0 ${(i + 1) * 10}H200`),
+  ].join("");
+  const mark =
+    st === "on"
+      ? `<path class="dnsf-mark" d="M-7 -1l5 5l9 -10"/>`
+      : st === "off"
+        ? `<path class="dnsf-mark" d="M-8 -9L8 7"/>`
+        : `<path class="dnsf-mark" d="M-6 -1H6"/>`;
+  const packets = DNSF_PACKETS.map(
+    ([i, kind, x]) => `<rect class="dnsf-p p${i} ${kind}" style="--x:${x}px" x="12" y="41" width="8" height="6" rx="1.5"/>`
+  ).join("");
+  const tw = count.length * 4.4;
+  const counter =
+    st === "on" && count
+      ? `<g class="dnsf-count" transform="translate(190 64)"><rect x="${-tw - 13}" y="-6" width="${tw + 17}" height="12" rx="6"/><circle cx="${-tw - 7}" cy="0" r="2.6"/><path d="M${-tw - 8.8} 1.8l3.6 -3.6"/><text x="0" y="2.6" text-anchor="end">${esc(count)}</text></g>`
+      : "";
+  return `<svg class="dnsf-scene" viewBox="0 0 200 80" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+    <g>
+      <path class="dnsf-grid" d="${grid}"/>
+      <path class="dnsf-pipe" d="M14 44H190"/>
+      <g class="dnsf-pkts">${packets}</g>
+    </g>
+    <g transform="translate(120 44)"><path class="dnsf-shield" d="M0 -26L-18 -19V-6C-18 8 -9 18 0 22C9 18 18 8 18 -6V-19Z"/>${mark}</g>
+    ${st === "on" ? `<g class="dnsf-x" transform="translate(96 30)"><circle r="6"/><path d="M-3 -3l6 6M3 -3l-6 6"/></g>` : ""}
+    ${counter}
+  </svg><div class="g-net"></div>`;
+};
+
+// Night picture: forced by illustration_theme, else the sun below the horizon, else Home Assistant's dark mode.
+const dnsfIsNight = (hass, config) => {
+  const theme = config.illustration_theme;
+  if (theme === "night") return true;
+  if (theme === "day") return false;
+  const sun = hass?.states?.["sun.sun"];
+  if (sun && !NO_VALUE.has(String(sun.state))) return sun.state === "below_horizon";
+  return !!hass?.themes?.darkMode;
+};
+
+// The banner: background, picture, network strip, and the icon and titles on its left. Colours and animations day
+// and night; the requests stop moving under prefers-reduced-motion.
+const BANNER_STYLE = `
+  .banner { position: relative; overflow: hidden; height: 90px; color: #10283f; background: #eef2f8; }
+  .banner.night { color: #fff; background: #1f2633; }
+  .dnsf-scene { position: absolute; right: 0; bottom: 10px; width: var(--dnsf-scene-w, 200px); height: 80px;
+                -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%); mask-image: linear-gradient(90deg, transparent, #000 30%); }
+  .dnsf-grid { fill: none; stroke: #dde5ef; stroke-width: .6; } .night .dnsf-grid { stroke: #2a3446; }
+  .dnsf-pipe { fill: none; stroke: #c4cdd8; stroke-width: 6; stroke-linecap: round; } .night .dnsf-pipe { stroke: #3a4456; }
+  .st-na .dnsf-pipe { stroke-dasharray: 6 5; }
+  .dnsf-p.good { fill: #43a047; } .dnsf-p.bad { fill: #e5484d; }
+  /* At rest (no animation) the requests are spread along the pipe, the bad ones stopped at the shield. */
+  .dnsf-p { transform: translateX(var(--x)); animation: dnsf-pass 4s linear infinite; }
+  .st-on .dnsf-p.p1 { transform: translateX(62px); } .st-on .dnsf-p.p4 { transform: translateX(74px) translateY(-6px); opacity: .55; }
+  .dnsf-p.p1 { animation-delay: -.66s; } .dnsf-p.p2 { animation-delay: -1.33s; } .dnsf-p.p3 { animation-delay: -2s; }
+  .dnsf-p.p4 { animation-delay: -2.66s; } .dnsf-p.p5 { animation-delay: -3.33s; }
+  .st-on .dnsf-p.bad { animation-name: dnsf-block; }
+  .st-na .dnsf-p { display: none; }
+  .dnsf-shield { fill: #dbeafe; stroke: #2f80ed; stroke-width: 1.6; } .night .dnsf-shield { fill: #1d3a5e; }
+  .dnsf-mark { fill: none; stroke: #2f80ed; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .st-off .dnsf-shield { fill: #fdf0d5; stroke: #e09a1a; stroke-dasharray: 4 3; } .night.st-off .dnsf-shield { fill: #4a3a18; }
+  .st-off .dnsf-mark { stroke: #e09a1a; }
+  .st-na .dnsf-shield { fill: #e3e8ee; stroke: #9aa3ad; } .night.st-na .dnsf-shield { fill: #2a3140; stroke: #6b7482; }
+  .st-na .dnsf-mark { stroke: #9aa3ad; } .night.st-na .dnsf-mark { stroke: #6b7482; }
+  .dnsf-x circle { fill: #e5484d; } .dnsf-x path { stroke: #fff; stroke-width: 1.6; stroke-linecap: round; }
+  .dnsf-x { animation: dnsf-blink 2s ease-in-out infinite; }
+  .dnsf-count rect { fill: #e5484d; } .dnsf-count circle, .dnsf-count path { fill: none; stroke: #fff; stroke-width: 1; }
+  .dnsf-count text { fill: #fff; font: 600 7.5px/1 Roboto, "Segoe UI", Helvetica, Arial, sans-serif; font-variant-numeric: tabular-nums; }
+  /* The network strip: a 10 px cable edge to edge, its light pulses dashed along it; down when unavailable. */
+  .g-net { position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: #1e3a5f;
+           background-image: repeating-linear-gradient(90deg, #4fc3f7 0 14px, transparent 14px 22px); background-size: 100% 2px;
+           background-repeat: no-repeat; background-position: 0 50%; box-shadow: inset 0 2px 0 #2f5a8a; }
+  .night .g-net { background-color: #0f1d33; box-shadow: inset 0 2px 0 #1e3a5f; }
+  .st-na .g-net { background-color: #5a6370; background-image: repeating-linear-gradient(90deg, #e5484d 0 6px, transparent 6px 16px);
+                  box-shadow: inset 0 2px 0 #77808c; }
+  .night.st-na .g-net { background-color: #2c323b; box-shadow: inset 0 2px 0 #3a414c; }
+  @keyframes dnsf-pass { from { transform: translateX(0); } to { transform: translateX(170px); } }
+  @keyframes dnsf-block {
+    0% { transform: translateX(0); opacity: 1; }
+    40% { transform: translateX(76px); opacity: 1; }
+    50% { transform: translateX(76px) translateY(-14px); opacity: 0; }
+    100% { transform: translateX(76px) translateY(-14px); opacity: 0; }
+  }
+  @keyframes dnsf-blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) {
+    .dnsf-p, .dnsf-x { animation: none !important; }
+  }
+  /* The icon (40 px, status colour, brand badge) and the titles, on the background at the left of the picture. */
+  .htext { position: absolute; left: 12px; top: 6px; bottom: 16px; right: calc(var(--dnsf-scene-w, 200px) + 4px); display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .htext .brand-link { align-self: center; }
+  .htext .titles { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+  .htext .name { font-size: 16px; font-weight: 600; }
+  .htext .line { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; min-width: 0; }
+  .htext .line .chip { flex: 0 1 auto; min-width: 0; background: rgba(255,255,255,.72); color: color-mix(in srgb, var(--c) 55%, #10283f); }
+  .night .htext .line .chip { background: rgba(10,20,40,.5); color: color-mix(in srgb, var(--c) 45%, #fff); }
+  .htext .sub { color: #3d5670; flex: 0 1 auto; min-width: 0; }
+  .night .htext .sub { color: rgba(255,255,255,.8); }
+  :host([hide-subtitle]) .htext .line .sub { display: none; }
+  .banner .logo { align-self: center; background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(16,40,63,.1); }
+  .banner.night .logo { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+  .banner .logo .badge { box-shadow: 0 0 0 1px rgba(13,42,69,.16), 0 1px 3px rgba(13,42,69,.18); }
+  .banner .zoom { position: absolute; top: 6px; right: 6px; margin: 0; color: #10283f; background: rgba(255,255,255,.55); }
+  .banner.night .zoom { color: #fff; background: rgba(10,20,40,.45); }
+  .banner .zoom:hover { background: rgba(255,255,255,.8); color: #10283f; }
+  .banner.night .zoom:hover { background: rgba(10,20,40,.7); color: #fff; }
+  .banner ~ .content { padding-top: 12px; }
+  /* Narrow card: no room for the picture beside the text, the background and the strip stay. */
+  @container (max-width: 300px) { .dnsf-scene { display: none; } .htext { right: 36px; } }
+`;
 
 // ---------------------------------------------------------------------------
 // Entity discovery (entity and device registries)
@@ -2150,7 +2409,7 @@ class DnsFilterBase extends HTMLElement {
   // What the render depends on: language, dark mode, the registries and the states of the instance's entities.
   _signature() {
     const h = this._hass;
-    const sig = [h.language, h.locale?.language, h.themes?.darkMode, h.entities, h.devices];
+    const sig = [h.language, h.locale?.language, h.themes?.darkMode, h.states?.["sun.sun"]?.state, h.entities, h.devices];
     const dev = this._dev();
     sig.push(dev);
     if (dev.deviceId) for (const id of Object.values(dev.e)) sig.push(h.states[id]);
@@ -2197,19 +2456,40 @@ class DnsFilterBase extends HTMLElement {
     const sub = [BRAND_NAMES[dev.brand], !this._compactHeader() && versions[0] ? versions[0].version : null].filter(Boolean).join(" · ");
     const href = webUrl(c.url) || webUrl(dev.info?.url) || BRAND_SITES[dev.brand];
     const title = webUrl(c.url) || webUrl(dev.info?.url) ? this._t("open_ui") : this._t("open_brand").replace("{brand}", BRAND_NAMES[dev.brand]);
+    const link = `<a class="brand-link" href="${esc(href)}" target="_blank" rel="noopener noreferrer" title="${esc(title)}">${headerIcon(status?.cls ?? "na", dev.brand)}</a>`;
+    const chip = status
+      ? `<span class="chip clickable ${status.cls}" role="button" tabindex="0" data-action="protection" title="${esc(this._statusAction(dev, status))}" aria-label="${esc(
+          status.text
+        )}"><span class="dot"></span><span class="txt">${esc(status.text)}</span></span>`
+      : "";
+    if (c.illustration !== false) {
+      // The illustrated banner: the requests through the shield, the protection state and the blocked count.
+      const st = !status || NO_VALUE.has(status.state) ? "na" : status.state === "on" ? "on" : "off";
+      const blocked = this._n("blocked");
+      const short = blocked === null ? "" : fmtShort(blocked, this._loc());
+      // The blocked count, and on the full card the single AdGuard Home version (Pi-hole's are in the footer).
+      const count = [
+        blocked === null ? null : this._t("blocked_n").replace("{n}", this._compactHeader() ? short : fmtInt(blocked, this._loc())),
+        dev.brand === "adguard" && !this._compactHeader() && versions[0] ? versions[0].version : null,
+      ]
+        .filter(Boolean)
+        .join(" · ");
+      const cls = `banner st-${st}${dnsfIsNight(this._hass, c) ? " night" : ""}`;
+      return `
+      <div class="${cls}">${dnsfSceneSvg(st, short)}
+        <div class="htext">${link}<div class="titles"><div class="name">${esc(name)}</div><div class="line">${chip}${
+          count ? `<span class="sub">${esc(count)}</span>` : ""
+        }</div></div></div>
+        ${this._zoomButton()}
+      </div>${this._dialogHtml()}`;
+    }
     return `
       <div class="header">
-        <a class="brand-link" href="${esc(href)}" target="_blank" rel="noopener noreferrer" title="${esc(title)}">${headerIcon(status?.cls ?? "na", dev.brand)}</a>
+        ${link}
         <div class="titles">
           <div class="name">${esc(name)}</div>
           <div class="sub">${esc(sub)}</div>
-          ${
-            status
-              ? `<span class="chip clickable ${status.cls}" role="button" tabindex="0" data-action="protection" title="${esc(this._statusAction(dev, status))}" aria-label="${esc(
-                  status.text
-                )}"><span class="dot"></span><span class="txt">${esc(status.text)}</span></span>`
-              : ""
-          }
+          ${chip}
         </div>
         ${this._zoomButton()}
       </div>${this._dialogHtml()}`;
@@ -2217,6 +2497,11 @@ class DnsFilterBase extends HTMLElement {
 
   _compactHeader() {
     return false;
+  }
+
+  // The banner's styles, only when it is shown.
+  _bannerStyle() {
+    return this._config.illustration === false ? "" : BANNER_STYLE;
   }
 
   _zoomButton() {
@@ -2385,7 +2670,7 @@ class DnsFilterCard extends DnsFilterBase {
     if (c.show_details !== false) parts.push(this._detailsHtml(dev));
     if (c.show_switches !== false) parts.push(this._switchesHtml(dev));
     parts.push(this._footHtml(dev));
-    return `<style>${BASE_STYLE}${FULL_STYLE}</style>
+    return `<style>${BASE_STYLE}${FULL_STYLE}${this._bannerStyle()}</style>
       <ha-card>
         ${this._header(dev)}
         <div class="content">${parts.filter(Boolean).join("")}</div>
@@ -2507,6 +2792,8 @@ const MINI_STYLE = `
   .foot .txt { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .foot .icon { width: 14px; height: 14px; }
   .foot > .upd { flex: 0 1 auto; min-width: 0; overflow: hidden; color: color-mix(in srgb, var(--c) 40%, var(--primary-text-color, #212121)); font-weight: 500; }
+  /* The banner's picture, narrower: the pipe starts further right, the shield and the counter stay. */
+  .banner { --dnsf-scene-w: 150px; }
   /* Narrow mini card (6 columns on a phone): one statistic per line. */
   @container (max-width: 240px) { .mini-stats { grid-template-columns: minmax(0, 1fr); } .ms { flex-direction: row; align-items: center; justify-content: space-between; } }
 `;
@@ -2605,7 +2892,7 @@ class DnsFilterMiniCard extends DnsFilterCard {
         )}<span class="txt">${esc(u.short)}</span></span>`
       );
     const pct = ratio?.value;
-    return `<style>${BASE_STYLE}${MINI_STYLE}</style>
+    return `<style>${BASE_STYLE}${MINI_STYLE}${this._bannerStyle()}</style>
       <ha-card>
         ${this._header(dev)}
         <div class="content">
@@ -2643,6 +2930,10 @@ class DnsFilterEditorBase extends HTMLElement {
       { name: "title", selector: { text: {} } },
       { name: "url", selector: { text: { type: "url" } } },
       { type: "grid", name: "", schema: this.constructor.toggles.map((name) => ({ name, selector: { boolean: {} } })) },
+      {
+        name: "illustration_theme",
+        selector: { select: { mode: "dropdown", options: ["auto", "day", "night"].map((v) => ({ value: v, label: tr(`theme_${v}`) })) } },
+      },
       {
         name: "language",
         selector: {
@@ -2690,7 +2981,8 @@ class DnsFilterEditorBase extends HTMLElement {
         const config = { ...ev.detail.value };
         for (const [k, v] of Object.entries(config)) {
           // Keep the YAML minimal: drop empty values and toggles left at their default (true).
-          if (v === "" || v === undefined || v === null || (this.constructor.toggles.includes(k) && v === true)) delete config[k];
+          if (v === "" || v === undefined || v === null || (this.constructor.toggles.includes(k) && v === true) || (k === "illustration_theme" && v === "auto"))
+            delete config[k];
         }
         this._config = config;
         this.dispatchEvent(new CustomEvent("config-changed", { detail: { config }, bubbles: true, composed: true }));
@@ -2699,6 +2991,7 @@ class DnsFilterEditorBase extends HTMLElement {
     }
     const data = { ...this._config };
     for (const name of this.constructor.toggles) if (data[name] === undefined) data[name] = true;
+    if (!data.illustration_theme) data.illustration_theme = "auto";
     // Without device (hand-written YAML), show the instance the card shows: saving the form then keeps it.
     if (!data.device && this._hass) data.device = discover(this._hass, "").deviceId || undefined;
     // Schema before data: the device combo box resolves its label from the options, so they must be
@@ -2711,7 +3004,7 @@ class DnsFilterEditorBase extends HTMLElement {
 
 class DnsFilterCardEditor extends DnsFilterEditorBase {
   static get toggles() {
-    return ["show_title", "show_subtitle", "show_stats", "show_details", "show_switches", "show_history", "show_versions"];
+    return ["illustration", "show_title", "show_subtitle", "show_stats", "show_details", "show_switches", "show_history", "show_versions"];
   }
 }
 

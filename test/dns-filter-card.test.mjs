@@ -6,9 +6,9 @@ const eq = (a, b, msg) => assert.deepEqual(JSON.parse(JSON.stringify(a)), b, msg
 import { load } from "./load.mjs";
 import { adguard, pihole, technitium } from "../scripts/mock-states.mjs";
 
-const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, DnsFilterCardEditor, DnsFilterMiniCardEditor, STRINGS, spark, histPoints } = load(
+const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, DnsFilterCardEditor, DnsFilterMiniCardEditor, STRINGS, spark, histPoints, dnsfIsNight, dnsfSceneSvg } = load(
   "dns-filter-card.js",
-  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "DnsFilterCardEditor", "DnsFilterMiniCardEditor", "STRINGS", "spark", "histPoints"]
+  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "DnsFilterCardEditor", "DnsFilterMiniCardEditor", "STRINGS", "spark", "histPoints", "dnsfIsNight", "dnsfSceneSvg"]
 );
 
 const hassOf = (...mocks) => {
@@ -356,7 +356,7 @@ test("editors: the mini card offers every option of the full card its detailed v
   };
   const full = schemaOf(DnsFilterCardEditor);
   const mini = schemaOf(DnsFilterMiniCardEditor);
-  for (const n of ["device", "title", "url", "show_title", "show_subtitle", "show_stats", "show_details", "show_switches", "show_history", "show_versions", "language"]) {
+  for (const n of ["device", "title", "url", "illustration", "illustration_theme", "show_title", "show_subtitle", "show_stats", "show_details", "show_switches", "show_history", "show_versions", "language"]) {
     assert.match(full, new RegExp(`"${n}"`), `full: ${n}`);
     assert.match(mini, new RegExp(`"${n}"`), `mini: ${n}`);
   }
@@ -366,4 +366,28 @@ test("editors: the mini card offers every option of the full card its detailed v
   assert.doesNotMatch(full + mini, /"entities"/);
   // Every option of the editors has a label in every language.
   for (const [code, strings] of Object.entries(STRINGS)) for (const n of DnsFilterMiniCardEditor.toggles) assert.ok(strings[n], `${code}: ${n}`);
+});
+
+test("the illustration follows illustration_theme, then the sun, then the dark mode", () => {
+  const sun = (state) => ({ states: { "sun.sun": { state } }, themes: { darkMode: false } });
+  assert.equal(dnsfIsNight(sun("below_horizon"), {}), true);
+  assert.equal(dnsfIsNight(sun("above_horizon"), {}), false);
+  assert.equal(dnsfIsNight(sun("below_horizon"), { illustration_theme: "day" }), false);
+  assert.equal(dnsfIsNight(sun("above_horizon"), { illustration_theme: "night" }), true);
+  assert.equal(dnsfIsNight({ states: {}, themes: { darkMode: true } }, {}), true);
+  assert.equal(dnsfIsNight(sun("unavailable"), {}), false);
+  for (const [code, strings] of Object.entries(STRINGS))
+    for (const k of ["illustration_theme", "theme_auto", "theme_day", "theme_night", "blocked_n"]) assert.ok(strings[k], `${code}: ${k}`);
+});
+
+test("the banner picture shows the protection state and the blocked count", () => {
+  const on = dnsfSceneSvg("on", "23.9k");
+  assert.match(on, /dnsf-x/);
+  assert.match(on, /23\.9k/);
+  assert.match(on, /g-net/);
+  const off = dnsfSceneSvg("off", "23.9k");
+  assert.doesNotMatch(off, /dnsf-x|dnsf-count/);
+  assert.doesNotMatch(dnsfSceneSvg("na", ""), /dnsf-x|dnsf-count/);
+  // No ids: several cards on one page never clash.
+  assert.doesNotMatch(on, /\sid="/);
 });

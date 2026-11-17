@@ -40,6 +40,7 @@ The cards are built on top of the [AdGuard Home](https://www.home-assistant.io/i
 - Versions in the footer (Core, FTL and web interface for Pi-hole) and an « Update available » chip for each pending update (click for its more-info dialog, where it can be installed)
 - Detail button on the mini card (top right): it switches the mini card to the full card's content and back; a click anywhere outside the card brings the compact view back
 - Click any value to open its Home Assistant history (more-info dialog)
+- Animated illustrated header (90 px, full and mini card): DNS requests run along a pipe through a shield over a network strip — protection on, the good requests pass and the bad ones are stopped at the shield, with the blocked count; off or paused, every request goes through an open amber shield; unavailable, nothing flows and the strip turns red. Night picture after sunset (`sun.sun`) or in dark mode, `illustration_theme` forces day or night, `illustration: false` brings back the classic header; animations stop under « reduce motion »
 - Round shield icon next to the name, in the status color, with the AdGuard or Pi-hole mark as a badge: a click opens the web interface of the instance (or the project's website when Home Assistant knows no address)
 - Visual editor in the dashboard UI for both cards (no YAML needed)
 - Light and dark mode, English, French, German, Spanish, Serbian (Cyrillic and Latin), Italian, Dutch, European Portuguese, Polish, Romanian, Danish, Swedish, Bulgarian, Russian, Ukrainian, Hungarian, Slovak, Czech, Slovenian, Latvian and Greek
@@ -112,6 +113,8 @@ type: custom:dns-filter-card
 device: 3f2a9c1e7b6d4a8f9e0c1b2a3d4e5f67
 title: AdGuard Home
 url: http://192.168.1.2:3000
+illustration: true
+illustration_theme: auto
 show_stats: true
 show_details: true
 show_switches: true
@@ -135,6 +138,8 @@ language: fr
 |---|---|---|---|
 | `device` | both | First instance found | Instance to display (only needed with several): the id of its device in Home Assistant — pick it in the visual editor |
 | `title` | both | Instance name | Card title |
+| `illustration` | both | `true` | Animated illustrated header (shield filtering the DNS requests); `false` for the classic header |
+| `illustration_theme` | both | `auto` | Picture of the header: `auto` (night when `sun.sun` is below the horizon, else Home Assistant's dark mode), `day` or `night` |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle under the title |
 | `url` | both | Device configuration URL | Web interface, opened by a click on the header icon. By default the configuration URL of the device in Home Assistant (the « Visit » link of the device page), set by both integrations; without one, the project's website |
