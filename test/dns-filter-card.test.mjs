@@ -374,7 +374,7 @@ test("editors: the mini card offers every option of the full card its detailed v
   for (const [code, strings] of Object.entries(STRINGS)) for (const n of DnsFilterMiniCardEditor.toggles) assert.ok(strings[n], `${code}: ${n}`);
 });
 
-test("the illustration follows illustration_theme, then the sun, then the dark mode", () => {
+test("the illustration follows illustration_theme, then the sun below the horizon or the dark mode", () => {
   const sun = (state) => ({ states: { "sun.sun": { state } }, themes: { darkMode: false } });
   assert.equal(dnsfIsNight(sun("below_horizon"), {}), true);
   assert.equal(dnsfIsNight(sun("above_horizon"), {}), false);
@@ -382,6 +382,10 @@ test("the illustration follows illustration_theme, then the sun, then the dark m
   assert.equal(dnsfIsNight(sun("above_horizon"), { illustration_theme: "night" }), true);
   assert.equal(dnsfIsNight({ states: {}, themes: { darkMode: true } }, {}), true);
   assert.equal(dnsfIsNight(sun("unavailable"), {}), false);
+  const darkSunUp = { states: { "sun.sun": { state: "above_horizon" } }, themes: { darkMode: true } };
+  assert.equal(dnsfIsNight(darkSunUp, {}), true, "dark theme while the sun is up: night");
+  assert.equal(dnsfIsNight(darkSunUp, { illustration_theme: "day" }), false);
+  assert.equal(dnsfIsNight({ states: { "sun.sun": { state: "unavailable" } }, themes: { darkMode: true } }, {}), true);
   for (const [code, strings] of Object.entries(STRINGS))
     for (const k of ["illustration_theme", "theme_auto", "theme_day", "theme_night", "blocked_n"]) assert.ok(strings[k], `${code}: ${k}`);
 });

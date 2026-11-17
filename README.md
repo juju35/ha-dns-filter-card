@@ -139,7 +139,7 @@ language: fr
 | `device` | both | First instance found | Instance to display (only needed with several): the id of its device in Home Assistant — pick it in the visual editor |
 | `title` | both | Instance name | Card title |
 | `illustration` | both | `true` | Animated illustrated header (shield filtering the DNS requests); `false` for the classic header |
-| `illustration_theme` | both | `auto` | Picture of the header: `auto` (night when `sun.sun` is below the horizon, else Home Assistant's dark mode), `day` or `night` |
+| `illustration_theme` | both | `auto` | Picture of the header: `auto` (night when `sun.sun` is below the horizon or Home Assistant's theme is dark), `day` or `night` |
 | `show_title` | both | `true` | Show the title in the header (e.g. `false` under a section heading of your own) |
 | `show_subtitle` | both | `true` | Show the subtitle under the title |
 | `url` | both | Device configuration URL | Web interface, opened by a click on the header icon. By default the configuration URL of the device in Home Assistant (the « Visit » link of the device page), set by both integrations; without one, the project's website |

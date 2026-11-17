@@ -1659,14 +1659,12 @@ const dnsfSceneSvg = (st, count) => {
   </svg><div class="g-net"></div>`;
 };
 
-// Night picture: forced by illustration_theme, else the sun below the horizon, else Home Assistant's dark mode.
+// Night picture: forced by illustration_theme, else the sun below the horizon or Home Assistant's dark theme.
 const dnsfIsNight = (hass, config) => {
   const theme = config.illustration_theme;
   if (theme === "night") return true;
   if (theme === "day") return false;
-  const sun = hass?.states?.["sun.sun"];
-  if (sun && !NO_VALUE.has(String(sun.state))) return sun.state === "below_horizon";
-  return !!hass?.themes?.darkMode;
+  return hass?.states?.["sun.sun"]?.state === "below_horizon" || !!hass?.themes?.darkMode;
 };
 
 // The banner: background, picture, network strip, and the icon and titles on its left. Colours and animations day
