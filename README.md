@@ -154,6 +154,28 @@ language: fr
 
 ## Screenshots
 
+### Animated captures
+
+The banner of the full card in its states, in a loop of 4 seconds (with `prefers-reduced-motion`, everything stays still).
+
+Protection on: the good requests (green) pass, the bad ones (red) are stopped at the shield and the red cross blinks:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/anim-protection-on.gif" alt="protection on animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/anim-protection-on-dark.gif" alt="protection on animation, dark theme" width="400"> |
+
+Protection off or paused: every request goes through the open amber shield:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/anim-protection-off.gif" alt="protection off animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/anim-protection-off-dark.gif" alt="protection off animation, dark theme" width="400"> |
+
+Night picture:
+
+| Light | Dark |
+|---|---|
+| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/anim-night.gif" alt="night animation" width="400"> | <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/screenshots/anim-night-dark.gif" alt="night animation, dark theme" width="400"> |
+
 ### <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/adguard.svg" alt="" width="24"> AdGuard Home
 
 | Light | Dark |
@@ -206,7 +228,7 @@ npm install
 npm run build          # bundles src/dns-filter-card.js into dist/dns-filter-card.js
 npm run check          # builds and checks the card (run in CI)
 npm test               # unit tests (node --test)
-npm run screenshots    # renders the cards with mock data (scripts/mock-states.mjs) into screenshots/
+npm run screenshots    # renders the cards with mock data (scripts/mock-states.mjs) into screenshots/, and the animated GIFs (needs ffmpeg)
 ```
 
 `dist/` is not committed: `npm run build` creates it locally, CI builds it on every push, and the release workflow attaches the built file to the release, which is where the Marketplace installs it from.

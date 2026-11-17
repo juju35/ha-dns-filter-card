@@ -5,6 +5,7 @@
 ### Features
 - **Animated illustrated header** on both cards (90 px): the DNS requests run along a pipe through a shield, over a 10 px network strip edge to edge. Protection on: the good requests pass, the bad ones are stopped at the shield, with the blocked count; off or paused: every request goes through an open amber shield; unavailable: nothing flows and the strip turns red. The round icon keeps the status colour and the AdGuard Home / Pi-hole / Technitium badge; the status pill stays clickable.
 - Night picture when `sun.sun` is below the horizon (else in dark mode); `illustration_theme: day | night` forces it, `illustration: false` brings back the classic header. Both options are in the visual editors. Animations stop under « reduce motion ».
+- README: **animated captures** (GIF, light and dark) of the banner: protection on, protection off and night.
 
 ## 1.3.2 - 2026-11-14
 
