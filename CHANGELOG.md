@@ -1,6 +1,11 @@
 # Changelog
 - **Status pill on the title line** of every header (illustrated or classic, full and mini cards): right after the title, in the shield icon's colour, only when the whole title and its whole label fit there, otherwise on its own line under the subtitle (then kept to one line), and only its dot when even that does not fit in the banner or the card is 200 px wide or less (measured on the rendered card, so that it fits in every language); still a blocking control. The mini card shows it in its header instead of its footer. The mini card's expand/collapse button is a 24 px frosted round button in the banner's top-right corner.
 
+## 1.4.1 - 2026-11-18
+
+### Fixes
+- Illustrated header: `auto` now follows the Home Assistant theme alone — a light theme keeps the day picture after sunset, a dark theme still shows the night one.
+
 ## 1.4.0 - 2026-11-17
 
 ### Features

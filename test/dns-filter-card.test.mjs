@@ -374,9 +374,10 @@ test("editors: the mini card offers every option of the full card its detailed v
   for (const [code, strings] of Object.entries(STRINGS)) for (const n of DnsFilterMiniCardEditor.toggles) assert.ok(strings[n], `${code}: ${n}`);
 });
 
-test("the illustration follows illustration_theme, then the sun below the horizon or the dark mode", () => {
+test("the illustration follows illustration_theme, then the dark mode alone", () => {
   const sun = (state) => ({ states: { "sun.sun": { state } }, themes: { darkMode: false } });
-  assert.equal(dnsfIsNight(sun("below_horizon"), {}), true);
+  // A light theme keeps the day picture after sunset.
+  assert.equal(dnsfIsNight(sun("below_horizon"), {}), false);
   assert.equal(dnsfIsNight(sun("above_horizon"), {}), false);
   assert.equal(dnsfIsNight(sun("below_horizon"), { illustration_theme: "day" }), false);
   assert.equal(dnsfIsNight(sun("above_horizon"), { illustration_theme: "night" }), true);
