@@ -125,7 +125,7 @@ test("Pi-hole full card shows the domains tile, the pause button and the three v
   assert.match(paused, /Paused/);
 });
 
-test("mini card: three short tiles, the ratio bar and the status in the footer", () => {
+test("mini card: three short tiles, the ratio bar and the status pill after the title", () => {
   const el = new DnsFilterMiniCard();
   el._config = {};
   el._hass = hassOf(pihole);
@@ -133,7 +133,13 @@ test("mini card: three short tiles, the ratio bar and the status in the footer",
   assert.match(html, />101k</);
   assert.match(html, />24k</);
   assert.match(html, /width:23\.74%/);
-  assert.match(html, /data-key="status"[^>]*>.*Protection on/);
+  assert.match(html, /<div class="trow"><div class="name">[^<]+<\/div><span class="chip clickable ok" role="button" tabindex="0" data-action="protection"[^>]*><span class="dot"><\/span><span class="txt">Protection on<\/span>/);
+  assert.doesNotMatch(html, /data-key="status"/, "not repeated in the footer");
+  for (const illustration of [false, true]) {
+    el._config = { illustration };
+    assert.match(el._render(), /class="chip clickable ok"[^>]*data-action="protection"/, `pill in the header (illustration: ${illustration})`);
+  }
+  el._config = {};
   assert.doesNotMatch(html, /Domains on lists/);
   // Zoomed: the full card's content.
   el._zoomed = true;

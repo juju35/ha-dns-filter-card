@@ -1719,24 +1719,37 @@ const BANNER_STYLE = `
   /* The icon (40 px, status colour, brand badge) and the titles, on the background at the left of the picture. */
   .htext { position: absolute; left: 12px; top: 6px; bottom: 16px; right: calc(var(--dnsf-scene-w, 200px) + 4px); display: flex; align-items: center; gap: 10px; min-width: 0; }
   .htext .brand-link { align-self: center; }
-  .htext .titles { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+  .htext .titles { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; container: dnsf-titles / inline-size; }
+  .htext .titles > * { max-width: 100%; }
   .htext .name { font-size: 16px; font-weight: 600; }
   .htext .line { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; min-width: 0; }
-  .htext .line .chip { flex: 0 1 auto; min-width: 0; background: rgba(255,255,255,.72); color: color-mix(in srgb, var(--c) 55%, #10283f); }
-  .night .htext .line .chip { background: rgba(10,20,40,.5); color: color-mix(in srgb, var(--c) 45%, #fff); }
+  /* The status pill sits on the title line, right after the title: the title ellipsises first (never under 4
+     characters), the pill keeps its whole label. Without room for both, the pill goes on its own line under the
+     subtitle; on a very narrow card only its dot is left (the label stays in its tooltip and aria-label). */
+  .htext .trow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .htext .trow .name { flex: 0 1 auto; min-width: 4ch; }
+  .htext .trow .chip { flex: none; max-width: calc(100% - 4ch - 8px); overflow: hidden; box-sizing: border-box; line-height: 16px; }
+  @container dnsf-titles (max-width: 170px) {
+    .htext .trow { display: contents; }
+    .htext .trow .name, .htext .trow .chip { max-width: 100%; }
+    .htext .trow .chip { order: 3; }
+  }
+  .htext .chip { background: color-mix(in srgb, var(--c) 18%, rgba(255,255,255,.78)); color: color-mix(in srgb, var(--c) 45%, #0d2a45); }
+  .night .htext .chip { background: color-mix(in srgb, var(--c) 30%, rgba(8,18,38,.55)); color: color-mix(in srgb, var(--c) 35%, #ffffff); }
   .htext .sub { color: #3d5670; flex: 0 1 auto; min-width: 0; }
   .night .htext .sub { color: rgba(255,255,255,.8); }
   :host([hide-subtitle]) .htext .line .sub { display: none; }
   .banner .logo { align-self: center; background: rgba(255,255,255,.62); box-shadow: inset 0 0 0 1px rgba(16,40,63,.1); }
   .banner.night .logo { background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
   .banner .logo .badge { box-shadow: 0 0 0 1px rgba(13,42,69,.16), 0 1px 3px rgba(13,42,69,.18); }
-  .banner .zoom { position: absolute; top: 6px; right: 6px; margin: 0; color: #10283f; background: rgba(255,255,255,.55); }
-  .banner.night .zoom { color: #fff; background: rgba(10,20,40,.45); }
-  .banner .zoom:hover { background: rgba(255,255,255,.8); color: #10283f; }
-  .banner.night .zoom:hover { background: rgba(10,20,40,.7); color: #fff; }
+  .banner .zoom { position: absolute; z-index: 2; top: 5px; right: 5px; margin: 0; width: 24px; height: 24px; color: #33506b;
+                  background: rgba(255,255,255,.55); box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); backdrop-filter: blur(4px); }
+  .banner.night .zoom { color: #fff; background: rgba(255,255,255,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2); }
+  .banner .zoom:hover { background: rgba(255,255,255,.75); color: #33506b; }
+  .banner.night .zoom:hover { background: rgba(255,255,255,.22); color: #fff; }
   .banner ~ .content { padding-top: 12px; }
   /* Narrow card: no room for the picture beside the text, the background and the strip stay. */
-  @container (max-width: 300px) { .dnsf-scene { display: none; } .htext { right: 36px; } }
+  @container dnsf-card (max-width: 300px) { .dnsf-scene { display: none; } .htext { right: 36px; } }
 `;
 
 // ---------------------------------------------------------------------------
@@ -2055,7 +2068,7 @@ const histPoints = (rows) =>
 const BASE_STYLE = `
   :host { --dnsf-accent: #4f7fd9; --dnsf-ok: var(--success-color, #43a047); --dnsf-warn: var(--warning-color, #ffa600);
           --dnsf-crit: var(--error-color, #db4437); --dnsf-na: var(--disabled-text-color, #9e9e9e); --dnsf-info: var(--info-color, #039be5); }
-  ha-card { overflow: hidden; position: relative; container-type: inline-size; }
+  ha-card { overflow: hidden; position: relative; container: dnsf-card / inline-size; }
   /* A size container has no width of its own content: in a parent that sizes to its content (inline-block, grid auto
      column) the card would fall to a few pixels. This empty, zero-height grid gives it a natural (max-content) width
      of 400 px without any minimum, so it still shrinks to a narrow column. */
@@ -2074,11 +2087,17 @@ const BASE_STYLE = `
   .header { display: flex; align-items: center; gap: 10px; padding: 12px 12px 8px; }
   /* The status pill sits right of the title, centred on the title line; the subtitle keeps the title's width. */
   .titles { flex: 1 1 0; min-width: 0; display: grid; grid-template-columns: minmax(48px, 1fr) auto; }
-  :host([hide-title]) .titles > .name, :host([hide-subtitle]) .titles > .sub { display: none; }
+  :host([hide-title]) .titles .name, :host([hide-subtitle]) .titles > .sub { display: none; }
   .titles > .name, .titles > .sub { grid-column: 1; }
   .titles > .chip { grid-area: 1 / 2; align-self: center; margin-left: 10px; white-space: nowrap; min-width: 0; max-width: 100%;
                     overflow: hidden; box-sizing: border-box; }
-  @container (max-width: 200px) { .chip .txt { display: none; } }
+  /* Not enough room beside the title: the pill goes on its own line, under the subtitle. */
+  .header .titles { container: dnsf-head / inline-size; }
+  @container dnsf-head (max-width: 170px) {
+    .titles { grid-template-columns: minmax(0, 1fr); }
+    .titles > .chip { grid-area: auto / 1; justify-self: start; margin: 3px 0 0; }
+  }
+  @container dnsf-card (max-width: 200px) { .chip .txt { display: none; } }
   .logo { height: 40px; width: 40px; flex: none; align-self: flex-start; border-radius: 50%; display: grid; place-items: center;
           position: relative; color: var(--c, var(--dnsf-ok)); background: color-mix(in srgb, var(--c, var(--dnsf-ok)) 16%, transparent); }
   .logo svg { width: 24px; height: 24px; fill: currentColor; }
@@ -2477,9 +2496,9 @@ class DnsFilterBase extends HTMLElement {
       const cls = `banner st-${st}${dnsfIsNight(this._hass, c) ? " night" : ""}`;
       return `
       <div class="${cls}">${dnsfSceneSvg(st, short)}
-        <div class="htext">${link}<div class="titles"><div class="name">${esc(name)}</div><div class="line">${chip}${
-          count ? `<span class="sub">${esc(count)}</span>` : ""
-        }</div></div></div>
+        <div class="htext">${link}<div class="titles"><div class="trow"><div class="name">${esc(name)}</div>${chip}</div>${
+          count ? `<div class="line"><span class="sub">${esc(count)}</span></div>` : ""
+        }</div></div>
         ${this._zoomButton()}
       </div>${this._dialogHtml()}`;
     }
@@ -2639,7 +2658,7 @@ const FULL_STYLE = `
   .foot .versions span b { font-weight: 500; color: var(--primary-text-color); }
   .foot > .chip { flex: 0 1 auto; min-width: 0; }
   .foot .actions { display: flex; gap: 4px; margin-left: auto; }
-  @container (max-width: 240px) { .stats { grid-template-columns: minmax(0, 1fr); } }
+  @container dnsf-card (max-width: 240px) { .stats { grid-template-columns: minmax(0, 1fr); } }
 `;
 
 class DnsFilterCard extends DnsFilterBase {
@@ -2770,8 +2789,6 @@ class DnsFilterCard extends DnsFilterBase {
 // ---------------------------------------------------------------------------
 
 const MINI_STYLE = `
-  /* The status shows in the footer. */
-  .titles > .chip { display: none; }
   .content { padding: 0 12px 12px; display: flex; flex-direction: column; gap: 8px; }
   .mini-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
   .ms { position: relative; overflow: hidden; isolation: isolate; border-radius: 10px; padding: 6px 8px; min-width: 0;
@@ -2788,14 +2805,13 @@ const MINI_STYLE = `
   @media (prefers-reduced-motion: reduce) { .bar > div { transition: none; } }
   .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 8px; font-size: 12px; color: var(--secondary-text-color); margin-top: 2px; }
   .foot span { display: inline-flex; align-items: center; gap: 2px; white-space: nowrap; }
-  .foot > [data-key="status"] { flex: 0 1 auto; min-width: 0; overflow: hidden; }
   .foot .txt { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .foot .icon { width: 14px; height: 14px; }
   .foot > .upd { flex: 0 1 auto; min-width: 0; overflow: hidden; color: color-mix(in srgb, var(--c) 40%, var(--primary-text-color, #212121)); font-weight: 500; }
   /* The banner's picture, narrower: the pipe starts further right, the shield and the counter stay. */
   .banner { --dnsf-scene-w: 150px; }
   /* Narrow mini card (6 columns on a phone): one statistic per line. */
-  @container (max-width: 240px) { .mini-stats { grid-template-columns: minmax(0, 1fr); } .ms { flex-direction: row; align-items: center; justify-content: space-between; } }
+  @container dnsf-card (max-width: 240px) { .mini-stats { grid-template-columns: minmax(0, 1fr); } .ms { flex-direction: row; align-items: center; justify-content: space-between; } }
 `;
 
 // The mini card extends the full card: its zoom button (top right, `zoom: false` removes it) switches it to the full
@@ -2877,14 +2893,8 @@ class DnsFilterMiniCard extends DnsFilterCard {
           <div class="k">${svgIcon(s.icon)}<span>${esc(s.label)}</span></div><div class="v">${s.short}</div></div>`
       )
       .join("");
+    // The status is the header's pill (a blocking control too); the footer keeps the updates.
     const foot = [];
-    const status = this._status(dev);
-    if (status)
-      foot.push(
-        `<span class="clickable ${status.cls}" role="button" tabindex="0" data-key="status" data-action="protection" title="${esc(this._statusAction(dev, status))}" aria-label="${esc(
-          status.text
-        )}"><span class="dot"></span>&nbsp;<span class="txt">${esc(status.text)}</span></span>`
-      );
     for (const u of this._updates(dev))
       foot.push(
         `<span class="clickable upd" role="button" tabindex="0" data-key="upd-${u.id}" data-entity="${u.id}" title="${esc(u.text)}" aria-label="${esc(u.text)}">${svgIcon(
