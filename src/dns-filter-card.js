@@ -1811,7 +1811,8 @@ const PIHOLE_KEYS = {
 // Technitium DNS (the technitiumdns integration of the Marketplace) gives no translation keys: its entities have fixed
 // English names, hence entity ids ending the same in every language; the blocking switch is the one switch of the
 // server, its "Disable Ad Blocking for …" buttons pause it. Its DHCP clients are devices of their own: only the server
-// (model "DNS Server") is an instance.
+// is an instance — the device of model "DNS Server", or, should the integration rename that model, the device that
+// carries the total queries sensor (a DHCP client has none).
 const TECHNITIUM_SUFFIXES = [
   [/_total_queries$/, "queries"],
   [/_blocked_queries$/, "blocked"],
@@ -1848,10 +1849,12 @@ const registryRoots = (hass, brand) => {
   if (hass.entities && hass.devices) {
     for (const [id, e] of Object.entries(hass.entities)) {
       if (e?.platform !== PLATFORMS[brand] || !e.device_id || !hass.devices[e.device_id]) continue;
-      if (brand === "technitium" && hass.devices[e.device_id].model !== "DNS Server") continue;
       if (!byRoot.has(e.device_id)) byRoot.set(e.device_id, []);
       byRoot.get(e.device_id).push(id);
     }
+    if (brand === "technitium")
+      for (const [deviceId, ids] of byRoot)
+        if (hass.devices[deviceId].model !== "DNS Server" && !ids.some((id) => id.startsWith("sensor.") && /_total_queries$/.test(id))) byRoot.delete(deviceId);
     for (const ids of byRoot.values()) ids.sort(naturalOrder);
   }
   cache.set(key, byRoot);
@@ -2482,6 +2485,16 @@ class DnsFilterBase extends HTMLElement {
   // keeps its dot alone (.pill-dot, the label in its tooltip and aria-label). Measured after each render and on each
   // new width, never by a fixed width, so that every language fits.
   _fitPill() {
+    // Home Assistant's <ha-card> (a Lit element) shows its content only from its first update, a microtask after it
+    // is connected: measured before, everything is 0 px wide and the pill lands on the wrong line. Fitted then.
+    const haCard = this.shadowRoot?.querySelector?.("ha-card");
+    if (haCard && haCard.hasUpdated === false) {
+      this._pillWait ??= (haCard.updateComplete?.then ? haCard.updateComplete : new Promise((r) => requestAnimationFrame(r))).then(() => {
+        this._pillWait = null;
+        this._fitPill();
+      });
+      return;
+    }
     for (const t of this.shadowRoot?.querySelectorAll?.(".titles") || []) {
       const chips = [...t.querySelectorAll(".chip")];
       if (!chips[0]?.getBoundingClientRect) continue;
@@ -2934,7 +2947,8 @@ class DnsFilterMiniCard extends DnsFilterCard {
   _zoomButton() {
     if (this._config.zoom === false) return "";
     const z = this._zoomed;
-    return `<button class="zoom" title="${esc(this._t(z ? "zoom_out" : "zoom_in"))}">${svgIcon(z ? ICONS.collapse : ICONS.expand)}</button>`;
+    const label = esc(this._t(z ? "zoom_out" : "zoom_in"));
+    return `<button type="button" class="zoom" title="${label}" aria-label="${label}">${svgIcon(z ? ICONS.collapse : ICONS.expand)}</button>`;
   }
 
   _render() {
@@ -2985,8 +2999,16 @@ class DnsFilterEditorBase extends HTMLElement {
     this._render();
   }
 
+  // Home Assistant sets hass on every state change: the form only gets the new hass then, its schema and data are
+  // rebuilt when what they show changes (language, registries).
   set hass(hass) {
     this._hass = hass;
+    const key = [hass?.language, hass?.locale?.language, hass?.entities, hass?.devices];
+    if (this._form && sameSig(key, this._hassKey)) {
+      this._form.hass = hass;
+      return;
+    }
+    this._hassKey = key;
     this._render();
   }
 
@@ -3099,12 +3121,12 @@ for (const card of [
   {
     type: "dns-filter-card",
     name: "DNS Filter Card",
-    description: "AdGuard Home or Pi-hole at a glance: queries, blocked, ratio, settings switches, pause, versions.",
+    description: "AdGuard Home, Pi-hole or Technitium DNS at a glance: queries, blocked, ratio, settings switches, pause, versions.",
   },
   {
     type: "dns-filter-mini-card",
     name: "DNS Filter Mini Card",
-    description: "Compact AdGuard Home or Pi-hole overview: queries, blocked, blocked ratio and protection status.",
+    description: "Compact AdGuard Home, Pi-hole or Technitium DNS overview: queries, blocked, blocked ratio and protection status.",
   },
 ]) {
   if (!window.customCards.some((c) => c.type === card.type))

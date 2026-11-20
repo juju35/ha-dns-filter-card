@@ -1,5 +1,20 @@
 # Changelog
-- **Status pill on the title line** of every header (illustrated or classic, full and mini cards): right after the title, in the shield icon's colour, only when the whole title and its whole label fit there, otherwise on its own line under the subtitle (then kept to one line), and only its dot when even that does not fit in the banner or the card is 200 px wide or less (measured on the rendered card, so that it fits in every language); still a blocking control. The mini card shows it in its header instead of its footer. The mini card's expand/collapse button is a 24 px frosted round button in the banner's top-right corner.
+
+## 1.4.2 - 2026-11-20
+
+### Fixes
+- The status pill is placed from the card's first frame: it was measured before Home Assistant's `<ha-card>` had laid out its content (0 px wide), so for a frame it showed on the wrong line (under the title, or beside it when it belongs under it), sometimes changing the card's height, before jumping to its place. It is now fitted once the card is drawn.
+- Mini card: the detail button has an accessible name (`aria-label`) and is a plain button (`type="button"`).
+- README: the mini cards row of the screenshots table no longer repeats the Technitium full card.
+- Technitium DNS: the server is also found when the integration names its device model otherwise than "DNS Server" — the device that carries the total queries sensor (its DHCP clients have none).
+- Card picker: the descriptions of both cards name Technitium DNS beside AdGuard Home and Pi-hole.
+
+### Performance
+- Visual editors: a state change only hands the new `hass` to the form; its schema and data are rebuilt when the language or the registries change.
+
+### Maintenance
+- CHANGELOG: the status pill entry of 1.4.0, left above the first version, moved into its section.
+- Tests: a browser test checks that the cards never move the dashboard: a state change of another entity writes nothing in the card, a change of its own entities patches it in place (no node replaced, pictures kept) and its height stays the same on every frame.
 
 ## 1.4.1 - 2026-11-18
 
@@ -13,6 +28,7 @@
 - Night picture when `sun.sun` is below the horizon or in dark mode; `illustration_theme: day | night` forces it, `illustration: false` brings back the classic header. Both options are in the visual editors. Animations stop under « reduce motion ».
 - README: **animated captures** (GIF, light and dark) of the banner: protection on, protection off and night.
 - Night picture with the dark theme even while the sun is up
+- **Status pill on the title line** of every header (illustrated or classic, full and mini cards): right after the title, in the shield icon's colour, only when the whole title and its whole label fit there, otherwise on its own line under the subtitle (then kept to one line), and only its dot when even that does not fit in the banner or the card is 200 px wide or less (measured on the rendered card, so that it fits in every language); still a blocking control. The mini card shows it in its header instead of its footer. The mini card's expand/collapse button is a 24 px frosted round button in the banner's top-right corner.
 
 ## 1.3.2 - 2026-11-14
 
