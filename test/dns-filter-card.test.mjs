@@ -402,3 +402,25 @@ test("the banner picture shows the protection state and the blocked count", () =
   // No ids: several cards on one page never clash.
   assert.doesNotMatch(on, /\sid="/);
 });
+
+test("editor: a state change only passes the new hass to the form, the schema is rebuilt on a new language", () => {
+  const ed = new DnsFilterCardEditor();
+  const h = hassOf(adguard);
+  ed.setConfig({});
+  ed.hass = h;
+  const schema = ed._form.schema;
+  // A state change: same language, same registries.
+  const h2 = { ...h, states: { ...h.states } };
+  ed.hass = h2;
+  assert.equal(ed._form.hass, h2);
+  assert.equal(ed._form.schema, schema, "schema kept");
+  ed.hass = { ...h2, language: "fr" };
+  assert.notEqual(ed._form.schema, schema, "schema rebuilt for the new language");
+});
+
+test("mini card: the detail button has an accessible name", () => {
+  const el = new DnsFilterMiniCard();
+  el._config = {};
+  el._hass = hassOf(adguard);
+  assert.match(el._zoomButton(), /type="button" class="zoom" title="[^"]+" aria-label="[^"]+"/);
+});

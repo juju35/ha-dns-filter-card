@@ -2934,7 +2934,8 @@ class DnsFilterMiniCard extends DnsFilterCard {
   _zoomButton() {
     if (this._config.zoom === false) return "";
     const z = this._zoomed;
-    return `<button class="zoom" title="${esc(this._t(z ? "zoom_out" : "zoom_in"))}">${svgIcon(z ? ICONS.collapse : ICONS.expand)}</button>`;
+    const label = esc(this._t(z ? "zoom_out" : "zoom_in"));
+    return `<button type="button" class="zoom" title="${label}" aria-label="${label}">${svgIcon(z ? ICONS.collapse : ICONS.expand)}</button>`;
   }
 
   _render() {
@@ -2985,8 +2986,16 @@ class DnsFilterEditorBase extends HTMLElement {
     this._render();
   }
 
+  // Home Assistant sets hass on every state change: the form only gets the new hass then, its schema and data are
+  // rebuilt when what they show changes (language, registries).
   set hass(hass) {
     this._hass = hass;
+    const key = [hass?.language, hass?.locale?.language, hass?.entities, hass?.devices];
+    if (this._form && sameSig(key, this._hassKey)) {
+      this._form.hass = hass;
+      return;
+    }
+    this._hassKey = key;
     this._render();
   }
 
