@@ -11,6 +11,7 @@
 
 ### Maintenance
 - CHANGELOG: the status pill entry of 1.4.0, left above the first version, moved into its section.
+- Tests: a browser test checks that the cards never move the dashboard: a state change of another entity writes nothing in the card, a change of its own entities patches it in place (no node replaced, pictures kept) and its height stays the same on every frame.
 
 ## 1.4.1 - 2026-11-18
 
