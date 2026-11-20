@@ -6,6 +6,8 @@
 - The status pill is placed from the card's first frame: it was measured before Home Assistant's `<ha-card>` had laid out its content (0 px wide), so for a frame it showed on the wrong line (under the title, or beside it when it belongs under it), sometimes changing the card's height, before jumping to its place. It is now fitted once the card is drawn.
 - Mini card: the detail button has an accessible name (`aria-label`) and is a plain button (`type="button"`).
 - README: the mini cards row of the screenshots table no longer repeats the Technitium full card.
+- Technitium DNS: the server is also found when the integration names its device model otherwise than "DNS Server" — the device that carries the total queries sensor (its DHCP clients have none).
+- Card picker: the descriptions of both cards name Technitium DNS beside AdGuard Home and Pi-hole.
 
 ### Performance
 - Visual editors: a state change only hands the new `hass` to the form; its schema and data are rebuilt when the language or the registries change.

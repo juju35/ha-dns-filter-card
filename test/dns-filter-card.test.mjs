@@ -6,9 +6,9 @@ const eq = (a, b, msg) => assert.deepEqual(JSON.parse(JSON.stringify(a)), b, msg
 import { load } from "./load.mjs";
 import { adguard, pihole, technitium } from "../scripts/mock-states.mjs";
 
-const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, DnsFilterCardEditor, DnsFilterMiniCardEditor, STRINGS, spark, histPoints, dnsfIsNight, dnsfSceneSvg } = load(
+const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, DnsFilterCardEditor, DnsFilterMiniCardEditor, STRINGS, spark, histPoints, dnsfIsNight, dnsfSceneSvg, window: win } = load(
   "dns-filter-card.js",
-  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "DnsFilterCardEditor", "DnsFilterMiniCardEditor", "STRINGS", "spark", "histPoints", "dnsfIsNight", "dnsfSceneSvg"]
+  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "DnsFilterCardEditor", "DnsFilterMiniCardEditor", "STRINGS", "spark", "histPoints", "dnsfIsNight", "dnsfSceneSvg", "window"]
 );
 
 const hassOf = (...mocks) => {
@@ -267,6 +267,19 @@ test("Technitium DNS: its server's entities by their fixed names, the ratio work
       ["switch", "turn_off", { entity_id: "switch.technitium_enable_ad_blocking" }],
     ])
   );
+});
+
+test("Technitium DNS: a server whose model was renamed is still found by its total queries sensor, DHCP clients still left out", () => {
+  const hass = hassOf(technitium);
+  hass.devices = { ...hass.devices, technitium_1: { ...hass.devices.technitium_1, model: "Technitium DNS Server v14" } };
+  eq(listDevices(hass), [{ value: "technitium_1", label: "Technitium DNS · Technitium" }]);
+  assert.equal(discover(hass).e.queries, "sensor.technitium_total_queries");
+});
+
+test("the card picker names Technitium DNS beside AdGuard Home and Pi-hole", () => {
+  const cards = win.customCards.filter((c) => c.type.startsWith("dns-filter"));
+  assert.equal(cards.length, 2);
+  for (const c of cards) assert.match(c.description, /Technitium DNS/);
 });
 
 test("entities: sensors of the user's choice replace the slots found", () => {
