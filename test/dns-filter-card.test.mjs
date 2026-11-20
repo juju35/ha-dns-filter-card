@@ -6,9 +6,9 @@ const eq = (a, b, msg) => assert.deepEqual(JSON.parse(JSON.stringify(a)), b, msg
 import { load } from "./load.mjs";
 import { adguard, pihole, technitium } from "../scripts/mock-states.mjs";
 
-const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, DnsFilterCardEditor, DnsFilterMiniCardEditor, STRINGS, spark, histPoints, dnsfIsNight, dnsfSceneSvg } = load(
+const { discover, listDevices, protectionOf, versionsOf, fmtShort, fmtPct, hms, DnsFilterCard, DnsFilterMiniCard, DnsFilterCardEditor, DnsFilterMiniCardEditor, STRINGS, spark, histPoints, dnsfIsNight, dnsfSceneSvg, window: win } = load(
   "dns-filter-card.js",
-  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "DnsFilterCardEditor", "DnsFilterMiniCardEditor", "STRINGS", "spark", "histPoints", "dnsfIsNight", "dnsfSceneSvg"]
+  ["discover", "listDevices", "protectionOf", "versionsOf", "fmtShort", "fmtPct", "hms", "DnsFilterCard", "DnsFilterMiniCard", "DnsFilterCardEditor", "DnsFilterMiniCardEditor", "STRINGS", "spark", "histPoints", "dnsfIsNight", "dnsfSceneSvg", "window"]
 );
 
 const hassOf = (...mocks) => {
@@ -269,6 +269,19 @@ test("Technitium DNS: its server's entities by their fixed names, the ratio work
   );
 });
 
+test("Technitium DNS: a server whose model was renamed is still found by its total queries sensor, DHCP clients still left out", () => {
+  const hass = hassOf(technitium);
+  hass.devices = { ...hass.devices, technitium_1: { ...hass.devices.technitium_1, model: "Technitium DNS Server v14" } };
+  eq(listDevices(hass), [{ value: "technitium_1", label: "Technitium DNS · Technitium" }]);
+  assert.equal(discover(hass).e.queries, "sensor.technitium_total_queries");
+});
+
+test("the card picker names Technitium DNS beside AdGuard Home and Pi-hole", () => {
+  const cards = win.customCards.filter((c) => c.type.startsWith("dns-filter"));
+  assert.equal(cards.length, 2);
+  for (const c of cards) assert.match(c.description, /Technitium DNS/);
+});
+
 test("entities: sensors of the user's choice replace the slots found", () => {
   const hass = hassOf(pihole);
   hass.states["sensor.my_ratio"] = { entity_id: "sensor.my_ratio", state: "50", attributes: {} };
@@ -401,4 +414,26 @@ test("the banner picture shows the protection state and the blocked count", () =
   assert.doesNotMatch(dnsfSceneSvg("na", ""), /dnsf-x|dnsf-count/);
   // No ids: several cards on one page never clash.
   assert.doesNotMatch(on, /\sid="/);
+});
+
+test("editor: a state change only passes the new hass to the form, the schema is rebuilt on a new language", () => {
+  const ed = new DnsFilterCardEditor();
+  const h = hassOf(adguard);
+  ed.setConfig({});
+  ed.hass = h;
+  const schema = ed._form.schema;
+  // A state change: same language, same registries.
+  const h2 = { ...h, states: { ...h.states } };
+  ed.hass = h2;
+  assert.equal(ed._form.hass, h2);
+  assert.equal(ed._form.schema, schema, "schema kept");
+  ed.hass = { ...h2, language: "fr" };
+  assert.notEqual(ed._form.schema, schema, "schema rebuilt for the new language");
+});
+
+test("mini card: the detail button has an accessible name", () => {
+  const el = new DnsFilterMiniCard();
+  el._config = {};
+  el._hass = hassOf(adguard);
+  assert.match(el._zoomButton(), /type="button" class="zoom" title="[^"]+" aria-label="[^"]+"/);
 });
