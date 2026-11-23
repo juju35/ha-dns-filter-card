@@ -50,9 +50,9 @@ The cards are built on top of the [AdGuard Home](https://www.home-assistant.io/i
 
 | Integration | What the cards show |
 |---|---|
-| [AdGuard Home](https://www.home-assistant.io/integrations/adguard/) (built in) | DNS queries, blocked, blocked ratio, average processing time, parental control / safe browsing / safe search counters, rules count (sensor disabled by default), protection status, the six setting switches, filter lists refresh, AdGuard Home version and update |
-| [Pi-hole](https://www.home-assistant.io/integrations/pi_hole/) (built in, v5 and v6) | DNS queries, blocked, blocked ratio, domains on lists, clients, unique domains, cached and forwarded queries, seen clients, blocking status, pause / resume, Core / FTL / Web versions and updates |
-| [Technitium DNS](https://github.com/Atlas-Commons/home-assistant-technitiumdns) (Marketplace, `technitiumdns`) | Total and blocked queries, blocked ratio (worked out from both), blocked zones, clients, cached and recursive queries, ad blocking switch, pause with its "Disable Ad Blocking for …" buttons (5 min to 1 day) / resume |
+| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/adguard.svg" alt="" width="16"> [AdGuard Home](https://www.home-assistant.io/integrations/adguard/) (built in) | DNS queries, blocked, blocked ratio, average processing time, parental control / safe browsing / safe search counters, rules count (sensor disabled by default), protection status, the six setting switches, filter lists refresh, AdGuard Home version and update |
+| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/pihole.svg" alt="" width="16"> [Pi-hole](https://www.home-assistant.io/integrations/pi_hole/) (built in, v5 and v6) | DNS queries, blocked, blocked ratio, domains on lists, clients, unique domains, cached and forwarded queries, seen clients, blocking status, pause / resume, Core / FTL / Web versions and updates |
+| <img src="https://raw.githubusercontent.com/juju35/ha-dns-filter-card/main/images/technitium.svg" alt="" width="16"> [Technitium DNS](https://github.com/Atlas-Commons/home-assistant-technitiumdns) (Marketplace, `technitiumdns`) | Total and blocked queries, blocked ratio (worked out from both), blocked zones, clients, cached and recursive queries, ad blocking switch, pause with its "Disable Ad Blocking for …" buttons (5 min to 1 day) / resume |
 
 Several instances are supported, and the integrations can be mixed: pick the instance in the visual editor.
 
