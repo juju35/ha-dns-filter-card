@@ -2,9 +2,10 @@
 // with minimal browser stubs, and returns the requested top-level bindings. The bundle is unchanged.
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
+import { sources } from "./source.mjs";
 
 export const load = (file, names) => {
-  const src = readFileSync(new URL(`../src/${file}`, import.meta.url), "utf8");
+  const src = (sources[file] ?? readFileSync(new URL(`../src/${file}`, import.meta.url), "utf8"));
   class HTMLElement {
     attachShadow() {
       // Listeners kept by type, so tests can dispatch events to them.
